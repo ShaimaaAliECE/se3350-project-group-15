@@ -50,7 +50,8 @@ Create an educational game in a web or mobile application that helps undergradua
   * Feedback should be provided at each step
     * [ ] Positive feedback (visual and audio) when the step is correct
     * [ ] Negative feedback (visual and audio) when the step is incorrect
-  ## Attempts (*Should Have*)
+
+## Attempts (*Should Have*)
 
 * [ ] The user is allowed to make up to 3 mistakes at each level.
 
@@ -65,4 +66,5 @@ Create an educational game in a web or mobile application that helps undergradua
 
 * [ ] (*Should have*) User actions need time spent at each level should be logged for later analysis **(updated on Jan. 11th at 10:45 am)**
 * [ ] (Nice to Have) An admin can view visual analytics of the logged data **(updated on Jan. 11th at 10:45 am)**
+  
 
