@@ -1,0 +1,71 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: system-ui;
+  margin: 0;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.container > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Kanit", sans-serif;
+  line-height: 0px;
+  text-transform: uppercase;
+  font-size: 300px;
+  color: #545864;
+}
+
+.gradient {
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.orange {
+  background: orange;
+}
+
+.teal {
+  background: teal;
+}
+
+.pink {
+  background: hotpink;
+}
+
+h3,
+footer {
+  color: #b8c1ec;
+  padding: 1rem;
+  text-align: center;
+  margin: 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: hotpink;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: teal;
+}
