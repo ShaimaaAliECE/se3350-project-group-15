@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from 'react';
+import ParallaxComponent from "./ParallaxComponent";
 
 function Home() {
-  const [unsorted, setUnsorted] = useState([1, 7, 3, 4, 6]);
-
-  return (
-    <div>
-      {unsorted.map((number) => (
-        <span>{number}</span>
-      ))}
-    </div>
-  );
+  return <div>
+<ParallaxComponent/>
+  </div>;
 }
 
 export default Home;

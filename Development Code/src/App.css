@@ -3,7 +3,6 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-
 }
 
 body{
@@ -46,9 +45,3 @@ body{
   margin-bottom:15px;
 }
 
-.count_down{
-  color:white;
-  background-color: #313131;
-  font-size: larger;
-  text-align: center;
-}
