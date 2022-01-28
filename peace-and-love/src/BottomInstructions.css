@@ -1,0 +1,16 @@
+.BottomInstructions {
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.BottomInstructions__instructions {
+  border: 1px solid black;
+  margin: 100px 100px 150px 100px;
+  padding: 50px 30px 50px 30px;
+  bottom: 0;
+  background-color: lightgray;
+  font-size: xx-large;
+}

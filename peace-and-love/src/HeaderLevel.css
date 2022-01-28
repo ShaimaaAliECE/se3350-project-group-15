@@ -1,0 +1,23 @@
+.HeaderLevel {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  justify-content: space-evenly;
+}
+.HeaderLevel__chooseLevel {
+  display: flex;
+}
+
+.HeaderLevel__runButton {
+  display: flex;
+}
+.HeaderLevel__restartButton {
+  display: flex;
+}
+
+.HeaderLevel__mistakeCount {
+  display: flex;
+}
