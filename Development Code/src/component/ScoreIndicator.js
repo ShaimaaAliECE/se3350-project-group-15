@@ -5,7 +5,7 @@ import ReactStoreIndicator from 'react-score-indicator'
 class ScoreIndicator extends Component {
   render () {
       
-      const score = 60;
+      const score = 80;//dynamically change score display
 
     return (
       <ReactStoreIndicator

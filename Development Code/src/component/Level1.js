@@ -53,7 +53,7 @@ function Level1() {
     ).element;
   }
 
-  let onTimesup = () => {
+  let onTimesup = () => {//for level 2,3
     // alert(`Time's up!`);
   };
 
@@ -75,7 +75,7 @@ function Level1() {
           4
         </p>
       </div>
-
+      {/* 
       <div className="flexbox">
         <Board id="board-1" className="board">
           <Card id="card-1" className="card" draggable="true">
@@ -88,9 +88,10 @@ function Level1() {
             <p>Card Two</p>
           </Card>
         </Board>
-      </div>
-      <ScoreIndicator />
-      <CountDown className="count_down" onTimesup={onTimesup} duration={5} />
+      </div> */}
+
+      <ScoreIndicator /> {/*for level 2,3 */}
+      <CountDown className="count_down" onTimesup={onTimesup} duration={5} />{/*for level 2,3 */}
     </div>
   );
 }
