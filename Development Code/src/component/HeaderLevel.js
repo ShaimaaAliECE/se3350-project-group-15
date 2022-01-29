@@ -1,28 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HeaderLevel.css";
 import { Link } from "react-router-dom";
 
-function HeaderLevel() {
+export default function HeaderLevel() {
+  const [currentProblem, setCurrentProblem] = useState([]);
+  const [arrayLength, setArrayLength] = useState(10);
+
+  let newArray = [];
+  let random = new Set();
+
+  const newProblems = () => {
+    while (random.size < arrayLength) {
+      random.add(Math.floor(Math.random() * 20) + 1);
+    }
+    newArray = [...random];
+    setCurrentProblem(newArray);
+    console.log(currentProblem);
+  };
   return (
     <div className="HeaderLevel">
       <div className="HeaderLevel__chooseLevel">
         <label for="levels">Level:</label>
-    
-        <select name="levels" id="levels">
-          <Link to="/level1">Level 1</Link>
-          <Link to="/level2">Level 2</Link>
-          <Link to="/level3">Level 3</Link>
-          <option value="LevelOne">Level 1</option>
-
-          <option value="LevelTwo">Level 2</option>
-          <option value="LevelThree">Level 3</option>
-          <option value="LevelFour">Level 4</option>
+        <select
+          name="levels"
+          id="levels"
+          onChange={(event) => {
+            setArrayLength(event.target.value);
+          }}
+        >
+          <option value="10">Level 1</option>
+          <option value="10">Level 2</option>
+          <option value="10">Level 3</option>
+          <option value="50">Level 4</option>
         </select>
       </div>
 
       <div className="HeaderLevel__runButton">
         <span>
-          <button type="button">Run</button>
+          <button onClick={newProblems} type="button">
+            Run
+          </button>
         </span>
       </div>
       <div className="HeaderLevel__restartButton">
@@ -39,5 +56,3 @@ function HeaderLevel() {
     </div>
   );
 }
-
-export default HeaderLevel;
