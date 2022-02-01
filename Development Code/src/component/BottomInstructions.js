@@ -5,7 +5,6 @@ function BottomInstructions() {
   return (
     <div className="BottomInstructions">
       <div className="BottomInstructions__instructions">
-        
         This is an instruction:)
       </div>
     </div>

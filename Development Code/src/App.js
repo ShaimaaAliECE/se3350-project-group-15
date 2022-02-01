@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import HeaderLogin from "./component/HeaderLogin";
+
 // import HeaderLevel from "./component/HeaderLevel";
 // import BottomInstructions from "./component/BottomInstructions";
 import Level1 from "./component/Level1";
@@ -8,12 +9,16 @@ import Level2 from "./component/Level2";
 import Level3 from "./component/Level3";
 import LevelMain from "./component/LevelMain";
 import { Routes, Route } from "react-router-dom";
+
+
+
 function App() {
   return (
     <div className="App">
       <HeaderLogin />
       {/* <HeaderLevel />
       <BottomInstructions /> */}
+      
 
       <Routes>
         <Route path="/" element={<LevelMain />} />
