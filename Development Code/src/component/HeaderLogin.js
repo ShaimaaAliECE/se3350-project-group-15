@@ -2,7 +2,6 @@ import React from "react";
 import "./HeaderLogin.css";
 import PersonIcon from "@material-ui/icons/Person";
 
-
 function HeaderLogin() {
   return (
     <div className="headerLogin">
