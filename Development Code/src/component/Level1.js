@@ -2,12 +2,15 @@ import React from "react";
 import HeaderLevel from "./HeaderLevel";
 import BottomInstructions from "./BottomInstructions";
 import MergeSortComponent from "../algorithm/MergeSortComponent";
+import ArrayGen from "./ArrayGen";
+import MergeSort from "../algorithm/MergeSort";
 
 function Level1() {
   
   return (
     <div>
       <HeaderLevel />
+      <ArrayGen />
       <BottomInstructions />
       <MergeSortComponent />
 
