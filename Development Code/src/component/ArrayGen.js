@@ -10,12 +10,13 @@ export default class ArrayGen extends React.Component {
     }
 
     generateNumberArray() {
-        // setNumberArray(
-        //   Array.from({ length: {ArrayLength} }, () => Math.floor(Math.random() * 40))
-        // );
-        this.state.NumberArray = Array.from({ length: this.state.ArrayLength }, () =>
-            Math.floor(Math.random() * 40)
-        );
+        let random = new Set;
+
+
+        while (random.size < this.state.ArrayLength) {
+            random.add(Math.floor(Math.random() * 20) + 1);
+        }
+        this.state.NumberArray = [...random];
         console.log(this.state.NumberArray);
         this.forceUpdate()
     }
