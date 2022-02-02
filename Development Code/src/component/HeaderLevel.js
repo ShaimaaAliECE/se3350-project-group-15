@@ -20,7 +20,7 @@ export default function HeaderLevel() {
   return (
     <div className="HeaderLevel">
       <div className="HeaderLevel__chooseLevel">
-        <label for="levels">Level:</label>
+        <label htmlFor="levels">Level:</label>
         <select
           name="levels"
           id="levels"
