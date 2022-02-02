@@ -7,9 +7,9 @@ export class SortingComponent extends Component {
 
   unsorted = [55, 1, 2, 4, 9, 77, 3, 65, -1, 999,100,3];
 
-  constructor() {
+  constructor(props) {
     super();
-
+    this.unsorted=props.unsorted;
     this.state = {partitions:  []};
     this.sortingService = new SortingService();
   }
@@ -37,18 +37,6 @@ export class SortingComponent extends Component {
                   )
                 }
                 <span>{node.descr}</span>
-
-                {/* <span className='group'>
-                  {(node.part1 || []).map((n, index) => {
-                    return <span key={index} className="number">{n}</span>
-                  })}
-                </span>
-              
-                <span className="group">
-                  {(node.part2 || []).map((n, index) => {
-                    return <span key={index} className="number">{n}</span>
-                  })}
-                </span> */}
               </div>
     });
     return (
