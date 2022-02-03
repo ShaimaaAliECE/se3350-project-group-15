@@ -1,24 +1,24 @@
 import React from "react";
 import "./BottomInstructions.css";
 
-
+let i = 0;
 
 function BottomInstructions() {
   return (
-    <div className="BottonInstructions">
-      <div>
-
+    <div>
+      <div class="BottomInstructions">
+        <text class="instructionField" id="textField">
+          The instruction will be shown here
+        </text>
       </div>
 
-      <div className="forwardButton">
-        <button id="forwardBtn"  onClick={showForwardInstruction}>
-          )
+      <div class="InstructionButton">
+        <button class="backwardButton" onClick={showBackwardInstruction}>
+          (--
         </button>
-      </div>
 
-      <div className="backwardButton">
-        <button  onClick={showBackwardInstruction}>
-          (
+        <button class="forwardButton" onClick={showForwardInstruction}>
+          --)
         </button>
       </div>
     </div>
@@ -27,7 +27,7 @@ function BottomInstructions() {
 
 function showForwardInstruction(){// use it to display the next message
   let instruction= selectInstruction();
-  alert(instruction)
+  document.getElementById("textField").innerHTML=(instruction);
 }
 
 function showBackwardInstruction(){//use it to display the previous message 
@@ -35,7 +35,9 @@ function showBackwardInstruction(){//use it to display the previous message
 }
 
 function selectInstruction(){// use to select the corret key for the instruction
-  return introductionDictionary[1]
+
+  i++;
+  return introductionDictionary[i];
 }
 
 var introductionDictionary= {
