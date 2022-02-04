@@ -1,17 +1,18 @@
 .BottomInstructions {
   display: flex;
   justify-content: center;
+  margin: 50px 50px 75px 50px;
   bottom: 0;
   position: fixed;
   width: 100%;
 }
 .instructionField {
-  border: 1px solid black;
-  margin: 100px 100px 150px 100px;
+  /*border: 1px solid black;*/
+  margin: 10px 10px 15px 10px;
   padding: 50px 30px 50px 30px;
   bottom: 0;
-  background-color: lightgray;
-  font-size: xx-large;
+  /*background-color: lightblue;*/
+  font-size: large;
 }
 
 .InstructionButton{

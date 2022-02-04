@@ -5,18 +5,21 @@ import "./BottomInstructions.css";
 /*
 1. Create button(done)
 2. Link buttons with functions(done)
-3. Write functions that can bind with algorithm(ongoing)
+3. Write button function that forwards and backwards the instruction(on-going)
+4. Write button function that can change the state of the algorithm to next and previous steps(on-going)
 */
+
+
 let i = 0;
 
 function BottomInstructions() {
   return (
     <div>
-      <div class="BottomInstructions">
+
         <text class="instructionField" id="textField">
           The instruction will be shown here
         </text>
-      </div>
+
 
       <div class="InstructionButton">
         <button class="backwardButton" onClick={showBackwardInstruction}>
@@ -32,21 +35,43 @@ function BottomInstructions() {
 }
 
 function showForwardInstruction(){// use it to display the next message
-  let instruction= selectInstruction();
+  let instruction= selectNextInstruction();
   document.getElementById("textField").innerHTML=(instruction);
 }
 
 function showBackwardInstruction(){//use it to display the previous message 
-  alert("you clicked backward instruction")
+  let instruction= selectPreviousInstruction();
+  document.getElementById("textField").innerHTML=(instruction);
 }
 
-function selectInstruction(){// use to select the corret key for the instruction
-
+function selectNextInstruction(){// use to select the corret key for the next instruction
   i++;
+  if(i>=13){
+    i=13;
+    return "This is the last step";
+  }
   return introductionDictionary[i];
 }
 
-var introductionDictionary= {
+function selectPreviousInstruction(){// use to select the corret key for the previous instruction
+  i--;
+  if(i<=1){
+    i=0
+    return "This is the first step";
+  }
+  return introductionDictionary[i];
+}
+
+/*function getDictionaryLength(){
+  var size=0;
+  for(i of introductionDictionary){
+    size++
+  }
+  return size;
+}
+*/
+
+var introductionDictionary= {// the dictionary that includes all the instruction to indicate player about the process.
   1:"Select the entire Array",
   2:"Split the selected array(as evenly as possible)",
   3:"Split the left sub-array",
@@ -62,8 +87,7 @@ var introductionDictionary= {
   13:"Done Sorting"
 }
 
-
-
+var size = introductionDictionary.length;
 
 
 export default BottomInstructions;
