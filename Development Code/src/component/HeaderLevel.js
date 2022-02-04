@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./HeaderLevel.css";
-import { Link } from "react-router-dom";
-import Dropdown from "react-bootstrap/Dropdown";
+import ArrayGen from "./ArrayGen";
 
 export default function HeaderLevel(props) {
   // const [currentProblem, setCurrentProblem] = useState([]);
@@ -54,7 +53,7 @@ export default function HeaderLevel(props) {
           <li><a class="dropdown-item" href="/Level3">Level 3</a></li>
         </ul>
       </div>
-      <button onClick={newProblems} type="button" class="btn btn-success">Start</button>
+      <ArrayGen ArrayLength="10"/>
       <button onClick={restart} type="button" class="btn btn-warning">Restart</button>
 
       <div className="HeaderLevel__mistakeCount">
