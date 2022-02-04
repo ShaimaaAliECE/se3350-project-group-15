@@ -3,11 +3,13 @@ import { SortingService } from "./SortingService";
 import { Partition } from "./Partition";
 
 export default class SortingComponent extends Component {
-  unsorted = [55, 1, 2, 4, 9, 77, 3, 65, -1, 999];
+  //this is the unsorted array
+  unsorted = [6,5,4,3,2,1];
 
+  //initialized the array state
   constructor() {
     super();
-
+    //set the array to the one that is gonna be splited 
     this.state = { partitions: [] };
     this.sortingService = new SortingService();
   }
@@ -19,25 +21,28 @@ export default class SortingComponent extends Component {
   }
 
   render() {
+ 
     let fragments = this.state.partitions.map((node, i1) => {
       return (
         <div key={i1} className="fragment-row">
           {node.fragments.map((numbers, i2) => (
+
             <span>
               <span className="group" key={i2}>
                 {numbers.map((number, index) => {
                   return (
                     <span key={index} className="number">
                       {number}
-                    </span>
+              </span>
                   );
                 })}
               </span>
             </span>
+
           ))}
           <span>{node.descr}</span>
 
-          <span className={node.show}>
+          <span>
             {(node.part1 || []).map((n, index) => {
               return (
                 <span key={index} className="number">
@@ -59,12 +64,16 @@ export default class SortingComponent extends Component {
         </div>
       );
     });
+
+    
     return (
       <div>
         <h4>Merge Sort</h4>
         <div className="fragment-row">
-          <strong>Sample Numbers: {this.unsorted.join(" ")}</strong>
+          {/* print the original array*/}
+          <strong>Sample Numbers: {this.unsorted}</strong>
         </div>
+  {/* start mergesort*/}
         {fragments}
       </div>
     );
