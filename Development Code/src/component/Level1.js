@@ -24,18 +24,20 @@ function Level1() {
 
   return (
     <div>
-      <h1>Level 1: MergeSort Algorithm</h1>
+      <div class="ms-3">
+        <h1>Level 1: MergeSort Algorithm</h1>
+      </div>
+
       <HeaderLevel />
-      <ArrayGen />
-      <BottomInstructions />
       {/* {array}
       <button onClick={halfArray}>half the array</button> */}
       {/* <MergesortFebThird arr={arr} l={l} m={m} r={r} /> */}
-      <SortingComponent />
-      <div id="result"></div>
-      <div>This is Level1</div>
-
-      <div id="left"></div>
+      <div class="d-flex justify-content-center">
+        <SortingComponent />
+      </div>
+      <div class="fixed-bottom d-flex justify-content-center">
+        <BottomInstructions />
+      </div>
     </div>
   );
 }
