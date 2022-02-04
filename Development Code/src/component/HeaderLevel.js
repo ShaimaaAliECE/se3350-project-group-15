@@ -3,7 +3,7 @@ import "./HeaderLevel.css";
 import { Link } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 
-export default function HeaderLevel() {
+export default function HeaderLevel(props) {
   // const [currentProblem, setCurrentProblem] = useState([]);
   // const [arrayLength, setArrayLength] = useState(10);
 
@@ -11,7 +11,7 @@ export default function HeaderLevel() {
   const [NumberArray, setNumberArray] = useState([]);
 
   let newArray;
-  
+
   //TODO: better to generate unique numbers!!!
   function generateNumberArray() {
     // setNumberArray(
@@ -24,7 +24,7 @@ export default function HeaderLevel() {
 
   // let newArray = [];
   // let random = new Set();
- 
+
   //TODO: when 'RUN' btn is clicked for the first time, we get an empty array??? 
   const newProblems = (e) => {
     generateNumberArray();
@@ -38,50 +38,27 @@ export default function HeaderLevel() {
     // console.log(currentProblem);
   };
 
+  const restart = () => {
+    window.location.reload();
+  }
+
   return (
     <div className="HeaderLevel">
-      <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           Select Level
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-          <Dropdown.Item href="/level1">Level1</Dropdown.Item>
-          <Dropdown.Item href="/level2">Level2</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-      {/* <div className="HeaderLevel__chooseLevel">
-        <label for="levels">Level:</label>
-        <select
-          name="levels"
-          id="levels"
-          onChange={(event) => {
-            setArrayLength(event.target.value);
-          }}
-        >
-          <option value="10">Level 1</option>
-          <option value="10">Level 2</option>
-          <option value="10">Level 3</option>
-          <option value="50">Level 4</option>
-        </select>
-      </div> */}
-
-      <div className="HeaderLevel__runButton">
-        <span>
-          <button onClick={newProblems} type="button">
-            Run
-          </button>
-        </span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="/Level1">Level 1</a></li>
+          <li><a class="dropdown-item" href="/Level2">Level 2</a></li>
+          <li><a class="dropdown-item" href="/Level3">Level 3</a></li>
+        </ul>
       </div>
-      <div className="HeaderLevel__restartButton">
-        <span>
-          {" "}
-          <button type="button">Restart</button>
-        </span>
-      </div>
+      <button onClick={newProblems} type="button" class="btn btn-success">Start</button>
+      <button onClick={restart} type="button" class="btn btn-warning">Restart</button>
 
       <div className="HeaderLevel__mistakeCount">
-        mistake:
+        Mistake:
         <span className="HeaderLevel__mistakeCountNumber">0</span>
       </div>
     </div>

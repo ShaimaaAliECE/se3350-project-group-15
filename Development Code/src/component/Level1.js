@@ -24,6 +24,7 @@ function Level1() {
 
   return (
     <div>
+      <h1>Level 1: MergeSort Algorithm</h1>
       <HeaderLevel />
       <ArrayGen />
       <BottomInstructions />
