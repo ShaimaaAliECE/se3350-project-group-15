@@ -1,6 +1,12 @@
 import React from "react";
 import "./BottomInstructions.css";
 
+
+/*
+1. Create button(done)
+2. Link buttons with functions(done)
+3. Write functions that can bind with algorithm(ongoing)
+*/
 let i = 0;
 
 function BottomInstructions() {
