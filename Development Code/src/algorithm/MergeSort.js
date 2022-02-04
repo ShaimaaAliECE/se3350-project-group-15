@@ -1,5 +1,5 @@
 //import React, { useState } from "react";
-
+import React from "react";
 export default function MergeSort() {
   const merge = (arr, l, m, r) => {
     let n1 = m - l + 1,
@@ -37,14 +37,14 @@ export default function MergeSort() {
     }
 
 
-return(L);
+  return(L);
     // console.log("left array: ");
     // printArray(L, L.length);
     // console.log("right array: ");
     // printArray(R, R.length);
     // console.log("<br></br>");
 
-  };
+ };
 
   const mergeSort = (arr, l, r) => {
     for (var i = l; i <= r; i++) {
