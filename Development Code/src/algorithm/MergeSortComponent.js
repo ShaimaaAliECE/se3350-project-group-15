@@ -20,7 +20,8 @@ class MergeSortComponent extends React.Component {
     var k = l;
 
 
-    while (i < n1 && j < n2) {
+    while (i < n1 && j < n2)
+     {
       if (L[i] <= R[j]) {
         arr[k] = L[i];
         i++;
@@ -31,7 +32,7 @@ class MergeSortComponent extends React.Component {
       k++;
     }
 
-// Copy the remaining elements of L[], if there are any
+ // Copy the remaining elements of L[], if there are any
     while (i < n1) {
       arr[k] = L[i];
       i++;
@@ -90,7 +91,7 @@ class MergeSortComponent extends React.Component {
 
   render() {
     this.printResult([12, 11, 13, 5, 6, 7]);
-    return <div>hi</div>;
+    return <div>hi </div>;
   }
 }
 
