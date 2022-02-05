@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { SortingService } from "./SortingService";
 import { Partition } from "./Partition";
-import mergeSortRender from "../render/mergeSortRender";
 
 export default class SortingComponent extends Component {
   //initialized the array state
@@ -28,7 +27,6 @@ export default class SortingComponent extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    debugger;
     console.log("shouldComponentUpdate: " + this.state.unsorted + " next" + nextProps.Problem)
     console.log(this.state.unsorted !== nextProps.Problem)
     console.log(this.state.partitions !== nextState.partitions)
