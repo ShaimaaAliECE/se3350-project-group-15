@@ -18,6 +18,7 @@ export default class ArrayGen extends React.Component {
         }
         this.state.NumberArray = [...random];
         console.log(this.state.NumberArray);
+        this.props.parentCallback(this.state.NumberArray);
         this.forceUpdate()
     }
 
@@ -25,7 +26,7 @@ export default class ArrayGen extends React.Component {
         return (
             <div>
                 <div>
-                    <button onClick={(e) => { this.generateNumberArray() }} type="button" class="btn btn-success">Start</button>
+                    <button onClick={() => { this.generateNumberArray() }} type="button" class="btn btn-success">Start</button>
                 </div>
                 <div><div class="row">
                     {this.state.NumberArray.map((num, index) => {
