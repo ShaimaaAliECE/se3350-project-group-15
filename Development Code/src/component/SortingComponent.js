@@ -6,6 +6,8 @@ export default class SortingComponent extends Component {
   //this is the unsorted array
   unsorted = [6,5,4,3,2,1];
 
+
+
   //initialized the array state
   constructor() {
     super();
@@ -21,7 +23,11 @@ export default class SortingComponent extends Component {
   }
 
   render() {
- 
+    /*return<h1>
+    {this.props.newArray}
+    </h1>;*/
+
+
     let fragments = this.state.partitions.map((node, i1) => {
       return (
         <div key={i1} className="fragment-row">

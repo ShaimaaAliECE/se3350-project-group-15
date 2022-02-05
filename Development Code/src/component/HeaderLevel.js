@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./HeaderLevel.css";
 import ArrayGen from "./ArrayGen";
+import SortingComponent from "./SortingComponent";
 
 export default function HeaderLevel(props) {
   // const [currentProblem, setCurrentProblem] = useState([]);
@@ -12,14 +13,19 @@ export default function HeaderLevel(props) {
   let newArray;
 
   //TODO: better to generate unique numbers!!!
-  function generateNumberArray() {
+  function generateNumberArray({}) {
     // setNumberArray(
     //   Array.from({ length: {ArrayLength} }, () => Math.floor(Math.random() * 40))
     // );
     newArray = Array.from({ length: ArrayLength }, () =>
       Math.floor(Math.random() * 20) //numbers range from 0-20
     );
+
+    <SortingComponent newArray={newArray}/>
+    
   }
+
+
 
   // let newArray = [];
   // let random = new Set();
