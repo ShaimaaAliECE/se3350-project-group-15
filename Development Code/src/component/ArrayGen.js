@@ -5,6 +5,7 @@ export default class ArrayGen extends React.Component {
         super(props);
         this.state = {
             ArrayLength: props.ArrayLength,
+            ArrayRange: props.ArrayRange,
             NumberArray: []
         }
     }
@@ -14,7 +15,7 @@ export default class ArrayGen extends React.Component {
 
 
         while (random.size < this.state.ArrayLength) {
-            random.add(Math.floor(Math.random() * 20) + 1);
+            random.add(Math.floor(Math.random() * this.state.ArrayRange) + 1);
         }
         this.state.NumberArray = [...random];
         console.log(this.state.NumberArray);

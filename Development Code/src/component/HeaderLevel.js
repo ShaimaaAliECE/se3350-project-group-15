@@ -5,6 +5,7 @@ import ArrayGen from "./ArrayGen";
 export default function HeaderLevel(props) {
 
   const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10 
+  const [ArrayRange, setArrayRange] = useState(20); //the default array range is 20
   const [NumberArray, setNumberArray] = useState([]);
 
   const restart = () => {
@@ -29,7 +30,7 @@ export default function HeaderLevel(props) {
           <li><a class="dropdown-item" href="/Level3">Level 3</a></li>
         </ul>
       </div>
-      <ArrayGen ArrayLength={ArrayLength} parentCallback={callbackFunction} />
+      <ArrayGen ArrayLength={ArrayLength} ArrayRange={ArrayRange} parentCallback={callbackFunction} />
       <button onClick={restart} type="button" class="btn btn-warning">Restart</button>
 
       <div className="HeaderLevel__mistakeCount">
