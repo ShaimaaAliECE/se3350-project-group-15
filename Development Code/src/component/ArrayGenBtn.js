@@ -1,26 +1,21 @@
 import React from 'react';
 
-export default class ArrayGen extends React.Component {
+export default class ArrayGenBtn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             ArrayLength: props.ArrayLength,
             ArrayRange: props.ArrayRange,
-            NumberArray: []
         }
     }
 
     generateNumberArray() {
-        let random = new Set;
-
-
+        let random = new Set();
         while (random.size < this.state.ArrayLength) {
             random.add(Math.floor(Math.random() * this.state.ArrayRange) + 1);
         }
-        this.state.NumberArray = [...random];
-        console.log(this.state.NumberArray);
-        this.props.parentCallback(this.state.NumberArray);
-        this.forceUpdate()
+        console.log([...random]);
+        this.props.parentCallback([...random]);
     }
 
     render() {
@@ -29,13 +24,7 @@ export default class ArrayGen extends React.Component {
                 <div>
                     <button onClick={() => { this.generateNumberArray() }} type="button" class="btn btn-success">Start</button>
                 </div>
-                <div><div class="row">
-                    {this.state.NumberArray.map((num, index) => {
-                        return (<div class="border col" key={index}>{num}</div>)
-                    })}
-                </div>
-                </div>
-            </div >
+            </div>
         )
     }
 
