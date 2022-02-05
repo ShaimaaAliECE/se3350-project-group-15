@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { SortingService } from "./SortingService";
 import { Partition } from "./Partition";
-import mergeSortRender from "../render/mergeSortRender";
+import MergeSortRender from "../render/MergeSortRender";
 
 export default class SortingComponent extends Component {
   //initialized the array state
@@ -46,7 +46,7 @@ export default class SortingComponent extends Component {
                 {numbers.map((number, index) => {
                   return (
                     <span key={index} className="number">
-                      {number}
+                      [{number}]
                     </span>
                   );
                 })}
@@ -59,7 +59,7 @@ export default class SortingComponent extends Component {
             {(node.part1 || []).map((n, index) => {
               return (
                 <span key={index} className="number">
-                  {n}
+                  [{n}]
                 </span>
               );
             })}
@@ -69,7 +69,7 @@ export default class SortingComponent extends Component {
             {(node.part2 || []).map((n, index) => {
               return (
                 <span key={index} className="number">
-                  {n}
+                  [{n}]
                 </span>
               );
             })}
@@ -90,15 +90,7 @@ export default class SortingComponent extends Component {
       );
     }
     return (
-      <div>
-        <h4>Merge Sort</h4>
-        <div className="fragment-row">
-          {/* print the original array*/}
-          <strong>Sample Numbers: {this.state.unsorted.join(', ')}</strong>
-        </div>
-        {/* start mergesort*/}
-        {this.updateFragments()}
-      </div>
+      <MergeSortRender Partitions={this.state.partitions} Unsorted={this.state.unsorted} DisplayContent={this.updateFragments()} />
     );
   }
 }
