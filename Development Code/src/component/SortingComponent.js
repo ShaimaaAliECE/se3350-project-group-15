@@ -28,7 +28,6 @@ export default class SortingComponent extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    debugger;
     console.log("shouldComponentUpdate: " + this.state.unsorted + " next" + nextProps.Problem)
     console.log(this.state.unsorted !== nextProps.Problem)
     console.log(this.state.partitions !== nextState.partitions)
