@@ -1,57 +1,40 @@
 import React, { useState } from "react";
 import "./HeaderLevel.css";
-import { Link } from "react-router-dom";
-import Dropdown from "react-bootstrap/Dropdown";
+import ArrayGen from "./ArrayGen";
 
-export default function HeaderLevel() {
-  const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10
+export default function HeaderLevel(props) {
+
+  const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10 
+  const [ArrayRange, setArrayRange] = useState(20); //the default array range is 20
   const [NumberArray, setNumberArray] = useState([]);
 
-  let newArray;
+  const restart = () => {
+    window.location.reload();
+  }
 
-  //TODO: better to generate unique numbers!!!
-
-  //TODO: when 'RUN' btn is clicked for the first time, we get an empty array???
-  // TODO: pass the generated number array as input to the merge sort algorithm component
-  const generateNumberArray = (e) => {
-    newArray = Array.from(
-      { length: ArrayLength },
-      () => Math.floor(Math.random() * 20) //numbers range from 0-20
-    );
-    setNumberArray(newArray);
-    console.log(NumberArray);
-  };
+  const callbackFunction = (childData) => {
+    setNumberArray(childData)
+    props.callbackSetProblems(childData)
+  }
 
   return (
     <div className="HeaderLevel">
-      <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           Select Level
-        </Dropdown.Toggle>
 
-        <Dropdown.Menu>
-          <Dropdown.Item href="/level1">Level1</Dropdown.Item>
-          <Dropdown.Item href="/level2">Level2</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-
-      <div className="HeaderLevel__runButton">
-        <span>
-          <button onClick={generateNumberArray} type="button">
-            Run
-          </button>
-        </span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="/Level1">Level 1</a></li>
+          <li><a class="dropdown-item" href="/Level2">Level 2</a></li>
+          <li><a class="dropdown-item" href="/Level3">Level 3</a></li>
+        </ul>
       </div>
-
-      <div className="HeaderLevel__restartButton">
-        <span>
-          {" "}
-          <button type="button">Restart</button>
-        </span>
-      </div>
+      <ArrayGen ArrayLength={ArrayLength} ArrayRange={ArrayRange} parentCallback={callbackFunction} />
+      <button onClick={restart} type="button" class="btn btn-warning">Restart</button>
 
       <div className="HeaderLevel__mistakeCount">
-        mistake:
+        Mistake:
         <span className="HeaderLevel__mistakeCountNumber">0</span>
       </div>
     </div>

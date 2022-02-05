@@ -1,45 +1,26 @@
 import React, { useState } from "react";
 import HeaderLevel from "./HeaderLevel";
 import BottomInstructions from "./BottomInstructions";
-import MergeSort from "../algorithm/MergeSort";
-import {SortingComponent} from "../algorithm/Merge_Sort/SortingComponent"
+import MergesortFebThird from "../algorithm/SplitArray";
+import SortingComponent from "./SortingComponent";
+//ignore the algorithm files
 
-function Level1() {
-  const [showComponent, setShowComponent]=useState(true);
-  const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10
-  const [NumberArray, setNumberArray] = useState([]);
-
-  let newArray;
-
-  //TODO: better to generate unique numbers!!!
-  //TODO: when 'RUN' btn is clicked for the first time, we get an empty array???
-  // TODO: pass the generated number array as input to the merge sort algorithm component
-  const generateNumberArray = (e) => {
-    newArray = Array.from(
-      { length: ArrayLength },
-      () => Math.floor(Math.random() * 20) //numbers range from 0-20
-    );
-    setNumberArray(newArray);
-    console.log(NumberArray);
-    //show  SortingComponent
-    if(NumberArray){
-    setShowComponent(!showComponent)
-    }
-  };
-
+export default function Level1() {
+  const [currentProblem, setCurrentProblem] = useState([]);
   return (
     <div>
-      <HeaderLevel />
-      <button onClick={generateNumberArray}>Button</button>
-      <div hidden={showComponent}>
-        <SortingComponent unsorted={NumberArray}/>
+      <div class="ms-3">
+        <h1>Level 1: MergeSort Algorithm</h1>
       </div>
-      <BottomInstructions />
-
-      {/*<MergeSort />*/}
-      
+      <HeaderLevel callbackSetProblems={setCurrentProblem} />
+      <div class="d-flex justify-content-center">
+        <SortingComponent Problem={currentProblem} />
+      </div>
+      <div class="fixed-bottom d-flex justify-content-center">
+        <BottomInstructions />
+      </div>
     </div>
   );
 }
 
-export default Level1;
+
