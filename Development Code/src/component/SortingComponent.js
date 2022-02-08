@@ -44,7 +44,7 @@ export default class SortingComponent extends Component {
                 {numbers.map((number, index) => {
                   return (
                     <span key={index} className="number">
-                      {number}
+                      [{number}]
                     </span>
                   );
                 })}
@@ -57,7 +57,7 @@ export default class SortingComponent extends Component {
             {(node.part1 || []).map((n, index) => {
               return (
                 <span key={index} className="number">
-                  {n}
+                  [{n}]
                 </span>
               );
             })}
@@ -67,7 +67,7 @@ export default class SortingComponent extends Component {
             {(node.part2 || []).map((n, index) => {
               return (
                 <span key={index} className="number">
-                  {n}
+                  [{n}]
                 </span>
               );
             })}
