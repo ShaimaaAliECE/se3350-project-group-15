@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./HeaderLevel.css";
-import ArrayGen from "./ArrayGen";
+import ArrayGenBtn from "./ArrayGenBtn";
 
 export default function HeaderLevel(props) {
   const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10
@@ -49,14 +49,8 @@ export default function HeaderLevel(props) {
           </li>
         </ul>
       </div>
-      <ArrayGen
-        ArrayLength={ArrayLength}
-        ArrayRange={ArrayRange}
-        parentCallback={callbackFunction}
-      />
-      <button onClick={restart} type="button" class="btn btn-warning">
-        Restart
-      </button>
+      <ArrayGenBtn ArrayLength={ArrayLength} ArrayRange={ArrayRange} parentCallback={callbackFunction} />
+      <button onClick={restart} type="button" class="btn btn-warning">Restart</button>
 
       <div className="HeaderLevel__mistakeCount">
         Mistake:
