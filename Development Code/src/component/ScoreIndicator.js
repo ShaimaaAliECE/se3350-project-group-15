@@ -3,9 +3,9 @@ import ReactStoreIndicator from "react-score-indicator";
 import { calculateScore, countMistakes } from "../js/Utility";
 import { makeStyles } from "@material-ui/core";
 
+//a fancy way to style your component
 const useStyles = makeStyles((theme) => ({
-
-    // contacts: {
+  // contacts: {
   //   paddingLeft: 10,
   //   paddingRight: 10,
   //   "&:hover": {
