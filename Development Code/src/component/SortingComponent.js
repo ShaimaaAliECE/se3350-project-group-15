@@ -9,7 +9,7 @@ export default class SortingComponent extends Component {
     //set the array to the one that is gonna be splited 
     this.state = {
       partitions: [],
-      unsorted: props.Problem
+      unsorted: props.Problem //receive the unsorted array from each level
     };
     this.sortingService = new SortingService();
   }

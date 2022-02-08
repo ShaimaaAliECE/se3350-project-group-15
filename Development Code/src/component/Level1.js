@@ -12,6 +12,7 @@ export default function Level1() {
       <div class="ms-3">
         <h1>Level 1: MergeSort Algorithm</h1>
       </div>
+      {/* pass the number array from HeaderLevel component to Level1 component */}
       <HeaderLevel callbackSetProblems={setCurrentProblem} />
       <div class="d-flex justify-content-center">
         <SortingComponent Problem={currentProblem} />
