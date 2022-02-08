@@ -1,6 +1,7 @@
+//this class shows array fragments that are generated
 export class Partition {
     static nextId = 0;
-  
+    
     constructor(parentId, items) {
       this.items = items;
       this.parentId = `parentId${parentId}`;

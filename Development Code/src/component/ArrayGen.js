@@ -4,7 +4,7 @@ export default class ArrayGen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ArrayLength: 0,
+            ArrayLength: props.ArrayLength,
             NumberArray: []
         }
     }
@@ -24,9 +24,8 @@ export default class ArrayGen extends React.Component {
     render() {
         return (
             <div>
-                <input onChange={(e) => { this.state.ArrayLength = e.target.value; }}></input>
                 <div>
-                    <button onClick={(e) => { this.generateNumberArray() }}>start</button>
+                    <button onClick={(e) => { this.generateNumberArray() }} type="button" class="btn btn-success">Start</button>
                 </div>
                 <div><div class="row">
                     {this.state.NumberArray.map((num, index) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./BottomInstructions.css";
+//import "./BottomInstructions.css";
 
 
 /*
@@ -14,34 +14,51 @@ let i = 0;
 
 function BottomInstructions() {
   return (
-    <div>
+    <div className="BottomInstructions" class="shadow p-3 mb-5 w-25 d-flex justify-content-center bg-secondary rounded">
 
-        <text class="instructionField" id="textField">
-          The instruction will be shown here
-        </text>
-
+      <div className="textField" id="textField">
+        This is an instruction:)
+        </div>
 
       <div class="InstructionButton">
-        <button class="backwardButton" onClick={showBackwardInstruction}>
+        <button class="backwardButton" id="backwardBtn" onClick={showBackwardInstruction()}>
           (--
-        </button>
+          </button>
 
-        <button class="forwardButton" onClick={showForwardInstruction}>
+        <button class="forwardButton" id="forwardBtn" onClick={showForwardInstruction()}>
           --)
-        </button>
+          </button>
       </div>
     </div>
   );
 }
 
-function showForwardInstruction(){// use it to display the next message
+/*class showForwardInstruction extends React.Component{
+  constructor(props){
+    super(props)
+    this.handleClick=this.handleClick.bind(this);
+    this.state={text:""};
+  }
+
+  handleClick(){
+    var i=0;
+    var text = "this is instruction";
+    var speed=50
+  }
+}
+*/
+
+function showForwardInstruction(){// use it to display the next message\
+  console.log("error")
   let instruction= selectNextInstruction();
-  document.getElementById("textField").innerHTML=(instruction);
+  document.getElementsByClassName("textField").innerHTML=(instruction);
 }
 
+
 function showBackwardInstruction(){//use it to display the previous message 
+  console.log("error");
   let instruction= selectPreviousInstruction();
-  document.getElementById("textField").innerHTML=(instruction);
+  document.getElementsByClassName("textField").innerHTML=(instruction);
 }
 
 function selectNextInstruction(){// use to select the corret key for the next instruction
