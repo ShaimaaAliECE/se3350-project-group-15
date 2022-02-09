@@ -3,58 +3,60 @@ import "./HeaderLevel.css";
 import ArrayGen from "./ArrayGen";
 
 export default function HeaderLevel(props) {
-  // const [currentProblem, setCurrentProblem] = useState([]);
-  // const [arrayLength, setArrayLength] = useState(10);
-
-  const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10 
+  const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10
+  const [ArrayRange, setArrayRange] = useState(20); //the default array range is 20
   const [NumberArray, setNumberArray] = useState([]);
-
-  let newArray;
-
-  //TODO: better to generate unique numbers!!!
-  function generateNumberArray() {
-    // setNumberArray(
-    //   Array.from({ length: {ArrayLength} }, () => Math.floor(Math.random() * 40))
-    // );
-    newArray = Array.from({ length: ArrayLength }, () =>
-      Math.floor(Math.random() * 20) //numbers range from 0-20
-    );
-  }
-
-  // let newArray = [];
-  // let random = new Set();
-
-  //TODO: when 'RUN' btn is clicked for the first time, we get an empty array??? 
-  const newProblems = (e) => {
-    generateNumberArray();
-    setNumberArray(newArray);
-    console.log(NumberArray);
-    // while (random.size < arrayLength) {
-    //   random.add(Math.floor(Math.random() * 20) + 1);
-    // }
-    // newArray = [...random];
-    // setCurrentProblem(newArray);
-    // console.log(currentProblem);
-  };
 
   const restart = () => {
     window.location.reload();
-  }
+  };
+
+  //this function will accept the number array generated from ArrayGen component
+  const callbackFunction = (childData) => {
+    //save the number array generated from ArrayGen component locally
+    setNumberArray(childData);
+    //pass the number array generated from ArrayGen component to Level1 component
+    props.callbackSetProblems(childData);
+  };
 
   return (
     <div className="HeaderLevel">
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
           Select Level
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="/Level1">Level 1</a></li>
-          <li><a class="dropdown-item" href="/Level2">Level 2</a></li>
-          <li><a class="dropdown-item" href="/Level3">Level 3</a></li>
+          <li>
+            <a class="dropdown-item" href="/Level1">
+              Level 1
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/Level2">
+              Level 2
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/Level3">
+              Level 3
+            </a>
+          </li>
         </ul>
       </div>
-      <ArrayGen ArrayLength="10"/>
-      <button onClick={restart} type="button" class="btn btn-warning">Restart</button>
+      <ArrayGen
+        ArrayLength={ArrayLength}
+        ArrayRange={ArrayRange}
+        parentCallback={callbackFunction}
+      />
+      <button onClick={restart} type="button" class="btn btn-warning">
+        Restart
+      </button>
 
       <div className="HeaderLevel__mistakeCount">
         Mistake:

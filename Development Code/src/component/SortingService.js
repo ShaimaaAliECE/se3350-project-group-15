@@ -2,8 +2,6 @@ import { Partition } from './Partition';
 
 export class SortingService {
   partitions = [];
-
-
   mergeSort(currentPartition) {
     //check if there is only one left in the current partition
     if (currentPartition.isSingleItemList()) {
