@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ScoreIndicator(props) {
-  const [sortedArray, setSortedArray] = useState([]);
-  const [answerArray, setAnswerArray] = useState([]);
+  const [sortedArray, setSortedArray] = useState([]);//sorted array after merge sort
+  const [answerArray, setAnswerArray] = useState([]);//player's answer
   const [timeLeft, setTimeLeft] = useState(0);
   const [score, setScore] = useState(0);
   const [hideStoreIndicator, setHideStoreIndicator] = useState(true);
