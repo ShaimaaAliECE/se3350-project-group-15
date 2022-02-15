@@ -15,7 +15,9 @@ import mergeSort from "./algorithm/MS";
 
 
 
+
 function App() {
+  
   
 
   return (
@@ -24,18 +26,7 @@ function App() {
       {/* <HeaderLevel />
       <BottomInstructions /> */}
       
-      <Navigate 
-				generateRandomArray={() => generateRandomArray(len)}
-				handleLength={handleLength} 
-				handleSpeed={handleSpeed}
-				handleAlgo={handleAlgo}
-				handleSort={handleSort} 
-				sorting={sorting}
-				completed={completed}
-				len={len}
-				speed={speed}
-				algo={algo}
-			/>
+    
       
 
       <Routes>
@@ -47,5 +38,8 @@ function App() {
     </div>
   );
 }
+
+
+
 
 export default App;
