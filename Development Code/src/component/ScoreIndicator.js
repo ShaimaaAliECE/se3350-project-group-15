@@ -24,8 +24,10 @@ function ScoreIndicator(props) {
   const [score, setScore] = useState(0);
   const [hideStoreIndicator, setHideStoreIndicator] = useState(true); //toggle StoreIndicator
   const [feedbackText, setFeedbackText] = useState("bottom feedback text"); //bottom feedback text
+  const [hideFeedbackText, setHideFeedbackText] = useState(true); //toggle bottom feedback text
+  const [goodFeedback, setGoodFeedback] = useState(true); //feedback text styling based on the score
   const [getScoreCalled, setGetScoreCalled] = useState(false); //check if getScore() is called yet
-  const classes = useStyles(); //here classes is defined
+  const classes = useStyles(); //here useStyles classes is defined
 
   useEffect(() => {
     //pass these values from level2
@@ -35,11 +37,13 @@ function ScoreIndicator(props) {
 
     //change bottom feedback text only fater getScore() is called!
     if (getScoreCalled) {
+      setHideFeedbackText(false);
       //if there is a wrong answer -> bottom feedback text should say 'Oops! There is an error in your answer. Please check again.'
       if (score != answerArray.length) {
         setFeedbackText(
           "Oops! There is an error in your answer. Please check again."
         );
+        setGoodFeedback(false);
       } else {
         setFeedbackText("Congratulations! Your score is perfect!");
       }
@@ -69,8 +73,13 @@ function ScoreIndicator(props) {
         </button>
       </div>
       {/*bottom feedback text */}
-      <div class="fixed-bottom d-flex justify-content-center">
-        <BottomFeedback feedbackText={feedbackText} />
+      <div hidden={hideFeedbackText}>
+        <div class="fixed-bottom d-flex justify-content-center">
+          <BottomFeedback
+            feedbackText={feedbackText}
+            goodFeedback={goodFeedback}
+          />
+        </div>
       </div>
     </div>
   );
