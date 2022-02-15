@@ -1,5 +1,4 @@
-import React from "react";
-//import "./BottomInstructions.css";
+import React from 'react';
 
 
 /*
@@ -9,9 +8,69 @@ import React from "react";
 4. Write button function that can change the state of the algorithm to next and previous steps(on-going)
 */
 
+class InstructionButton extends React.Component{
+    constructor(props){
+      super(props);
+      this.state={
+        count:0,
+        introductionDictionary: [// the dictionary that includes all the instruction to indicate player about the process.
+          "Select the entire Array",
+          "Split the selected array(as evenly as possible)",
+          "Split the left sub-array",
+          "An array of length 1 cannot be split, ready to merge",
+          "Merge selected arrays back together, in sorted order",
+          "Select the minimum of the two values",
+          "Add the selected value to the sorted array",
+          "When one list becomes empty, copy all values from the remaining array into the sorted array",
+          "Finished merging",
+          "Select the smallest value from the front of each list(excluding values already in the sorted array)",
+          "When one list becomes empty, copy all values from the remaining array into the sorted array",
+          "Select the right subarray",
+          "Done Sorting"
+        ]
+      }
+    };
+
+    render(){
+      return (
+        <div className="BottomInstructions" class="shadow p-3 mb-5 w-25 d-flex justify-content-center bg-secondary rounded">
+          <span className='Instruction'>
+              Here is the Instruction.
+          </span>
+          <button className='ForwardBtn' onClick={this.showForwardInstruction()}>
+            Next
+          </button>
+          <button className='BackwardBtn' onClick={this.showForwardInstruction()}>
+            Previous
+          </button>
+        </div>
+      )
+    }
+
+    this.showForwardInstruction=()=>{//
+      return this.state.introductionDictionary[1]
+
+    }
+
+    selectNextInstruction(){
+
+    }
+
+    showBackwardInstruction(){
+
+    }
+
+    selectPreviousInstruction(){
+
+    }
+
+
+}
+
+
 
 let i = 0;
-
+/*
 function BottomInstructions() {
   return (
     <div className="BottomInstructions" class="shadow p-3 mb-5 w-25 d-flex justify-content-center bg-secondary rounded">
@@ -33,6 +92,7 @@ function BottomInstructions() {
   );
 }
 
+
 /*class showForwardInstruction extends React.Component{
   constructor(props){
     super(props)
@@ -46,7 +106,7 @@ function BottomInstructions() {
     var speed=50
   }
 }
-*/
+
 
 function showForwardInstruction(){// use it to display the next message\
   console.log("error")
@@ -79,14 +139,14 @@ function selectPreviousInstruction(){// use to select the corret key for the pre
   return introductionDictionary[i];
 }
 
-/*function getDictionaryLength(){
+function getDictionaryLength(){
   var size=0;
   for(i of introductionDictionary){
     size++
   }
   return size;
 }
-*/
+
 
 var introductionDictionary= {// the dictionary that includes all the instruction to indicate player about the process.
   1:"Select the entire Array",
@@ -105,6 +165,7 @@ var introductionDictionary= {// the dictionary that includes all the instruction
 }
 
 var size = introductionDictionary.length;
+*/
 
 
-export default BottomInstructions;
+export default InstructionButton;
