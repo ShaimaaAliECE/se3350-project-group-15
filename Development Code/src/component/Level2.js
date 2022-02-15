@@ -3,6 +3,8 @@ import HeaderLevel from "./HeaderLevel";
 import BottomInstructions from "./BottomInstructions";
 import SortingComponent from "./SortingComponent";
 import ScoreIndicator from "./ScoreIndicator";
+import Timer from "./Timer";
+
 
 function Level2() {
   const [currentProblem, setCurrentProblem] = useState([]);//unsorted array
@@ -15,6 +17,7 @@ function Level2() {
     <div>
       <div class="ms-3">
         <h1>Level 2: MergeSort Algorithm</h1>
+         <Timer /*startCount='0'*/ />
       </div>
       {/* pass the number array from HeaderLevel component to Level1 component */}
       <HeaderLevel callbackSetProblems={setCurrentProblem} />
