@@ -53,6 +53,7 @@ export function mergeNode(leftArr, rightArr){
 // console.log(answerArray1);
 
 
+  //console testing example arrays
   let a1=[1,2,3];
   let a2 = [1,2,3];
   console.log(calculateScore(a1,a2,0))
