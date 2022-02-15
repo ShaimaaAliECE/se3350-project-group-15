@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import HeaderLogin from "./component/HeaderLogin";
 
@@ -8,16 +8,25 @@ import Level1 from "./component/Level1";
 import Level2 from "./component/Level2";
 import Level3 from "./component/Level3";
 import LevelMain from "./component/LevelMain";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+import mergeSort from "./algorithm/MS";
+
+
 
 
 
 function App() {
+  
+  
+
   return (
     <div className="App">
       <HeaderLogin />
       {/* <HeaderLevel />
       <BottomInstructions /> */}
+      
+    
       
 
       <Routes>
@@ -29,5 +38,8 @@ function App() {
     </div>
   );
 }
+
+
+
 
 export default App;

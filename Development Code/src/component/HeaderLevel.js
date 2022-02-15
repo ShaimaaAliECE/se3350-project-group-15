@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./HeaderLevel.css";
 import ArrayGen from "./ArrayGen";
+import SortingComponent from "./SortingComponent";
 
 export default function HeaderLevel(props) {
   const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10
