@@ -29,47 +29,51 @@ class InstructionButton extends React.Component{
           "Done Sorting"
         ]
       }
+
+      this.selectNextInstruction=this.selectNextInstruction.bind(this);// binding the method to the this statement in the function
+      this.selectPreviousInstruction=this.selectPreviousInstruction.bind(this);
+      //this.showInstruction=this.showInstruction.bind
     };
 
     render(){
       return (
         <div className="BottomInstructions" class="shadow p-3 mb-5 w-25 d-flex justify-content-center bg-secondary rounded">
           <span className='Instruction'>
-              Here is the Instruction.
+              {this.showInstruction()}
           </span>
-          <button className='ForwardBtn' onClick={this.showForwardInstruction()}>
-            Next
-          </button>
-          <button className='BackwardBtn' onClick={this.showForwardInstruction()}>
+          <button className='BackwardBtn' onClick={this.selectPreviousInstruction}>
             Previous
+          </button>
+          <button className='ForwardBtn' onClick={this.selectNextInstruction}>
+            Next
           </button>
         </div>
       )
     }
 
-    this.showForwardInstruction=()=>{//
-      return this.state.introductionDictionary[1]
 
+
+
+
+    showInstruction(){//changing the text in span
+      return this.state.introductionDictionary[this.state.count];
     }
 
-    selectNextInstruction(){
-
+    selectNextInstruction(){//Click and select next Instruction
+      //console.log('Forwarding',this.state.introductionDictionary[this.state.count]);
+      this.setState({count: this.state.count+1})
     }
 
-    showBackwardInstruction(){
-
+    selectPreviousInstruction(){//Click and select preious instruction
+      //console.log('Backwarding',this.state.introductionDictionary[this.state.count]);
+      this.setState({count: this.state.count-1});
     }
 
-    selectPreviousInstruction(){
-
-    }
 
 
 }
 
 
-
-let i = 0;
 /*
 function BottomInstructions() {
   return (
