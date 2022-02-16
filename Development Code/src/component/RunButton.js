@@ -2,6 +2,7 @@
 //2 - TODO: pass the generated number array as input to the merge sort algorithm component
 
 import React from "react";
+import {Timer} from "./Timer";
 
 function RunButton() {
   const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10
@@ -31,11 +32,16 @@ function RunButton() {
     //2- TODO: pass the generated number array as input to the merge sort algorithm component
   };
 
+
+
   return (
     <div>
-      <button onClick={RunMergeSort}>Run</button>
+      <button onClick={RunMergeSort, Timer}>Run</button>
+      
     </div>
   );
 }
+
+
 
 export default RunButton;
