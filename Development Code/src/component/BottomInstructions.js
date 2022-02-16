@@ -61,12 +61,23 @@ class InstructionButton extends React.Component{
 
     selectNextInstruction(){//Click and select next Instruction
       //console.log('Forwarding',this.state.introductionDictionary[this.state.count]);
-      this.setState({count: this.state.count+1})
+      if(this.state.count >15){
+        this.setState({count: this.state.count==12});
+      }
+
+      this.setState({count: this.state.count+1});
+
+        
     }
 
     selectPreviousInstruction(){//Click and select preious instruction
       //console.log('Backwarding',this.state.introductionDictionary[this.state.count]);
+      if(this.state.count <0){
+        this.setState({count: this.state.count==0});
+      }
       this.setState({count: this.state.count-1});
+
+
     }
 
 
