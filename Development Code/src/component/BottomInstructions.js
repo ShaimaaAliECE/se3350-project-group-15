@@ -11,9 +11,84 @@ import rightArrow from "../assets/svg/right-arrow.svg";
 4. Write button function that can change the state of the algorithm to next and previous steps(on-going)
 */
 
+class InstructionButton extends React.Component{
+    constructor(props){
+      super(props);
+      this.state={
+        count:0,
+        introductionDictionary: [// the dictionary that includes all the instruction to indicate player about the process.
+          "Select the entire Array",
+          "Split the selected array(as evenly as possible)",
+          "Split the left sub-array",
+          "An array of length 1 cannot be split, ready to merge",
+          "Merge selected arrays back together, in sorted order",
+          "Select the minimum of the two values",
+          "Add the selected value to the sorted array",
+          "When one list becomes empty, copy all values from the remaining array into the sorted array",
+          "Finished merging",
+          "Select the smallest value from the front of each list(excluding values already in the sorted array)",
+          "When one list becomes empty, copy all values from the remaining array into the sorted array",
+          "Select the right subarray",
+          "Done Sorting"
+        ]
+      }
 
-let i = 0;
+      this.selectNextInstruction=this.selectNextInstruction.bind(this);// binding the method to the this statement in the function
+      this.selectPreviousInstruction=this.selectPreviousInstruction.bind(this);
+      //this.showInstruction=this.showInstruction.bind
+    };
 
+    render(){
+      return (
+        <div className="BottomInstructions" class="shadow p-3 mb-5 w-25 d-flex justify-content-center bg-secondary rounded">
+          <span className='Instruction'>
+              {this.showInstruction()}
+          </span>
+          <button className='BackwardBtn' onClick={this.selectPreviousInstruction}>
+            Previous
+          </button>
+          <button className='ForwardBtn' onClick={this.selectNextInstruction}>
+            Next
+          </button>
+        </div>
+      )
+    }
+
+
+
+
+
+    showInstruction(){//changing the text in span
+      return this.state.introductionDictionary[this.state.count];
+    }
+
+    selectNextInstruction(){//Click and select next Instruction
+      //console.log('Forwarding',this.state.introductionDictionary[this.state.count]);
+      if(this.state.count >15){
+        this.setState({count: this.state.count==12});
+      }
+
+      this.setState({count: this.state.count+1});
+
+        
+    }
+
+    selectPreviousInstruction(){//Click and select preious instruction
+      //console.log('Backwarding',this.state.introductionDictionary[this.state.count]);
+      if(this.state.count <0){
+        this.setState({count: this.state.count==0});
+      }
+      this.setState({count: this.state.count-1});
+
+
+    }
+
+
+
+}
+
+
+/*
 function BottomInstructions() {
   return (
     <div className="BottomInstructions" class="shadow p-3 mb-5 w-25 d-flex justify-content-center bg-secondary rounded">
@@ -47,6 +122,7 @@ function BottomInstructions() {
   );
 }
 
+
 /*class showForwardInstruction extends React.Component{
   constructor(props){
     super(props)
@@ -60,7 +136,7 @@ function BottomInstructions() {
     var speed=50
   }
 }
-*/
+
 
 function showForwardInstruction() {// use it to display the next message\
   console.log("error")
@@ -93,14 +169,14 @@ function selectPreviousInstruction() {// use to select the corret key for the pr
   return introductionDictionary[i];
 }
 
-/*function getDictionaryLength(){
+function getDictionaryLength(){
   var size=0;
   for(i of introductionDictionary){
     size++
   }
   return size;
 }
-*/
+
 
 var introductionDictionary = {// the dictionary that includes all the instruction to indicate player about the process.
   1: "Select the entire Array",
@@ -119,6 +195,7 @@ var introductionDictionary = {// the dictionary that includes all the instructio
 }
 
 var size = introductionDictionary.length;
+*/
 
 
-export default BottomInstructions;
+export default InstructionButton;
