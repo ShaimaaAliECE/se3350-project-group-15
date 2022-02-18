@@ -16,6 +16,7 @@ export default function HeaderLevel(props) {
     setNumberArray(childData);
     //pass the number array generated from ArrayGen component to Level1 component
     props.callbackSetProblems(childData);
+    props.callbackSetStep(1);
   };
 
   return (
