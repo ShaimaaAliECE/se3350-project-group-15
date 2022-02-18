@@ -7,6 +7,7 @@
   z-index: 100;
   justify-content: space-evenly;
 }
+
 .HeaderLevel__chooseLevel {
   display: flex;
 }
@@ -14,6 +15,7 @@
 .HeaderLevel__runButton {
   display: flex;
 }
+
 .HeaderLevel__restartButton {
   display: flex;
 }
@@ -22,7 +24,20 @@
   display: flex;
 }
 
-.mergeSortResult{
+.mergeSortResult {
 
   margin-left: 0;
+}
+
+.footer-navigator .footer-navigator-button {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e5e5e5;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
 }

@@ -4,6 +4,8 @@ import BottomInstructions from "./BottomInstructions";
 import MergesortFebThird from "../algorithm/SplitArray";
 import SortingComponent from "./SortingComponent";
 import Timer from "./Timer";
+import { mergeSortIterator } from "../utils/mergeSortIterator";
+import { handleRunning } from "../testdeleteafter";
 //ignore the algorithm files
 
 export default function Level1() {
@@ -15,20 +17,10 @@ export default function Level1() {
       </div>
       {/* pass the number array from HeaderLevel component to Level1 component */}
       <HeaderLevel callbackSetProblems={setCurrentProblem} />
+      <button onClick={() => handleRunning(currentProblem)} type="button" class="btn btn-success">Click me</button>
       <div class="d-flex justify-content-center">
         <SortingComponent Problem={currentProblem} />
       </div>
-
-      
-
-
-      
-
-
-
-
-
-
       <div class="fixed-bottom d-flex justify-content-center">
         <BottomInstructions />
       </div>
