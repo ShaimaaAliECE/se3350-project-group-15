@@ -1,16 +1,21 @@
 import React from "react";
-import "./HeaderLogin.css";
-import PersonIcon from "@material-ui/icons/Person";
+import avatar from "../assets/svg/avatar.svg";
 
 function HeaderLogin() {
   return (
-    <div className="headerLogin">
-      <span className="headerLogin__loginButton">
-        <PersonIcon />
-        <button type="button" >
-          Login
-        </button>
-      </span>
+    <div className="header-container">
+      <div className="header-body">
+        <div className="header-left"></div>
+        <div className="header-right">
+          <div className="user-frame">
+            <img
+              src={avatar}
+              alt="placeholder+image"
+            />
+            <span>Jack</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
