@@ -16,8 +16,7 @@ export default function Level1() {
         <h1>Level 1: MergeSort Algorithm</h1>
       </div>
       {/* pass the number array from HeaderLevel component to Level1 component */}
-      <HeaderLevel callbackSetProblems={setCurrentProblem} callbackSetStep={setCurrentStep} />
-      <button onClick={() => handleRunning(currentProblem, setSummaryArray)} type="button" class="btn btn-success">Click me</button>
+      <HeaderLevel callbackSetProblems={setCurrentProblem} callbackSetStep={setCurrentStep} callbackSetSummaryArray={setSummaryArray} />
       <div class="d-flex justify-content-center">
         {/*<SortingComponent Problem={currentProblem} />*/}
         <div className="display-area">

@@ -12,6 +12,6 @@ export default function handleRunning(data, callback) {
             break;
         }
     } while (1);
-    callback(innerSummaryArray);
+    return innerSummaryArray;
 };
 

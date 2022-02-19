@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./HeaderLevel.css";
 import ArrayGenBtn from "../utils/ArrayGenBtn";
+import handleRunning from "../utils/testdeleteafter";
 import SortingComponent from "./SortingComponent";
 
 export default function HeaderLevel(props) {
@@ -16,6 +17,7 @@ export default function HeaderLevel(props) {
     setNumberArray(childData);
     //pass the number array generated from ArrayGen component to Level1 component
     props.callbackSetProblems(childData);
+    props.callbackSetSummaryArray(handleRunning(childData));
     props.callbackSetStep(1);
   };
 
