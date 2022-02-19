@@ -1,5 +1,5 @@
 //From Ives Luo
-export const mergeSortIterator = function* (data) {
+export default function* mergeSortIterator(data) {
   let currentStepData = [data];
   do {
     const processingData = [];

@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import HeaderLevel from "./HeaderLevel";
 import BottomInstructions from "./BottomInstructions";
-import MergesortFebThird from "../algorithm/SplitArray";
-import SortingComponent from "./SortingComponent";
-import Timer from "./Timer";
-import { mergeSortIterator } from "../utils/mergeSortIterator";
-import { handleRunning } from "../testdeleteafter";
+import handleRunning from "../utils/testdeleteafter";
+import SquareBtnStyle from "../utils/SquareBtnStyle";
 //ignore the algorithm files
 
 export default function Level1() {
   const [currentProblem, setCurrentProblem] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
+  const [summaryArray, setSummaryArray] = useState([]);
+  const displayArray = summaryArray.slice(0, (currentStep) - 1);
   return (
     <div>
       <div class="ms-3">
@@ -18,12 +17,35 @@ export default function Level1() {
       </div>
       {/* pass the number array from HeaderLevel component to Level1 component */}
       <HeaderLevel callbackSetProblems={setCurrentProblem} callbackSetStep={setCurrentStep} />
-      <button onClick={() => handleRunning(currentProblem)} type="button" class="btn btn-success">Click me</button>
+      <button onClick={() => handleRunning(currentProblem, setSummaryArray)} type="button" class="btn btn-success">Click me</button>
       <div class="d-flex justify-content-center">
-        <SortingComponent Problem={currentProblem} />
+        {/*<SortingComponent Problem={currentProblem} />*/}
+        <div className="display-area">
+          <div className="display-area-row">
+            {currentProblem.map((item, i) => (
+              <SquareBtnStyle key={i}>{item}</SquareBtnStyle>
+            ))}
+          </div>
+          <div className="display-area-dynamic">
+            {displayArray.map((item, i) => (
+              <div className="display-area-row" key={i}>
+                <SquareBtnStyle opacity />
+                {item.map((subItem, j) => (
+                  <div className="display-area-col" key={j}>
+                    {j === item.length / 2 && <SquareBtnStyle opacity />}
+                    {subItem.map((num, k) => (
+                      <SquareBtnStyle key={k}>{num}</SquareBtnStyle>
+                    ))}
+                    <SquareBtnStyle opacity />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       <div class="fixed-bottom d-flex justify-content-center">
-        <BottomInstructions passCurrentStep={currentStep} callbackSetStep={setCurrentStep} />
+        <BottomInstructions passCurrentStep={currentStep} passDisplayArray={displayArray} callbackSetStep={setCurrentStep} callbackSetSummaryArray={setSummaryArray} />
       </div>
     </div>
   );

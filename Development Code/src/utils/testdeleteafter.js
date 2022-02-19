@@ -1,5 +1,5 @@
-import { mergeSortIterator } from './utils/mergeSortIterator';
-export const handleRunning = (data) => {
+import mergeSortIterator from './mergeSortIterator';
+export default function handleRunning(data, callback) {
     console.log(data);
     const innerSummaryArray = [];
     const generator = mergeSortIterator(data);
@@ -12,6 +12,6 @@ export const handleRunning = (data) => {
             break;
         }
     } while (1);
-    console.log(innerSummaryArray);
+    callback(innerSummaryArray);
 };
 
