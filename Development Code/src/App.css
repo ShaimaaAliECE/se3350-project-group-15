@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Chalkboard;
+  src: url('./assets/fonts/Chalkboard-SE.ttf');
+}
+
 * {
   font-family: Chalkboard;
   padding: 0;
