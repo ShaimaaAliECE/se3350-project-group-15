@@ -32,21 +32,32 @@ export default class InstructionButton extends Component {
         "Done Sorting"
       ]
     }
-
-
-
     this.selectNextInstruction = this.selectNextInstruction.bind(this);// binding the method to the this statement in the function
     this.selectPreviousInstruction = this.selectPreviousInstruction.bind(this);
     //this.showInstruction=this.showInstruction.bind
   };
+  showInstruction() {//changing the text in span
+    return this.state.introductionDictionary[this.props.passCurrentStep];
+  }
 
+  selectNextInstruction() {//Click and select next Instruction
+    //console.log('Forwarding',this.state.introductionDictionary[this.state.count]);
+    this.props.callbackSetStep(this.props.passCurrentStep + 1);
+    console.log(this.props.passDisplayArray);
+  }
+
+  selectPreviousInstruction() {//Click and select preious instruction
+    //console.log('Backwarding',this.state.introductionDictionary[this.state.count]);
+    this.props.callbackSetStep(this.props.passCurrentStep - 1);
+    console.log(this.props.passDisplayArray);
+  }
   render() {
     return (
       <div className="BottomInstructions" class="shadow p-3 mb-5 w-25 d-flex justify-content-center bg-secondary rounded">
         <span className='Instruction'>
           {this.showInstruction()}
         </span>
-        <button className='BackwardBtn' disabled={this.props.passCurrentStep > 0 ? '' : 'disabled'} onClick={this.selectPreviousInstruction}>
+        <button className='BackwardBtn' disabled={this.props.passCurrentStep > 1 ? '' : 'disabled'} onClick={this.selectPreviousInstruction}>
           Previous
         </button>
         <button className='ForwardBtn' disabled={this.props.passCurrentStep < 13 && this.props.passCurrentStep != 0 ? '' : 'disabled'} onClick={this.selectNextInstruction}>
@@ -55,31 +66,6 @@ export default class InstructionButton extends Component {
       </div>
     )
   }
-
-
-
-
-
-  showInstruction() {//changing the text in span
-    return this.state.introductionDictionary[this.props.passCurrentStep];
-  }
-
-  selectNextInstruction() {//Click and select next Instruction
-    //console.log('Forwarding',this.state.introductionDictionary[this.state.count]);
-    this.props.callbackSetStep(this.props.passCurrentStep + 1);
-
-
-  }
-
-  selectPreviousInstruction() {//Click and select preious instruction
-    //console.log('Backwarding',this.state.introductionDictionary[this.state.count]);
-    this.props.callbackSetStep(this.props.passCurrentStep - 1);
-
-
-  }
-
-
-
 }
 
 
