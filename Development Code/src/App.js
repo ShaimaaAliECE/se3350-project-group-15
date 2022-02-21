@@ -9,37 +9,26 @@ import Level2 from "./component/Level2";
 import Level3 from "./component/Level3";
 import LevelMain from "./component/LevelMain";
 import { Routes, Route, Navigate } from "react-router-dom";
-
 import mergeSort from "./algorithm/MS";
-
-
-
-
+import Signup from "./component/authentification/Signup";
 
 function App() {
-  
-  
-
   return (
     <div className="App">
       <HeaderLogin />
       {/* <HeaderLevel />
       <BottomInstructions /> */}
-      
-    
-      
 
       <Routes>
-        <Route path="/" element={<LevelMain />} />
+        <Route path="/" element={<LevelMain />} /> {/*LevelMain: home page */}
         <Route path="/level1" element={<Level1 />} />
         <Route path="/level2" element={<Level2 />} />
         <Route path="/level3" element={<Level3 />} />
+        <Route path="/sign_up" element={<Signup />} /> {/*google sign-in page */}
+
       </Routes>
     </div>
   );
 }
-
-
-
 
 export default App;
