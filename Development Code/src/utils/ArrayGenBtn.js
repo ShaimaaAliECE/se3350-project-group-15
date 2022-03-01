@@ -14,7 +14,7 @@ export default class ArrayGenBtn extends React.Component {
         while (random.size < this.state.ArrayLength) {
             random.add(Math.floor(Math.random() * this.state.ArrayRange) + 1);
         }
-        console.log([...random]);
+        console.log('ArrayGenBtn Debug: ' + [...random]);
         this.props.parentCallback([...random]);
     }
 

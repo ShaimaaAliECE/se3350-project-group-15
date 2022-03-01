@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import HeaderLevel from "./HeaderLevel";
 import BottomInstructions from "./BottomInstructions";
-import handleRunning from "../utils/testdeleteafter";
 import SquareBtnStyle from "../utils/SquareBtnStyle";
 //ignore the algorithm files
 
@@ -26,6 +25,7 @@ export default function Level1() {
             ))}
           </div>
           <div className="display-area-dynamic">
+            {console.log(displayArray)}
             {displayArray.map((item, i) => (
               <div className="display-area-row" key={i}>
                 <SquareBtnStyle opacity />
