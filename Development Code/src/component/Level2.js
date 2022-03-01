@@ -3,7 +3,7 @@ import HeaderLevel from "./HeaderLevel";
 import BottomInstructions from "./BottomInstructions";
 import SortingComponent from "./SortingComponent";
 import ScoreIndicator from "./ScoreIndicator";
-import Timer from "./Timer";
+import Timer from "../utils/Timer";
 import BottomFeedback from "./BottomFeedback";
 
 function Level2() {
