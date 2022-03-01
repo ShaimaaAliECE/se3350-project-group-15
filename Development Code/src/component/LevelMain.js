@@ -8,13 +8,13 @@ import "./LevelMain.css";
 function LevelMain() {
   return (
     <div className="LevelMain">
-      <Link to={"/Level1"} className="level1">
+      <Link to={"/level1"} className="level1">
         Level1
       </Link>
-      <Link to={"/Level2"} className="level2">
+      <Link to={"level2"} className="level2">
         Level2
       </Link>
-      <Link to={"/Level3"} className="level3">
+      <Link to={"/level3"} className="level3">
         Level3
       </Link>
     

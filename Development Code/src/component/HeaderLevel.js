@@ -23,9 +23,9 @@ export default function HeaderLevel(props) {
 
   return (
     <div className="HeaderLevel">
-      <div class="dropdown">
+      <div className="dropdown">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          className="btn btn-secondary dropdown-toggle"
           type="button"
           id="dropdownMenuButton1"
           data-bs-toggle="dropdown"
@@ -33,19 +33,19 @@ export default function HeaderLevel(props) {
         >
           Select Level
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
-            <a class="dropdown-item" href="/Level1">
+            <a className="dropdown-item" href="/Level1">
               Level 1
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="/Level2">
+            <a className="dropdown-item" href="/Level2">
               Level 2
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="/Level3">
+            <a className="dropdown-item" href="/Level3">
               Level 3
             </a>
           </li>
