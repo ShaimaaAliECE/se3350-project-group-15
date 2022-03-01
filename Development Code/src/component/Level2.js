@@ -14,13 +14,13 @@ function Level2() {
 
   return (
     <div>
-      <div class="ms-3">
+      <div className="ms-3">
         <h1>Level 2: MergeSort Algorithm</h1>
          <Timer /*startCount='0'*/ />
       </div>
       {/* pass the number array from HeaderLevel component to Level1 component */}
       <HeaderLevel callbackSetProblems={setCurrentProblem} />
-      <div class="d-flex justify-content-center">
+      <div className="d-flex justify-content-center">
         <SortingComponent Problem={currentProblem} />
       </div>
       {/* score indicator &  show score btn & bottom feedback box*/}

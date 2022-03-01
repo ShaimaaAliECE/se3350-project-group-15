@@ -11,6 +11,9 @@ import LevelMain from "./component/LevelMain";
 import { Routes, Route, Navigate } from "react-router-dom";
 import mergeSort from "./algorithm/MS";
 import Signup from "./component/authentification/Signup";
+import ViewUsers from "./component/ViewUsers";
+import Login from "./component/authentification/Login";
+
 
 function App() {
   return (
@@ -18,15 +21,17 @@ function App() {
       <HeaderLogin />
       {/* <HeaderLevel />
       <BottomInstructions /> */}
-
       <Routes>
         <Route path="/" element={<LevelMain />} /> {/*LevelMain: home page */}
         <Route path="/level1" element={<Level1 />} />
         <Route path="/level2" element={<Level2 />} />
         <Route path="/level3" element={<Level3 />} />
-        <Route path="/sign_up" element={<Signup />} /> {/*google sign-in page */}
-
+        <Route path="/sign_up" element={<Signup />} />{" "}
+        <Route path="/login" element={<Login />} />{" "}
+        {/*google sign-in page */}
       </Routes>
+      
+      {/* <ViewUsers/> */}
     </div>
   );
 }
