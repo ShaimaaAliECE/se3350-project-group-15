@@ -19,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <HeaderLogin />
+      <ViewUsers />
       {/* <HeaderLevel />
       <BottomInstructions /> */}
       <Routes>
@@ -30,8 +31,6 @@ function App() {
         <Route path="/login" element={<Login />} />{" "}
         {/*google sign-in page */}
       </Routes>
-      
-      <ViewUsers/>
     </div>
   );
 }
