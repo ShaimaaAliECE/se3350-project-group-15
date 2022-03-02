@@ -13,6 +13,8 @@ Create an educational game in a web or mobile application that helps undergradua
   * [X] A set of 10 numbers are randomly generated out of the range (1-20) **(updated on Jan. 24th at 09:40 am)**
   * [ ] The steps of the algorithm would be executed as visual animation accompanied with explanation texts
     e.g., [mergesortAV](https://opendsa-server.cs.vt.edu/embed/mergesortAV) (this link is provided as an example of the idea and is not to be blindly replicated)
+  * [ ] The animation should also be interactive in order to keep the user engaged. **(*clarification* updated on Feb. 14th at 10:18 am)**
+  * [ ] The merging steps are important to understand the algorithm so the user should see them done step by step which also applies to the rest of the levels. **(*clarification* updated on Feb. 14th at 10:18 am)**
 * **Level 2:** (__Must Have__)
 
   * [ ] A set of 10 numbers are randomly generated out of the range (1-20) **(updated on Jan. 24th at 09:40 am)**

@@ -62,15 +62,15 @@ function ScoreIndicator(props) {
     <div>
       {/*score indicator & show score indicator button */}
       <div className={classes.scoreIndicator}>
-        <button onClick={getScore} type="button" class="btn btn-success">
-          {hideStoreIndicator ? "Show Score" : "Hide Score"}
-        </button>
         <div hidden={hideStoreIndicator}>
           <ReactStoreIndicator
             value={score}
             maxValue={sortedArray.length + timeLeft}
           />
         </div>
+        <button onClick={getScore} type="button" class="btn btn-success">
+          {hideStoreIndicator ? "Show Score" : "Hide Score"}
+        </button>
       </div>
       {/*bottom feedback text */}
       <div hidden={hideFeedbackText}>

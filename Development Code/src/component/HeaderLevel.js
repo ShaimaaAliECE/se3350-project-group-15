@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./HeaderLevel.css";
-import ArrayGen from "./ArrayGen";
+import ArrayGenBtn from "../utils/ArrayGenBtn";
+import handleRunning from "../utils/testdeleteafter";
 import SortingComponent from "./SortingComponent";
 
 export default function HeaderLevel(props) {
-  const [ArrayLength, setArrayLength] = useState(10); //the deafult array length is 10
-  const [ArrayRange, setArrayRange] = useState(20); //the default array range is 20
   const [NumberArray, setNumberArray] = useState([]);
 
   const restart = () => {
@@ -18,6 +17,8 @@ export default function HeaderLevel(props) {
     setNumberArray(childData);
     //pass the number array generated from ArrayGen component to Level1 component
     props.callbackSetProblems(childData);
+    props.callbackSetSummaryArray(handleRunning(childData));
+    props.callbackSetStep(1);
   };
 
   return (
@@ -50,12 +51,12 @@ export default function HeaderLevel(props) {
           </li>
         </ul>
       </div>
-      <ArrayGen
-        ArrayLength={ArrayLength}
-        ArrayRange={ArrayRange}
+      <ArrayGenBtn
+        ArrayLength="10" //the default array length is 10
+        ArrayRange="20" //the default array range is 20
         parentCallback={callbackFunction}
       />
-      <button onClick={restart} type="button" className="btn btn-warning">
+      <button onClick={restart} type="button" class="btn btn-warning" disabled={NumberArray.length === 0}>
         Restart
       </button>
 

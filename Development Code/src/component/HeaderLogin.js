@@ -1,5 +1,5 @@
 import React from "react";
-import "./HeaderLogin.css";
+import avatar from "../assets/svg/avatar.svg";
 import PersonIcon from "@material-ui/icons/Person";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
