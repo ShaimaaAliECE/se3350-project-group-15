@@ -9,7 +9,7 @@ import {
   signInWithGoogle,
   auth,
   db,
-} from "./authentification/firebase/firebase";
+} from "./authentication/firebase/firebase";
 import {
   collection,
   getDocs,

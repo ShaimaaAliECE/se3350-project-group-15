@@ -10,9 +10,9 @@ import Level3 from "./component/Level3";
 import LevelMain from "./component/LevelMain";
 import { Routes, Route, Navigate } from "react-router-dom";
 import mergeSort from "./algorithm/MS";
-import Signup from "./component/authentification/Signup";
+import Signup from "./component/authentication/Signup";
 import ViewUsers from "./component/ViewUsers";
-import Login from "./component/authentification/Login";
+import Login from "./component/authentication/Login";
 
 
 function App() {
