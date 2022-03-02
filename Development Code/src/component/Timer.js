@@ -18,7 +18,10 @@ const initalState={
     }
 */    
 
+
 class Timer extends React.Component{
+
+
    /* state=initalState;
     startGame=()=>{
         this.currentDeadline=Date.now ()+GameDuration;
@@ -60,6 +63,9 @@ class Timer extends React.Component{
         }
     }
 
+    
+
+
     render(){
         const {count} = this.state
 
@@ -67,7 +73,8 @@ class Timer extends React.Component{
     return(
        <div>
            <h1>Timer Count: {count} </h1>
-           <button onClick={Timer}>Start Timer Counting</button>
+           <button onClick={Timer}>{"Start Timer Counting" }</button>
+          
        </div>
     );
     
@@ -79,6 +86,7 @@ componentDidMount(){
     //this.doIntervalChange()
     this.myInterval =setInterval(()=>{
         this.setState({
+            
             count:this.state.count+1   //both work
             //count:prevState.count+1
             //count:this.state.count-1 for count down

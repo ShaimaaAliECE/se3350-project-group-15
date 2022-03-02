@@ -4,6 +4,9 @@ import BottomInstructions from "./BottomInstructions";
 import SortingComponent from "./SortingComponent";
 import ScoreIndicator from "./ScoreIndicator";
 import Timer from "./Timer";
+import userInput from "./UserInput";
+import UserInput from "./UserInput";
+
 
 
 function Level2() {
@@ -19,17 +22,28 @@ function Level2() {
         <h1>Level 2: MergeSort Algorithm</h1>
          <Timer /*startCount='0'*/ />
       </div>
+
+
       {/* pass the number array from HeaderLevel component to Level1 component */}
       <HeaderLevel callbackSetProblems={setCurrentProblem} />
-      <div class="d-flex justify-content-center">
+      
+      
+     {/* sorting method 
+     <div class="d-flex justify-content-center"> 
         <SortingComponent Problem={currentProblem} />
-      </div>
+      </div>  */}
+
       <div class="fixed-bottom d-flex justify-content-center">
         {/* <BottomInstructions /> */}
       </div>
       {/* calculate score */}
       <ScoreIndicator sortedArray={sortedArray} answerArray={answerArray} timeLeft={timeLeft}/>
-     
+      <div>
+      This is Level2 userinput
+      <UserInput/> 
+    
+    </div>
+      
       
     </div>
   );
