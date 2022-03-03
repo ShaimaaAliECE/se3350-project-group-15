@@ -20,6 +20,7 @@ export default function Level1() {
         {/*<SortingComponent Problem={currentProblem} />*/}
         <div className="display-area">
           <div className="display-area-row">
+            {/*first random num row */}
             {currentProblem.map((item, i) => (
               <SquareBtnStyle key={i}>{item}</SquareBtnStyle>
             ))}
