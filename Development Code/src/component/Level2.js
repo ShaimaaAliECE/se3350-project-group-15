@@ -4,8 +4,9 @@ import BottomInstructions from "./BottomInstructions";
 import SortingComponent from "./SortingComponent";
 import ScoreIndicator from "./ScoreIndicator";
 import Timer from "./Timer";
-import userInput from "./UserInput";
+//import Grids from "./Grid";
 import UserInput from "./UserInput";
+import { Grid } from "@material-ui/core";
 
 
 
@@ -41,6 +42,8 @@ function Level2() {
       <div>
       This is Level2 userinput
       <UserInput/> 
+      
+      <div id="Grid"> </div>
     
     </div>
       
