@@ -1,7 +1,7 @@
 //for level2 & level3
 import React, { Component, useState, useEffect } from "react";
 import ReactStoreIndicator from "react-score-indicator";
-import { calculateScore, countMistakes } from "../js/Utility";
+import { calculateScore, countMistakes } from "../js/WholeAnswerCheck";
 import { makeStyles } from "@material-ui/core";
 import BottomFeedback from "./BottomFeedback";
 
