@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import HeaderLevel from "./HeaderLevel";
 import BottomInstructions from "./BottomInstructions";
 import SortingComponent from "./SortingComponent";
@@ -7,7 +7,7 @@ import Timer from "./Timer";
 //import Grids from "./Grid";
 import UserInput from "./UserInput";
 import { Grid } from "@material-ui/core";
-
+import mergeSort from "../algorithm/MS";
 
 
 function Level2() {
@@ -15,7 +15,16 @@ function Level2() {
   const [sortedArray,setSortedArray]=useState([1,2,3,4]);//sorted array after merge sort
   const [answerArray,setAnswerArray]=useState([1,2,3,4]);//player's answer
   const [timeLeft,setTimeLeft]=useState(0);
-  console.log('level2'>currentProblem);
+
+  //parse the currentProblem to mergeSort() -> get sortedArray
+  useEffect(() => {
+    if(currentProblem!=null){
+      setSortedArray(mergeSort(currentProblem));
+    }
+  }, []);
+
+  console.log('level2 currentProblem'+currentProblem);
+  console.log('level2 sorted array '+sortedArray);
 
   return (
     <div>
@@ -41,7 +50,7 @@ function Level2() {
       <ScoreIndicator sortedArray={sortedArray} answerArray={answerArray} timeLeft={timeLeft}/>
       <div>
       This is Level2 userinput
-      <UserInput/> 
+      <UserInput currentProblem={[3,2,1,4,5,6,7,9,8,10]} sortedArray={[1,2,3,4,5,6,7,8,9,10]}/> 
       
       <div id="Grid"> </div>
     

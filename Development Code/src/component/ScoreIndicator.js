@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import ReactStoreIndicator from "react-score-indicator";
-import { calculateScore, countMistakes } from "../js/Utility";
+import { calculateScore, countMistakes } from "../js/WholeAnswerCheck";
 import { makeStyles } from "@material-ui/core";
 
 //a fancy way to style your component

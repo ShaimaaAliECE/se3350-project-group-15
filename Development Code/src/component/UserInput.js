@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './userInput.css'
 import PT from 'prop-types'; //check input
 import { Grid } from '@material-ui/core';
@@ -13,13 +13,22 @@ import { Grid } from '@material-ui/core';
 //export default UserInput;
 
 
-export default function UserInput()
+export default function UserInput(props)
 {
+    const [currentProblem, setCurrentProblem] = useState([]);//unsorted array
+    const [sortedArray,setSortedArray]=useState([]);//sorted array after merge sort
     const [data, setDate]=useState("")
-    function getData(val){
-        setDate(val.target.value)
-        console.log(getData);
-    
+
+    useEffect(() => {
+        if(props.currentProblem!=null){
+            setCurrentProblem(props.currentProblem);
+        }
+    }, []);
+
+    function getData(input){
+        setDate(input.target.value)
+        console.log("input.id "+input.target.id);
+        console.log("input.id "+input.target.id);
     }
 
     //const [s1data,setDate1]=useState("");
