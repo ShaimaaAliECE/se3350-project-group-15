@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./UserInput.css";
+// import "./UserInput.css";
 
 
 //make multiple input boxes in the page of level two, and let the user to input the number base on the instrucions
