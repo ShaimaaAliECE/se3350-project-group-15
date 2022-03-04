@@ -24,8 +24,8 @@ export default function Footer(props) {
         "5. Now, it's time to re-arrange the order of the number listed",
         "6. First, select the first two subset from the left side of the left subset and compare their value.",
         "7. Place the smaller number of the left side and merge them into one number set with two number in it.",
-        "8. Then, repeat the previous step to rest of the subset.",
-        "9. Repeat the same procedure for the right side subnets."
+        "8. Then, repeat the previous step to rest of the subset until only one large set contains all number is formed.",
+        "9. Congradulation, you have merge sorted a list!"
     ]
 
     return (
