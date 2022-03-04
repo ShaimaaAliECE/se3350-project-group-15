@@ -35,7 +35,7 @@ function Level2() {
     let inputData = stringToArrayINT(input.target.value);
     let inputID = input.target.id;
     let inputRowNum =  inputID.split('.')[0][1];
-    let inputCol = inputID.split('.')[1]; ;
+    let inputCol = inputID.split('.')[1]; 
     let correctAnswer = splitArray[inputRowNum-2][inputCol-1];
 
     //Henry edited: compare input data with the correct answer
