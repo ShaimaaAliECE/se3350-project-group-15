@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./UserInput.css";
-import PT from "prop-types"; //check input
-import { Grid } from "@material-ui/core";
+
 
 //make multiple input boxes in the page of level two, and let the user to input the number base on the instrucions
 //connect with the check answer function and the feedback function to show the positive and negative feedback

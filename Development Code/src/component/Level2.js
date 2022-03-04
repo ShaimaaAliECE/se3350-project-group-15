@@ -30,6 +30,7 @@ function Level2() {
 
   //Henry edited: called by input onChange={getData}
   function getData(input) {
+    
     //Henry edited: set up input data component 
     let inputData = stringToArrayINT(input.target.value);
     let inputID = input.target.id;
@@ -42,6 +43,7 @@ function Level2() {
     setGoodFeedback(answerResult);
 
     if(answerResult==true){
+
       //Henry edited:maybe change the input field color to green
       setFeedbackText(`${inputRowNum}.${inputCol} answer is correct!`)
     }else{
@@ -84,6 +86,7 @@ function Level2() {
       </div> */}
       <div classNAme="UserInput ">
       <div className="UserInput_background">
+
         <h1>user input step one here !</h1>
         <label for="A1">1</label>
         <input type="text" class="resizedTextbox" id="A1" value={currentProblem} onChange={getData} />
