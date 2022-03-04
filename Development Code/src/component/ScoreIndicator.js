@@ -30,22 +30,24 @@ function ScoreIndicator(props) {
   const classes = useStyles(); //here useStyles classes is defined
 
   useEffect(() => {
-    //pass these values from level2
-    setSortedArray(props.sortedArray);
-    setAnswerArray(props.answerArray);
-    setTimeLeft(props.timeLeft);
+    if (props.sortedArray != null && props.answerArray != null) {
+      //pass these values from level2
+      setSortedArray(props.sortedArray);
+      setAnswerArray(props.answerArray);
+      setTimeLeft(props.timeLeft);
 
-    //change bottom feedback text only fater getScore() is called!
-    if (getScoreCalled) {
-      setHideFeedbackText(false);
-      //if there is a wrong answer -> bottom feedback text should say 'Oops! There is an error in your answer. Please check again.'
-      if (score != answerArray.length) {
-        setFeedbackText(
-          "Oops! There is an error in your answer. Please check again."
-        );
-        setGoodFeedback(false);
-      } else {
-        setFeedbackText("Congratulations! Your score is perfect!");
+      //change bottom feedback text only fater getScore() is called!
+      if (getScoreCalled) {
+        setHideFeedbackText(false);
+        //if there is a wrong answer -> bottom feedback text should say 'Oops! There is an error in your answer. Please check again.'
+        if (score != answerArray.length) {
+          setFeedbackText(
+            "Oops! There is an error in your answer. Please check again."
+          );
+          setGoodFeedback(false);
+        } else {
+          setFeedbackText("Congratulations! Your score is perfect!");
+        }
       }
     }
   });
