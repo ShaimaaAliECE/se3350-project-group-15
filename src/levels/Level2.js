@@ -9,13 +9,12 @@ const helper = new Helper();
 
 export default function Level2() {
     const currentLevel = 2;
+    const [currentPoint, setCurrentPoint] = React.useState(0);
     const [currentQuestion, setCurrentQuestion] = React.useState([]);
     const [summaryArray, setSummaryArray] = React.useState([]);
     const [hasStarted, setHasStarted] = React.useState(false);
     const [currentStep, setCurrentStep] = React.useState(0);
     const displayArray = summaryArray.slice(0, (currentStep) - 1);
-
-    console.log(summaryArray)
 
     const levelStart = () => {
         let generate = helper.generateNumberArray(10, 20)
@@ -23,6 +22,7 @@ export default function Level2() {
         setSummaryArray(helper.generateMap(generate));
         setCurrentStep(1);
         setHasStarted(true);
+        setCurrentPoint(10);
     }
 
     const levelRestart = () => {
@@ -31,6 +31,7 @@ export default function Level2() {
         setSummaryArray(helper.generateMap(generate));
         setCurrentStep(1);
         setHasStarted(true);
+        setCurrentPoint(10);
     }
 
     const previousStep = () => {
@@ -42,6 +43,7 @@ export default function Level2() {
     const nextStep = () => {
         if (currentStep < summaryArray.length + 1) {
             setCurrentStep(currentStep + 1);
+            setCurrentPoint(0);
         }
     }
 
@@ -60,7 +62,7 @@ export default function Level2() {
                         if (item.length === currentQuestion.length && item[0].length !== 1) {
                             return <div className="display-area-row" key={i}>
                                 {item.map((item, index) => {
-                                    return <SquareBtnStyleWithInput key={index} id={item}></SquareBtnStyleWithInput>
+                                    return <SquareBtnStyleWithInput key={index} id={item} currentPoint={currentPoint} setCurrentPoint={setCurrentPoint}></SquareBtnStyleWithInput>
                                 })}
                             </div>
                         } else {
@@ -70,7 +72,7 @@ export default function Level2() {
                                     <div className="display-area-col" key={j}>
                                         {j === item.length / 2 && <SquareBtnStyle opacity />}
                                         {subItem.map((num, k) => (
-                                            <SquareBtnStyleWithInput key={k} id={num}></SquareBtnStyleWithInput>
+                                            <SquareBtnStyleWithInput key={k} id={num} currentPoint={currentPoint} setCurrentPoint={setCurrentPoint}></SquareBtnStyleWithInput>
                                         ))}
                                         <SquareBtnStyle opacity />
                                     </div>
@@ -86,7 +88,7 @@ export default function Level2() {
                 currentLevel={currentLevel}
                 currentStep={currentStep}
                 canPrev={currentStep > 1}
-                canNext={currentStep !== 0 && currentStep < summaryArray.length + 1}
+                canNext={currentStep !== 0 && currentStep < summaryArray.length + 1 && currentPoint === currentQuestion.length}
                 onPrevStep={previousStep}
                 onNextStep={nextStep} />
         </div>
