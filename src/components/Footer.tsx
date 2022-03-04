@@ -38,7 +38,7 @@ const Footer = (props: IFooterProps) => {
         <div className="footer-tips">
           <p className="footer-tips-title">Steps:</p>
           <div className="footer-tips-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>This is an instruction</p>
           </div>
         </div>
       </div>

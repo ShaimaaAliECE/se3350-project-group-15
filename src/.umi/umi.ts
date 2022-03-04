@@ -4,8 +4,8 @@ import '@@/core/devScripts';
 import { plugin } from './core/plugin';
 import './core/pluginRegister';
 import { createHistory } from './core/history';
-import { ApplyPluginsType } from '/Users/ivesluo/Desktop/MergeSort/node_modules/@umijs/runtime';
-import { renderClient } from '/Users/ivesluo/Desktop/MergeSort/node_modules/@umijs/renderer-react';
+import { ApplyPluginsType } from '/Users/ivesluo/Desktop/se3350_project-group-15/node_modules/@umijs/runtime';
+import { renderClient } from '/Users/ivesluo/Desktop/se3350_project-group-15/node_modules/@umijs/renderer-react';
 import { getRoutes } from './core/routes';
 
 
