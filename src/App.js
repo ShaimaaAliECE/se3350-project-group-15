@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+import HomePage from "./levels/HomePage";
+import Level1 from "./levels/Level1";
+import Level2 from "./levels/Level2";
+
+import Header from "./components/Header";
+
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+        {/*LevelMain: home page */}
+        <Route path="/" element={<HomePage />} />
+        {/*Level1: level 1 */}
+        <Route path="/level1" element={<Level1 />} />
+        {/*Level2: level 2 */}
+        <Route path="/level2" element={<Level2 />} />
+        {/*google sign-in page */}
+      </Routes>
     </div>
   );
 }
-
-export default App;
