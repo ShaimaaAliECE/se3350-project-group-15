@@ -20,7 +20,6 @@ export default class Helper {
                 break;
             }
         } while (1);
-        console.log(innerSummaryArray);
         return innerSummaryArray;
     }
 
@@ -118,7 +117,6 @@ export default class Helper {
         data.forEach((item, index) => {
             middleRow.push([item]);
         })
-        console.log(middleRow);
         yield middleRow;
         let anotherHalfData = JSON.parse(JSON.stringify(yieldData));
         for (let i = anotherHalfData.length - 1; i >= 0; i--) {
