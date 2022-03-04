@@ -30,7 +30,7 @@ function Level2() {
 
   //Henry edited: called by input onChange={getData}
   function getData(input) {
-    
+
     //Henry edited: set up input data component 
     let inputData = stringToArrayINT(input.target.value);
     let inputID = input.target.id;
@@ -88,12 +88,15 @@ function Level2() {
       <div className="UserInput_background">
 
         <h1>user input step one here !</h1>
+        <h3>Welcome to the Merge Sort Algorithm! Press start to begin.</h3>
         <label for="A1">1</label>
         <input type="text" class="resizedTextbox" id="A1" value={currentProblem} onChange={getData} />
       </div>
       //step2
       <div className="UserInput_background">
         <h1>user input step two here !</h1>
+        <h3>Slice the entire Array into half</h3>
+        
         <label for="A2.1">2.1</label>
         <input
           type="text"
@@ -112,6 +115,7 @@ function Level2() {
       //step3
       <div className="UserInput_background">
         <h1>user input step three here !</h1>
+        <h3>Split the left sub-array and right sub-array"</h3>
         <label for="A3.1">3.1</label>
         <input
           type="text"
@@ -144,6 +148,7 @@ function Level2() {
       //step4
       <div className="UserInput_background">
         <h1>user input step four here !</h1>
+        <h3>Keep split the sub-array until all the sub-arrays contain only 1 number</h3>
         <label for="A4.1">1.1.1.1</label>
         <input
           type="text"
@@ -204,6 +209,7 @@ function Level2() {
       //step 5
       <div className="UserInput_background">
         <h1>user input step five here !</h1>
+        <h3>All sub-arrays contain 1 number, it's time to sort</h3>
         <label for="A5.1">1.1.1.1</label>
         <input
           type="text"
@@ -278,6 +284,7 @@ function Level2() {
       //start merging //step6
       <div className="UserInput_background_1">
         <h1>user input step 6 here !</h1>
+        
         <label for="A6.1">1.1.1.1</label>
         <input
           type="text"
@@ -388,6 +395,7 @@ function Level2() {
       //step9
       <div className="UserInput_background_1">
         <h1>user input step 9 here !</h1>
+        <h1>Finished merging</h1>
         <label for="A9">1</label>
         <input type="text" class="resizedTextbox" id="A9" onChange={getData} />
       </div>
