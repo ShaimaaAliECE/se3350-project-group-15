@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./userInput.css";
+import "./UserInput.css";
 import PT from "prop-types"; //check input
 import { Grid } from "@material-ui/core";
 

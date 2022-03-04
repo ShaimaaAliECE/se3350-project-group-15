@@ -4,14 +4,6 @@ import { makeStyles } from "@material-ui/core";
 
 //a fancy way to style your component
 const useStyles = makeStyles((theme) => ({
-    // contacts: {
-    //   paddingLeft: 10,
-    //   paddingRight: 10,
-    //   "&:hover": {
-    //     width: 100,
-    //     height: 100,
-    //   },
-    // },
     goodFeedbackText:{
         backgroundColor:'#ffd100',
         color:'black',

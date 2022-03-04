@@ -7,21 +7,50 @@ import Timer from "./Timer";
 //import Grids from "./Grid";
 import UserInput from "./UserInput";
 import { Grid } from "@material-ui/core";
+import handleRunning from "../utils/testdeleteafter";
+import {arrayEquals, stringToArrayINT} from '../utils/WholeAnswerCheck';
+import BottomFeedback from "./BottomFeedback";
+
 
 function Level2() {
   const [currentProblem, setCurrentProblem] = useState([]); //unsorted array
   const [sortedArray, setSortedArray] = useState([]); //sorted array after merge sort
   const [answerArray, setAnswerArray] = useState([1,2,3]); //player's answer
   const [timeLeft, setTimeLeft] = useState(0);
-  const [data, setData] = useState("");
+  const [goodFeedback, setGoodFeedback] = useState();
+  const [feedbackText, setFeedbackText] = useState('');
 
-  console.log("level2 currentProblem " + currentProblem);
-  console.log("level2 sorted array " + sortedArray);
+  // console.log("level2 currentProblem " + currentProblem);
+  // console.log("level2 sorted array " + sortedArray);
 
+  let splitArray;
+  if(currentProblem!=null){
+    splitArray = handleRunning(currentProblem);
+  }
+
+  //Henry edited: called by input onChange={getData}
   function getData(input) {
-    setData(input.target.value);
-    console.log("input.id " + input.target.id);
-    console.log("input.id " + input.target.id);
+    //Henry edited: set up input data component 
+    let inputData = stringToArrayINT(input.target.value);
+    let inputID = input.target.id;
+    let inputRowNum =  inputID.split('.')[0][1];
+    let inputCol = inputID.split('.')[1]; ;
+    let correctAnswer = splitArray[inputRowNum-2][inputCol-1];
+
+    //Henry edited: compare input data with the correct answer
+    let answerResult = arrayEquals(inputData,correctAnswer);// true / false
+    setGoodFeedback(answerResult);
+
+    if(answerResult==true){
+      //Henry edited:maybe change the input field color to green
+      setFeedbackText(`${inputRowNum}.${inputCol} answer is correct!`)
+    }else{
+      //Henry edited:maybe change the input field color to red
+      setFeedbackText(`please check ${inputRowNum}.${inputCol}`);
+    }
+
+    console.log('correctAnswer '+correctAnswer)
+    console.log('answerResult '+answerResult)
   }
 
   return (
@@ -57,19 +86,19 @@ function Level2() {
       <div className="UserInput_background">
         <h1>user input step one here !</h1>
         <label for="A1">1</label>
-        <input type="text" class="resizedTextbox" id="A1" onChange={getData} />
+        <input type="text" class="resizedTextbox" id="A1" value={currentProblem} onChange={getData} />
       </div>
       //step2
       <div className="UserInput_background">
         <h1>user input step two here !</h1>
-        <label for="A2.1">1.1</label>
+        <label for="A2.1">2.1</label>
         <input
           type="text"
           class="resizedTextbox"
           id="A2.1"
           onChange={getData}
         />
-        <label for="A2.2">1.2</label>
+        <label for="A2.2">2.2</label>
         <input
           type="text"
           class="resizedTextbox"
@@ -80,14 +109,14 @@ function Level2() {
       //step3
       <div className="UserInput_background">
         <h1>user input step three here !</h1>
-        <label for="A3.1">1.1.1</label>
+        <label for="A3.1">3.1</label>
         <input
           type="text"
           class="resizedTextbox"
           id="A3.1"
           onChange={getData}
         />
-        <label for="A3.2">1.1.2</label>
+        <label for="A3.2">3.2</label>
         <input
           type="text"
           class="resizedTextbox"
@@ -360,6 +389,16 @@ function Level2() {
         <input type="text" class="resizedTextbox" id="A9" onChange={getData} />
       </div>
     </div>
+
+    {/*Feedback
+     <div className={props.goodFeedback? classes.goodFeedbackText : classes.badFeedbackText } >{props.feedbackText}</div>
+    */}
+   <div className="fixed-bottom d-flex justify-content-center">
+          <BottomFeedback
+            feedbackText={feedbackText}
+            goodFeedback={goodFeedback}
+          />
+        </div>
     </div>
   );
 }

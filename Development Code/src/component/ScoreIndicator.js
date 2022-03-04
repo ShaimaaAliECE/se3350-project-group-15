@@ -1,7 +1,7 @@
 //for level2 & level3
 import React, { Component, useState, useEffect } from "react";
 import ReactStoreIndicator from "react-score-indicator";
-import { calculateScore, countMistakes } from "../js/WholeAnswerCheck";
+import { calculateScore, countMistakes } from "../utils/WholeAnswerCheck";
 import { makeStyles } from "@material-ui/core";
 import BottomFeedback from "./BottomFeedback";
 
@@ -76,7 +76,7 @@ function ScoreIndicator(props) {
       </div>
       {/*bottom feedback text */}
       <div hidden={hideFeedbackText}>
-        <div class="fixed-bottom d-flex justify-content-center">
+        <div className="fixed-bottom d-flex justify-content-center">
           <BottomFeedback
             feedbackText={feedbackText}
             goodFeedback={goodFeedback}
