@@ -22,7 +22,7 @@ export default function LevelControl(props) {
 
     return (
         <div className="LevelControl">
-            <Button onClick={props.start} disabled={props.hasStarted}>Run</Button>
+            <Button onClick={props.start} disabled={props.hasStarted}>Start</Button>
             <Button onClick={props.restart} disabled={!props.hasStarted}>
                 Restart
             </Button>

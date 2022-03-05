@@ -37,6 +37,7 @@ export default function Level2() {
     const previousStep = () => {
         if (currentStep > 0) {
             setCurrentStep(currentStep - 1);
+            setCurrentPoint(10);
         }
     }
 
@@ -49,7 +50,7 @@ export default function Level2() {
 
     return (
         <div className="Level1">
-            <h1>Level2</h1>
+            <h1>Level 2</h1>
             <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} />
             <div className="display-area">
                 <div className="display-area-row">
