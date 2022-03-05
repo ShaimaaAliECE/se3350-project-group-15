@@ -2,9 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Background from "../assets/css/Background.css"
 import actualTime from '../components/Clock.js'
-import "../assets/css/HomePage.css";
+
 
 export default function LevelMain() {
+
+    React.useEffect(() => {
+        // Update the document title using the browser API
+        let element = document.getElementsByClassName('clock')[0].children;
+        actualTime(element)
+    });
+
     return (
         <div>
             <div className="LevelMain">
@@ -25,13 +32,18 @@ export default function LevelMain() {
                     </Link>
                 </li>
             </div>
-            
             <div>
-                <div className='clock' >
-                    <div className='hours'/>
-                    <div className='minutes'/> 
-                    <div className='seconds'/>
-                </div>
+                <article class="clock">
+                    <div class="hours-container">
+                        <div class="hours"></div>
+                    </div>
+                    <div class="minutes-container">
+                        <div class="minutes"></div>
+                    </div>
+                    <div class="seconds-container">
+                        <div class="seconds"></div>
+                    </div>
+                </article>
             </div>
         </div>
 
