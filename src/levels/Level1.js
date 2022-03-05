@@ -14,8 +14,6 @@ export default function Level1() {
     const [currentStep, setCurrentStep] = React.useState(0);
     const displayArray = summaryArray.slice(0, (currentStep) - 1);
 
-    console.log(summaryArray)
-
     const levelStart = () => {
         let generate = helper.generateNumberArray(10, 20)
         setCurrentQuestion(generate);
@@ -46,8 +44,8 @@ export default function Level1() {
 
     return (
         <div className="Level1">
-            <h1>Level1</h1>
-            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} />
+            <h1>Level 1</h1>
+            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} currentLevel={currentLevel} />
             <div className="display-area">
                 <div className="display-area-row">
                     {currentQuestion.map((item, index) => {

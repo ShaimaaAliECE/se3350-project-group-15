@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Background from "../assets/css/Background.css"
 import actualTime from '../components/Clock.js'
+import "./HomePage.css";
 
 export default function LevelMain() {
     return (
@@ -24,14 +25,13 @@ export default function LevelMain() {
                     </Link>
                 </li>
             </div>
-
+            
             <div>
                 <div className='clock' >
                     <div className='hours'/>
                     <div className='minutes'/> 
                     <div className='seconds'/>
                 </div>
-                
             </div>
         </div>
 

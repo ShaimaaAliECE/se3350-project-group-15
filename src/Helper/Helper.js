@@ -20,11 +20,10 @@ export default class Helper {
                 break;
             }
         } while (1);
-        console.log(innerSummaryArray);
         return innerSummaryArray;
     }
 
-    // Merges two subarrays of arr[].
+    // Merges two subarray of arr[].
     // First subarray is arr[l..m]
     // Second subarray is arr[m+1..r]
     merge(arr, l, m, r) {
@@ -118,7 +117,6 @@ export default class Helper {
         data.forEach((item, index) => {
             middleRow.push([item]);
         })
-        console.log(middleRow);
         yield middleRow;
         let anotherHalfData = JSON.parse(JSON.stringify(yieldData));
         for (let i = anotherHalfData.length - 1; i >= 0; i--) {
