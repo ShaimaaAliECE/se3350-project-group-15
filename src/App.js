@@ -13,16 +13,18 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <Routes>
-        {/*LevelMain: home page */}
-        <Route path="/" element={<HomePage />} />
-        {/*Level1: level 1 */}
-        <Route path="/level1" element={<Level1 />} />
-        {/*Level2: level 2 */}
-        <Route path="/level2" element={<Level2 />} />
-        <Route path="/level3" element={<Level3 />} />
-        {/*google sign-in page */}
-      </Routes>
+      <div className="content-container">
+        <Routes>
+          {/*LevelMain: home page */}
+          <Route path="/" element={<HomePage />} />
+          {/*Level1: level 1 */}
+          <Route path="/level1" element={<Level1 />} />
+          {/*Level2: level 2 */}
+          <Route path="/level2" element={<Level2 />} />
+          <Route path="/level3" element={<Level3 />} />
+          {/*google sign-in page */}
+        </Routes>
+      </div>
     </div>
   );
 }

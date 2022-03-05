@@ -45,7 +45,7 @@ export default function Level1() {
     return (
         <div className="Level1">
             <h1>Level 1</h1>
-            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} />
+            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} currentLevel={currentLevel} />
             <div className="display-area">
                 <div className="display-area-row">
                     {currentQuestion.map((item, index) => {
