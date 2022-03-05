@@ -1,14 +1,14 @@
 //From Ives Luo
 
 export default function SquareBtnStyleWithInput(props) {
-    let currentPoint = 0;
 
     const checkAns = (event) => {
         if (event.target.value === event.target.id) {
-            currentPoint++;
+            props.setCurrentPoint(props.currentPoint + 1);
             event.target.disabled = true;
         } else if (event.target.value === '') {
         } else {
+            event.target.value = '';
             alert('Wrong!');
         }
     }

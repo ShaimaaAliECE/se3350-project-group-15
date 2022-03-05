@@ -95,6 +95,13 @@
   align-items: center;
 }
 
+.functional-area {
+  flex: 0 0 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Button.tsx */
 .rc-button {
   min-width: 88px;
@@ -204,6 +211,23 @@
   width: 100%;
   text-align: center;
   margin: 0;
+}
+
+.statistics-area {
+  flex: 0 0 33%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.statistics-area .mistakes-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background: #e5e5e5;
+  border-radius: 8px;
+  margin-left: 10px;
 }
 
 @keyframes opacity {

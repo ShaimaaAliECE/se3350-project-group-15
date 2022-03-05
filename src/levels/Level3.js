@@ -7,8 +7,8 @@ import InstructionPanel from '../components/InstructionPanel';
 
 const helper = new Helper();
 
-export default function Level2() {
-    const currentLevel = 2;
+export default function Level3() {
+    const currentLevel = 3;
     const [currentPoint, setCurrentPoint] = React.useState(0);
     const [currentQuestion, setCurrentQuestion] = React.useState([]);
     const [summaryArray, setSummaryArray] = React.useState([]);
@@ -50,8 +50,8 @@ export default function Level2() {
 
     return (
         <div className="Level1">
-            <h1>Level 2</h1>
-            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} currentLevel={currentLevel} currentPoint={currentPoint} />
+            <h1>Level 3</h1>
+            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} />
             <div className="display-area">
                 <div className="display-area-row">
                     {currentQuestion.map((item, index) => {

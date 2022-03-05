@@ -3,7 +3,7 @@ import right_arrow from '../assets/svg/right-arrow.svg';
 
 export default function Footer(props) {
     const Level1Dictionary = [
-        "Welcome to the Merge Sort Algorithm! Press run to begin.",
+        "Welcome to the Merge Sort Algorithm! Press start to begin.",
         "A random unsorted list of ten numbers are generated, the following are the procedure of Merge Sorting",
         "1. Slice the entire Array into half and create two subsets of the original set",
         "2. Repeat the same process and create more subsets",
@@ -25,8 +25,29 @@ export default function Footer(props) {
         "6. First, select the first two subset from the left side of the left subset and compare their value.",
         "7. Place the smaller number of the left side and merge them into one number set with two number in it.",
         "8. Then, repeat the previous step to rest of the subset until only one large set contains all number is formed.",
-        "9. Congradulation, you have merge sorted a list!"
+        "9. Congratulation, you have merge sorted a list!"
     ]
+
+    const Level3Dictionary = [
+        "Hope you learned the Merge Sort Algorithm! Press start to begin.",
+        "You are on your own now, good lucky!",
+    ];
+
+    const InstructionHelper = (currentLevel, currentStep) => {
+        switch (currentLevel) {
+            case 1:
+                return Level1Dictionary[currentStep];
+            case 2:
+                return Level2Dictionary[currentStep];
+            case 3:
+                if (currentStep < 2) {
+                    return Level3Dictionary[currentStep];
+                }
+                return Level3Dictionary[1];
+            default:
+                return Level1Dictionary;
+        }
+    }
 
     return (
         <div className="footer-container">
@@ -56,7 +77,7 @@ export default function Footer(props) {
                 <div className="footer-tips">
                     <p className="footer-tips-title">Steps:</p>
                     <div className="footer-tips-content">
-                        <p>{eval('Level' + `${props.currentLevel}` + `Dictionary[${props.currentStep}]`)}</p>
+                        <p>{InstructionHelper(props.currentLevel, props.currentStep)}</p>
                     </div>
                 </div>
             </div>
