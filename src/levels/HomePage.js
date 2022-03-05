@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Background from "../assets/css/Background.css"
 import actualTime from '../components/Clock.js'
-import "./HomePage.css";
+import "../assets/css/HomePage.css";
 
 export default function LevelMain() {
     return (
