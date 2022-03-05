@@ -23,7 +23,7 @@ export default class Helper {
         return innerSummaryArray;
     }
 
-    // Merges two subarrays of arr[].
+    // Merges two subarray of arr[].
     // First subarray is arr[l..m]
     // Second subarray is arr[m+1..r]
     merge(arr, l, m, r) {
