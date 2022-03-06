@@ -32,7 +32,7 @@ export default function LevelMain() {
                     </Link>
                 </li>
             </div>
-            <div>
+            <div className="position-absolute top-50 start-50 translate-middle w-auto h-auto">
                 <article class="clock">
                     <div class="hours-container">
                         <div class="hours"></div>

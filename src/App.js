@@ -13,7 +13,6 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <div className="content-container">
         <Routes>
           {/*LevelMain: home page */}
           <Route path="/" element={<HomePage />} />
@@ -24,7 +23,6 @@ export default function App() {
           <Route path="/level3" element={<Level3 />} />
           {/*google sign-in page */}
         </Routes>
-      </div>
     </div>
   );
 }
