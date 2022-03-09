@@ -19,10 +19,7 @@ export default function SignUpPage() {
   const passwordConfirmRef = useRef();
   const [error, setError] = useState(""); //Henry: for handleSubmit()
   const [loading, setLoading] = useState(false); //Henry: for handleSubmit()
-  const [hideSignInBox, setHideSignInBox] = useState(false);
-
-  const usersCollectionRef = collection(db, "users");
-  const navigate = useNavigate();
+  const [hideSignInBox, setHideSignInBox] = useState(false); //Henry: sign-up/login nav issue temp solution
 
   //TODO: toggle sign-in box & level1 component (this is a temporary alternative to address login navigation issue)!
   useEffect(() => {
@@ -45,7 +42,8 @@ export default function SignUpPage() {
       let userEmail = emailRef.current.value;
       let password = passwordRef.current.value;
       let userName = userEmail.substring(0, userEmail.indexOf("@"));
-      console.log("userName->" + userName);
+      console.log("userName->" + userName); //testing
+      const usersCollectionRef = collection(db, "users");
       await addDoc(usersCollectionRef, {
         name: userName,
         email: userEmail,
@@ -64,7 +62,8 @@ export default function SignUpPage() {
 
       window.location.reload(false);
       //TODO: navigate to main page not working!!!
-      navigate("/");
+      // const navigate = useNavigate();
+      // navigate("/");
     } catch (err) {
       setError("Failed to create an account");
       console.log(err);
@@ -72,7 +71,7 @@ export default function SignUpPage() {
     setLoading(false);
   }
 
-  //testing 2. Realtime Database Method
+  //testing -> 2. Realtime Database Method
   function submit() {
     //2. Realtime Database Method
     let userRef = app.database().ref("User");
