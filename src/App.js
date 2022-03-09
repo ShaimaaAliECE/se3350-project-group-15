@@ -8,7 +8,7 @@ import Level2 from "./levels/Level2";
 import Level3 from "./levels/Level3";
 
 import Header from "./components/Header";
-import Signup from './Authentification/SignUpPage';
+import Signup from './Authentication/SignUpPage';
 
 export default function App() {
   return (

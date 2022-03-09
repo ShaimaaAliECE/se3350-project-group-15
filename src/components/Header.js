@@ -2,15 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
-import { logOut, db } from "../Authentification/firebase";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
+import { logOut, db } from "../Authentication/firebase";
 
 export default function Header() {
   const [isSignedIn, setIsSignedIn] = useState(false);
