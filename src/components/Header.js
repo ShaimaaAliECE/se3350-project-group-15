@@ -1,6 +1,7 @@
 import React from "react";
 import PersonIcon from '@mui/icons-material/Person';
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
+import { logOut, db } from "../Authentication/firebase";
 
 export default function Header() {
     const [isSignedIn, setIsSignedIn] = React.useState(false);
