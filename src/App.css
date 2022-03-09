@@ -1,0 +1,241 @@
+.App {
+  text-align: center;
+}
+
+.content-container {
+  width: 100%;
+  min-width: 960px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.content-body {
+  width: 100%;
+  max-width: 1600px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 24px 3.33vw;
+}
+
+.square-container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background: #e5e5e5;
+  border-radius: 8px;
+  margin: 8px;
+  animation: opacity 0.35s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.square-container-opacity {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  margin: 8px;
+  opacity: 0;
+}
+
+.text-box {
+  border: none;
+  text-align: center;
+}
+
+.display-area {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 14px;
+}
+
+.display-area-dynamic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-area-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-area-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container {
+  /* width: 100%;
+  min-width: 960px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; */
+  background: #c4c4c4;
+}
+
+.LevelControl {
+  flex: 0 0 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.functional-area {
+  flex: 0 0 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Button.tsx */
+.rc-button {
+  min-width: 88px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 8px;
+  padding: 0 20px;
+  border-radius: 8px;
+  background-color: #e5e5e5;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.rc-button.disabled {
+  background-color: #eaeaea;
+  cursor: not-allowed;
+}
+
+.rc-button.disabled span {
+  color: #aaaaaa;
+}
+
+.rc-button span {
+  transition: all 0.15s ease-in-out;
+  font-size: 14px;
+  line-height: 1;
+  color: #000000;
+}
+
+/* Footer.tsx */
+.footer-container {
+  width: 100%;
+  min-width: 960px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.footer-body {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 24px 3.33vw;
+}
+
+.footer-navigator {
+  width: 138px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 23px;
+}
+
+.footer-navigator .footer-navigator-button {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e5e5e5;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.footer-navigator .footer-navigator-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.footer-tips {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 16px;
+  background: #c4c4c4;
+  border-radius: 16px;
+}
+
+.footer-tips-title {
+  flex: 0 0 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.footer-tips-content {
+  flex: 1 1 auto;
+  min-height: 90px;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.footer-tips-content p {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.statistics-area {
+  flex: 0 0 33%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.statistics-area .mistakes-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background: #e5e5e5;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

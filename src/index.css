@@ -1,0 +1,17 @@
+@font-face {
+  font-family: Chalkboard;
+  src: url('./assets/fonts/Chalkboard-SE.ttf');
+}
+
+* {
+  font-family: Chalkboard;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
