@@ -66,7 +66,7 @@ export default function Level3() {
                 + ${currentdate.getHours()} + ":"  
                 + ${currentdate.getMinutes()} + ":" 
                 + ${currentdate.getSeconds()}`;
-    //check if user is singned in
+    //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
       await addDoc(usersCollectionRef, {

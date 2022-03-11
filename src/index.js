@@ -5,6 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import { CookiesProvider } from "react-cookie";
 
 // React-Alert -> optional configuration
 const options = {
@@ -18,9 +19,11 @@ const options = {
 
 ReactDOM.render(
   <BrowserRouter>
-    <AlertProvider template={AlertTemplate} {...options}>
-      <App />
-    </AlertProvider>
+    <CookiesProvider>
+      <AlertProvider template={AlertTemplate} {...options}>
+        <App />
+      </AlertProvider>
+    </CookiesProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );

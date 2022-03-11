@@ -8,10 +8,9 @@ import {
   GithubAuthProvider,
   signOut,
 } from "firebase/auth";
-require("firebase/database");
 
 // Your web app's Firebase configuration
-//it's better to use .env.local file to hide API keys on github
+//Henry: it's better to use .env.local file to hide API keys on github
 const firebaseConfig = {
   apiKey: "AIzaSyCJ9wH_Wdyo81jXe06j3c_Ce2ua8DOH47U",
   authDomain: "sortingalgorithmgame.firebaseapp.com",

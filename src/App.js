@@ -7,7 +7,10 @@ import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";
 import Level3 from "./levels/Level3";
 import Header from "./components/Header"
-import SignUpPageAnimation from './Authentication/SignUpPageAnimation';
+import SignInPageAnimation from './Authentication/SignInPageAnimation';
+import SignInPage from './Authentication/SignInPage';
+import AdminLoginPage from './Authentication/AdminLoginPage';
+import AdminPage from './components/AdminPage';
 
 export default function App() {
   return (
@@ -21,8 +24,10 @@ export default function App() {
           {/*Level2: level 2 */}
           <Route path="/level2" element={<Level2 />} />
           <Route path="/level3" element={<Level3 />} />
-          {/*google sign-in page */}
-          <Route path="/sign_up" element={<SignUpPageAnimation />} />{" "}
+          {/*Auth*/}
+          <Route path="/sign_in" element={<SignInPage/>} />
+          <Route path="/admin_login" element={<AdminLoginPage />} />
+          <Route path="/admin_page" element={<AdminPage />} />
         </Routes>
     </div>
   );
