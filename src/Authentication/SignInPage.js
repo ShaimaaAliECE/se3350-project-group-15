@@ -1,61 +1,44 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GithubSignIn, GoogleSignIn } from "./ThirdPartySignIn";
-import Level1 from "../levels/Level1";
-import { db, app } from "./firebase";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
+import { auth } from "./firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useAlert } from "react-alert";
 
-export default function SignUpPage() {
+export default function SignInPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const [error, setError] = useState(""); //Henry: for handleSubmit()
   const [loading, setLoading] = useState(false); //Henry: for handleSubmit()
+  const alert = useAlert(); //Henry: fancy alert
 
-  //handle sign-up btn submit
   async function handleSubmit(e) {
     e.preventDefault();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
     }
-    //TODO: check if the email already exists
+
     try {
-      //1. Cloud Firestore Method
       setError("");
       setLoading(true);
       let userEmail = emailRef.current.value;
       let password = passwordRef.current.value;
       let userName = userEmail.substring(0, userEmail.indexOf("@"));
       console.log("userName->" + userName); //testing
-      const usersCollectionRef = collection(db, "users");
-      await addDoc(usersCollectionRef, {
-        name: userName,
-        email: userEmail,
-        password: password,
-      });
-      localStorage.setItem("userEmail", userEmail);
-      localStorage.setItem("userName", userName);
-
-      //2. Realtime Database Method
-      // let userRef = app.database().ref('User');
-      // let user = {
-      //   email:'email',
-      //   password:'123'
-      // };
-      // userRef.push(user);
-
-      window.location.reload(false);
-      //TODO: navigate to main page not working!!!
-      // const navigate = useNavigate();
-      // navigate("/");
+      //firebase -> createUserWithEmailAndPassword
+      await createUserWithEmailAndPassword(auth, userEmail, password)
+        .then((userCredential) => {
+          localStorage.setItem("userEmail", userEmail);
+          localStorage.setItem("userName", userName);
+          //nav to home page
+          window.location = "/";
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          alert.error(errorMessage);
+        });
     } catch (err) {
       setError("Failed to create an account");
       console.log(err);
@@ -63,24 +46,12 @@ export default function SignUpPage() {
     setLoading(false);
   }
 
-  //testing -> 2. Realtime Database Method
-  function submit() {
-    //2. Realtime Database Method
-    let userRef = app.database().ref("User");
-    let user = {
-      email: "email",
-      password: "123",
-    };
-    userRef.push(user);
-  }
-
   return (
     <div>
-      {/* <button onClick={submit}>submit</button> */}
-      <div >
+      <div>
         <Container
           className="d-flex align-items-center justify-content-center"
-          style={{ minHeight: "100vh" }}
+          style={{ maxHeight: "100vh", marginTop: "20%" }}
         >
           <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
@@ -96,7 +67,6 @@ export default function SignUpPage() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" ref={passwordRef} required />
                   </Form.Group>
-
                   <Form.Group id="password-confirm">
                     <Form.Label>Password Confirmation</Form.Label>
                     <Form.Control
@@ -105,8 +75,7 @@ export default function SignUpPage() {
                       required
                     />
                   </Form.Group>
-
-                  <Button disabled={loading} className="w-100" type="submit">
+                  <Button disabled={loading} className="w-100" type="submit" style={{marginTop:"10px"}}>
                     Sign Up
                   </Button>
                 </Form>
@@ -116,7 +85,7 @@ export default function SignUpPage() {
               </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-              Already have an account? <Link to="/login">Log In</Link>
+              Already have an account? <Link to="/admin_login">Log In</Link>
             </div>
           </div>
         </Container>

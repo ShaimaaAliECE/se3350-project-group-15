@@ -46,7 +46,7 @@ export default function Header() {
             <Button
               variant="light"
               onClick={isSignedIn ? logOut : null}
-              href={isSignedIn ? "/" : "/sign_up"}
+              href={isSignedIn ? "/" : "/sign_in"}
             >
               {isSignedIn ? "Logout" : "Login"}
             </Button>
