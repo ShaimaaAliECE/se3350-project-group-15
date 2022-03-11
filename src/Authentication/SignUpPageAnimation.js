@@ -20,14 +20,6 @@ export default function SignUpPageAnimation() {
   const passwordConfirmRef = useRef();
   const [error, setError] = useState(""); //Henry: for handleSubmit()
   const [loading, setLoading] = useState(false); //Henry: for handleSubmit()
-  const [hideSignInBox, setHideSignInBox] = useState(false); //Henry: sign-up/login nav issue temp solution
-
-  //TODO: toggle sign-in box & level1 component (this is a temporary alternative to address login navigation issue)!
-  useEffect(() => {
-    if (localStorage.getItem("userEmail") != null) {
-      setHideSignInBox(true);
-    }
-  }, []);
 
   //handle sign-up btn submit
   async function handleSubmit(e) {
@@ -61,10 +53,7 @@ export default function SignUpPageAnimation() {
       // };
       // userRef.push(user);
 
-      window.location.reload(false);
-      //TODO: navigate to main page not working!!!
-      // const navigate = useNavigate();
-      // navigate("/");
+      // window.location.reload(false);
     } catch (err) {
       setError("Failed to create an account");
       console.log(err);
@@ -85,10 +74,9 @@ export default function SignUpPageAnimation() {
 
   return (
     <div>
-      {/* <button onClick={submit}>submit</button> */}
-      <div hidden={hideSignInBox}>
+      <div>
         <div style={{ marginTop: "50px", marginBottom: "50px" }}>
-          <TypingIcon /> 
+        <TypingIcon /> 
         </div>
         <Container
           className="d-flex align-items-center justify-content-center"
@@ -99,10 +87,6 @@ export default function SignUpPageAnimation() {
             <GithubSignIn />
           </div>
         </Container>
-      </div>
-      {/* TODO: This is temporary solution for login nav issue! */}
-      <div hidden={!hideSignInBox}>
-        <Level1 />
       </div>
     </div>
   );

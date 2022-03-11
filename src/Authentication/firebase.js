@@ -43,8 +43,8 @@ const signInWithGoogle = () => {
       //save the info in local storage
       localStorage.setItem("user", user);
       localStorage.setItem("userEmail", user.email);
-      //refresh page
-      window.location.reload(false);
+      //nav to home page
+      window.location = "/";
     })
     .catch((error) => {
       console.log(error);
@@ -60,8 +60,8 @@ const signInWithGithub = () => {
       //save the info in local storage
       localStorage.setItem("user", user);
       localStorage.setItem("userEmail", user.email);
-      //refresh page
-      window.location.reload(false);
+      //nav to home page
+      window.location = "/";
     })
     .catch((error) => {
       console.log(error);
