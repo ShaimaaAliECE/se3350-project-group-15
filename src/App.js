@@ -1,14 +1,12 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from "react-router-dom";
-
+import { useEffect, useState } from 'react';
 import HomePage from "./levels/HomePage";
 import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";
 import Level3 from "./levels/Level3";
-
-import Header from "./components/Header";
-import Signup from './Authentication/SignUpPage';
+import Header from "./components/Header"
 import SignUpPageAnimation from './Authentication/SignUpPageAnimation';
 
 export default function App() {
