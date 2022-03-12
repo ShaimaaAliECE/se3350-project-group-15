@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import Helper from "../Helper/Helper";
 import SquareBtnStyle from "../components/SquareBtnStyle";
 import SquareBtnStyleWithInput from "../components/SquareBtnStyleWithInput";
@@ -57,15 +57,15 @@ export default function Level3() {
   async function handleSubmit(e) {
     // e.preventDefault();
     let score = 100;
-    let timeSpent = 60;
+    let timeSpent = `${60}s`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
-    let datetime = ` ${currentdate.getDate()} + "/"
-                + ${currentdate.getMonth() + 1}  + "/" 
-                + ${currentdate.getFullYear()} + " @ "  
-                + ${currentdate.getHours()} + ":"  
-                + ${currentdate.getMinutes()} + ":" 
-                + ${currentdate.getSeconds()}`;
+    let datetime = ` ${currentdate.getDate()} /
+                 ${currentdate.getMonth() + 1} /
+                 ${currentdate.getFullYear()} -
+                 ${currentdate.getHours()} :
+                 ${currentdate.getMinutes()} : 
+                 ${currentdate.getSeconds()}`;
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
