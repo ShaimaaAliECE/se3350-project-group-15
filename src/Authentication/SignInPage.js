@@ -51,7 +51,7 @@ export default function SignInPage() {
       <div>
         <Container
           className="d-flex align-items-center justify-content-center"
-          style={{ maxHeight: "100vh", marginTop: "20%" }}
+          style={{ minHeight: "90vh" }}
         >
           <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
@@ -85,7 +85,7 @@ export default function SignInPage() {
               </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-              Already have an account? <Link to="/admin_login">Log In</Link>
+              Already have an account? <Link to="/login">Log In</Link>
             </div>
           </div>
         </Container>

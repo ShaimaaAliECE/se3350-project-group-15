@@ -5,7 +5,7 @@ import { auth } from "./firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useAlert } from "react-alert";
 
-export default function AdminLoginPage() {
+export default function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [error, setError] = useState(""); //Henry: for handleSubmit()
@@ -26,8 +26,13 @@ export default function AdminLoginPage() {
         .then((userCredential) => {
           localStorage.setItem("userEmail", userEmail);
           localStorage.setItem("userName", userName);
-          //nav to home page
-          window.location = "/admin_page";
+          //if login as admin -> nav to admin page
+          if (userCredential.user.email == "admin@123.com") {
+            window.location = "/admin_page";
+          } else {
+            //if login as player -> nav to home page
+            window.location = "/";
+          }
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -45,32 +50,47 @@ export default function AdminLoginPage() {
     <div>
       <div>
         <Container
-          className="d-flex align-items-center justify-content-center"
-          style={{ maxHeight: "100vh", marginTop: "20%" }}
+          className={"d-flex align-items-center justify-content-center"}
+          style={{ minHeight: "90vh" }}
         >
           <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
               <Card.Body>
-                <h2 className="text-center mb-4">Admin Login</h2>
+                <h2 className="text-center mb-4">Welcome Back!</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleLogin}>
                   <Form.Group id="email">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control placeholder="admin@123.com" type="email" ref={emailRef} required />
+                    <Form.Control
+                      placeholder="admin@123.com"
+                      type="email"
+                      ref={emailRef}
+                      required
+                    />
                   </Form.Group>
                   <Form.Group id="password">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control placeholder="admin123" type="password" ref={passwordRef} required />
+                    <Form.Control
+                      placeholder="admin123"
+                      type="password"
+                      ref={passwordRef}
+                      required
+                    />
                   </Form.Group>
 
-                  <Button disabled={loading} className="w-100" type="submit" style={{marginTop:"10px"}}>
+                  <Button
+                    disabled={loading}
+                    className="w-100"
+                    type="submit"
+                    style={{ marginTop: "10px" }}
+                  >
                     Log In
                   </Button>
                 </Form>
               </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-              Not an admin? <Link to="/sign_in">Back to Sign Up Page</Link>
+              Don't have an account? <Link to="/sign_in">Sign Up</Link>
             </div>
           </div>
         </Container>

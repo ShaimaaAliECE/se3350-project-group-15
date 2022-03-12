@@ -9,7 +9,7 @@ import Level3 from "./levels/Level3";
 import Header from "./components/Header"
 import SignInPageAnimation from './Authentication/SignInPageAnimation';
 import SignInPage from './Authentication/SignInPage';
-import AdminLoginPage from './Authentication/AdminLoginPage';
+import LoginPage from './Authentication/LoginPage';
 import AdminPage from './components/AdminPage';
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
           <Route path="/level3" element={<Level3 />} />
           {/*Auth*/}
           <Route path="/sign_in" element={<SignInPage/>} />
-          <Route path="/admin_login" element={<AdminLoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/admin_page" element={<AdminPage />} />
         </Routes>
     </div>

@@ -1,7 +1,16 @@
-import React from "react";
+import { React, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 
 export default function AdminPage() {
+  
+  // make sure only admin can view this page!
+  useEffect(() => {
+    if (localStorage.userEmail != "admin@123.com") {
+      //nav to home page
+      window.location = "/";
+    }
+  });
+
   return (
     <div>
       <h1>AdminPage</h1>

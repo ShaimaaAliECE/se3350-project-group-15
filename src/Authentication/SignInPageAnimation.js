@@ -10,14 +10,17 @@ export default function SignInPageAnimation() {
         <div style={{ marginTop: "50px", marginBottom: "50px" }}>
           <TypingIcon />
         </div>
-        <Container className="d-flex align-items-center justify-content-center">
+        <Container
+          className="d-flex align-items-center justify-content-center"
+          style={{ minHeight: "90vh" }}
+        >
           <div className="w-100" style={{ maxWidth: "400px" }}>
             {/* Third Party Sign-in */}
             <GoogleSignIn />
             <GithubSignIn />
-            {/* admin login */}
+            {/* login */}
             <div className="w-100 text-center mt-2">
-              Login as admin? <Link to="/admin_login">Log In</Link>
+            Already have an account? <Link to="/login">Log In</Link>
             </div>
           </div>
         </Container>
