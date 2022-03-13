@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { GithubSignIn, GoogleSignIn } from "./ThirdPartySignIn";
 import { auth } from "./firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useAlert } from "react-alert";
 
 export default function SignInPage() {
   const emailRef = useRef();
@@ -12,7 +11,6 @@ export default function SignInPage() {
   const passwordConfirmRef = useRef();
   const [error, setError] = useState(""); //Henry: for handleSubmit()
   const [loading, setLoading] = useState(false); //Henry: for handleSubmit()
-  const alert = useAlert(); //Henry: fancy alert
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -36,8 +34,7 @@ export default function SignInPage() {
           window.location = "/";
         })
         .catch((error) => {
-          const errorMessage = error.message;
-          alert.error(errorMessage);
+          setError(error.message);
         });
     } catch (err) {
       setError("Failed to create an account");
