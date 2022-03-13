@@ -8,6 +8,8 @@ import InstructionPanel from "../components/InstructionPanel";
 import { doc, addDoc, collection } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
 import { useAlert } from "react-alert";
+import ReactStoreIndicator from 'react-score-indicator'
+
 
 const helper = new Helper();
 
@@ -155,6 +157,11 @@ export default function Level3() {
 
       {/* store user score/time in firebase function testing */}
       <button onClick={handleSubmit}>Submit Answer</button>
+      {/* show player score */}
+      <ReactStoreIndicator
+        value={34}
+        maxValue={100}
+      />
     </div>
   );
 }
