@@ -11,7 +11,7 @@ import { CookiesProvider } from "react-cookie";
 const options = {
   // you can also just use 'bottom center'
   position: positions.BOTTOM_RIGHT,
-  timeout: 5000,
+  timeout: 1000,
   offset: "30px",
   // you can also just use 'scale'
   transition: transitions.SCALE,
