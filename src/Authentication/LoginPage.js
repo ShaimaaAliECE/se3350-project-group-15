@@ -46,13 +46,12 @@ export default function LoginPage() {
 
   async function resetPassword() {
     let userEmail = emailRef.current.value;
-
     //forget password? -> send reset password email
     await sendPasswordResetEmail(auth, userEmail)
       .then(() => {
         // Password reset email sent!
-        alert.show("We sent you an email to reset your password.", {
-          timeout: 3000,
+        alert.show(`We sent an email to ${userEmail} to reset your password.`, {
+          timeout: 3000
         });
       })
       .catch((error) => {

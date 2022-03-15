@@ -8,7 +8,7 @@ export default function SquareBtnStyleWithInput(props) {
     if (event.target.value === event.target.id) {
       props.setCurrentPoint(props.currentPoint + 1);
       event.target.disabled = true;
-      alert.show("correct");
+      alert.success("correct");
     } else if (event.target.value === "") {
     } else {
       event.target.value = "";
