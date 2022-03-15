@@ -7,7 +7,6 @@ import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";
 import Level3 from "./levels/Level3";
 import Header from "./components/Header"
-import SignInPageAnimation from './Authentication/SignInPageAnimation';
 import SignInPage from './Authentication/SignInPage';
 import LoginPage from './Authentication/LoginPage';
 import AdminPage from './components/AdminPage';
