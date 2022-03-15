@@ -77,9 +77,9 @@ export default function Level3() {
         timeSpent: timeSpent,
         dateTime: datetime,
       });
-      alert.show("Submitted record successfully");
+      alert.show("Submitted record successfully", {timeout: 1500});
     } else {
-      alert.error("please sign in first!");
+      alert.error("please sign in first!", {timeout: 1500});
     }
   }
 
