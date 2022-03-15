@@ -2,7 +2,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { auth } from "./firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { useAlert } from "react-alert";
 
 export default function LoginPage() {
@@ -14,36 +17,48 @@ export default function LoginPage() {
 
   async function handleLogin(e) {
     e.preventDefault();
-    try {
-      setError("");
-      setLoading(true);
-      let userEmail = emailRef.current.value;
-      let password = passwordRef.current.value;
-      let userName = userEmail.substring(0, userEmail.indexOf("@"));
-      console.log("userName->" + userName); //testing
-      //firebase -> signInWithEmailAndPassword
-      await signInWithEmailAndPassword(auth, userEmail, password)
-        .then((userCredential) => {
-          localStorage.setItem("userEmail", userEmail);
-          localStorage.setItem("userName", userName);
-          //if login as admin -> nav to admin page
-          if (userCredential.user.email == "admin@123.com") {
-            window.location = "/admin_page";
-          } else {
-            //if login as player -> nav to home page
-            window.location = "/";
-          }
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert.error(errorMessage);
-        });
-    } catch (err) {
-      setError("Failed to create an account");
-      console.log(err);
-    }
+    setLoading(true);
+    let userEmail = emailRef.current.value;
+    let password = passwordRef.current.value;
+    let userName = userEmail.substring(0, userEmail.indexOf("@"));
+    console.log("userName->" + userName); //testing
+
+    //firebase -> signInWithEmailAndPassword
+    await signInWithEmailAndPassword(auth, userEmail, password)
+      .then((userCredential) => {
+        localStorage.setItem("userEmail", userEmail);
+        localStorage.setItem("userName", userName);
+        //if login as admin -> nav to admin page
+        if (userCredential.user.email == "admin@123.com") {
+          window.location = "/admin_page";
+        } else {
+          //if login as player -> nav to home page
+          window.location = "/";
+        }
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
+
     setLoading(false);
+  }
+
+  async function resetPassword() {
+    let userEmail = emailRef.current.value;
+
+    //forget password? -> send reset password email
+    await sendPasswordResetEmail(auth, userEmail)
+      .then(() => {
+        // Password reset email sent!
+        alert.show("We sent you an email to reset your password.", {
+          timeout: 3000,
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert.error(errorMessage, { timeout: 3000 });
+      });
   }
 
   return (
@@ -77,7 +92,12 @@ export default function LoginPage() {
                       required
                     />
                   </Form.Group>
-
+                  <div className="w-100 text-center mt-2">
+                    Forget password?{" "}
+                    <Link to="#" onClick={resetPassword}>
+                      Send me an email to reset
+                    </Link>
+                  </div>
                   <Button
                     disabled={loading}
                     className="w-100"
