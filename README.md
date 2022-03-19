@@ -11,27 +11,27 @@ Create an educational game in a web or mobile application that helps undergradua
 * **Level 1:**  (__Must Have__)
 
   * [X] A set of 10 numbers are randomly generated out of the range (1-20) **(updated on Jan. 24th at 09:40 am)**
-  * [ ] The steps of the algorithm would be executed as visual animation accompanied with explanation texts
+  * [X] The steps of the algorithm would be executed as visual animation accompanied with explanation texts
     e.g., [mergesortAV](https://opendsa-server.cs.vt.edu/embed/mergesortAV) (this link is provided as an example of the idea and is not to be blindly replicated)
-  * [ ] The animation should also be interactive in order to keep the user engaged. **(*clarification* updated on Feb. 14th at 10:18 am)**
-  * [ ] The merging steps are important to understand the algorithm so the user should see them done step by step which also applies to the rest of the levels. **(*clarification* updated on Feb. 14th at 10:18 am)**
+  * [X] The animation should also be interactive in order to keep the user engaged. **(*clarification* updated on Feb. 14th at 10:18 am)**
+  * [X] The merging steps are important to understand the algorithm so the user should see them done step by step which also applies to the rest of the levels. **(*clarification* updated on Feb. 14th at 10:18 am)**
 * **Level 2:** (__Must Have__)
 
-  * [ ] A set of 10 numbers are randomly generated out of the range (1-20) **(updated on Jan. 24th at 09:40 am)**
-  * [ ] The steps of the algorithm are displayed in the text allowing the user to move the numbers according to the current step.
+  * [X] A set of 10 numbers are randomly generated out of the range (1-20) **(updated on Jan. 24th at 09:40 am)**
+  * [X] The steps of the algorithm are displayed in the text allowing the user to move the numbers according to the current step.
 
   * Feedback should be provided at each step **(updated on Jan. 24th at 09:40 am)**
-    * [ ] Positive feedback (visual and audio) when the step is correct
-    * [ ] Negative feedback (visual and audio) when the step is incorrect
+    * [X] Positive feedback (visual and audio) when the step is correct
+    * [X] Negative feedback (visual and audio) when the step is incorrect
 * **Level 3:** (__Must Have__)
 
-  * [ ] A set of 10 numbers are randomly generated out of the range (1-20)
-  * [ ] The user is to decide what needs to be done at every step
+  * [X] A set of 10 numbers are randomly generated out of the range (1-20)
+  * [X] The user is to decide what needs to be done at every step
 
   * Feedback should be provided at each step
 
-    * [ ] Positive feedback (visual and audio) when the step is correct
-    * [ ] Negative feedback (visual and audio) when the step is incorrect
+    * [X] Positive feedback (visual and audio) when the step is correct
+    * [X] Negative feedback (visual and audio) when the step is incorrect
 * **Level 4:** (*Should Have*)
 
   * [ ] A set of 20 numbers are randomly generated out of the range (1-50)
