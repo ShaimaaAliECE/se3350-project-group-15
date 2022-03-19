@@ -5,7 +5,7 @@ export default function AdminPage() {
   
   // make sure only admin can view this page!
   useEffect(() => {
-    if (localStorage.userEmail != "admin@123.com") {
+    if (localStorage.userEmail !== "admin@123.com") {
       //nav to home page
       window.location = "/";
     }

@@ -1,7 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from 'react';
 import HomePage from "./levels/HomePage";
 import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";

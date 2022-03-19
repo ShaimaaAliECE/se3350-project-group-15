@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { auth } from "./firebase";
@@ -29,7 +29,7 @@ export default function LoginPage() {
         localStorage.setItem("userEmail", userEmail);
         localStorage.setItem("userName", userName);
         //if login as admin -> nav to admin page
-        if (userCredential.user.email == "admin@123.com") {
+        if (userCredential.user.email === "admin@123.com") {
           window.location = "/admin_page";
         } else {
           //if login as player -> nav to home page

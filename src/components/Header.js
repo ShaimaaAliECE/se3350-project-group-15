@@ -1,14 +1,13 @@
 import React from "react";
 import PersonIcon from '@mui/icons-material/Person';
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
-import { logOut, db } from "../Authentication/firebase";
+import { logOut } from "../Authentication/firebase";
 
 export default function Header() {
   const [isSignedIn, setIsSignedIn] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState(null);
-  const [currentPage, setCurrentPage] = React.useState("home");
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (localStorage.getItem("userEmail") != null) {
       setUserEmail(localStorage.getItem("userEmail"));
       setIsSignedIn(true);

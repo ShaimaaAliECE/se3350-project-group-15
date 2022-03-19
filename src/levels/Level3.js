@@ -1,11 +1,10 @@
 import React from "react";
-import { useEffect, useState } from "react";
 import Helper from "../Helper/Helper";
 import SquareBtnStyle from "../components/SquareBtnStyle";
 import SquareBtnStyleWithInput from "../components/SquareBtnStyleWithInput";
 import LevelControl from "../components/LevelControl";
 import InstructionPanel from "../components/InstructionPanel";
-import { doc, addDoc, collection } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
 import { useAlert } from "react-alert";
 import ReactStoreIndicator from 'react-score-indicator'
@@ -77,9 +76,9 @@ export default function Level3() {
         timeSpent: timeSpent,
         dateTime: datetime,
       });
-      alert.show("Submitted record successfully", {timeout: 1500});
+      alert.show("Submitted record successfully", { timeout: 1500 });
     } else {
-      alert.error("please sign in first!", {timeout: 1500});
+      alert.error("please sign in first!", { timeout: 1500 });
     }
   }
 
