@@ -1,9 +1,10 @@
 import { useAlert } from "react-alert";
+import { useEffect } from "react";
 //From Ives Luo
-
+export let error = 0;
 export default function SquareBtnStyleWithInput(props) {
-  const alert = useAlert(); //Henry: fancy alert
 
+  const alert = useAlert(); //Henry: fancy alert
   const checkAns = (event) => {
     if (event.target.value === event.target.id) {
       props.setCurrentPoint(props.currentPoint + 1);
@@ -12,7 +13,9 @@ export default function SquareBtnStyleWithInput(props) {
     } else if (event.target.value === "") {
     } else {
       event.target.value = "";
-      alert.error("wrong answer");
+      error++;
+      props.currentError(error);
+      alert.error("wrong answer " + error);
     }
   };
 
@@ -30,3 +33,4 @@ export default function SquareBtnStyleWithInput(props) {
     />
   );
 }
+
