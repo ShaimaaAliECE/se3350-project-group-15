@@ -4,6 +4,7 @@ import SquareBtnStyle from '../components/SquareBtnStyle';
 import SquareBtnStyleWithInput from '../components/SquareBtnStyleWithInput';
 import LevelControl from '../components/LevelControl';
 import InstructionPanel from '../components/InstructionPanel';
+import Timer from '../components/Timer';
 
 const helper = new Helper();
 
@@ -48,9 +49,14 @@ export default function Level2() {
         }
     }
 
+    
+
     return (
         <div className="Level1">
             <h1>Level 2</h1>
+            
+            <Timer/>
+
             <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} currentLevel={currentLevel} currentPoint={currentPoint} />
             <div className="display-area">
                 <div className="display-area-row">
