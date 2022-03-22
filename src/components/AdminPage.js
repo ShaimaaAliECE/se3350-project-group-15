@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-import {doc, getDoc, collection, getCollection} from "firebase/firestore";
+import { doc, getDoc, collection, getCollection } from "firebase/firestore";
 import firebase, { db } from "../Authentication/firebase";
 
 export default function AdminPage() {
@@ -8,19 +8,23 @@ export default function AdminPage() {
 
   //Getting the information of each doc in the collection
 
-  const gameRecords= collection(db,'gameRecords').doc('32zL5MbteVo5lY4mFRQI');
+
+  const recordDoc = doc(db,'gameRecords','32zL5MbteVo5lY4mFRQI');
   const [gameData, setGameData] = useState();
-  async function readRecordData(){
-    const mySnapshot = await getDoc(gameRecords);
-    if(mySnapshot.exists()){
+
+  async function readRecordData() {
+    const mySnapshot = await getDoc(recordDoc);
+    if (mySnapshot.exists()) {
       setGameData(mySnapshot);
+      console.log(mySnapshot);
+      //console.log(gameData);
     }
 
   };
 
 
 
-  
+
   // make sure only admin can view this page!
   useEffect(() => {
     if (localStorage.userEmail !== "admin@123.com") {
@@ -28,9 +32,6 @@ export default function AdminPage() {
       window.location = "/";
     }
   });
-
-
-
 
   return (
     <div>
@@ -57,8 +58,8 @@ export default function AdminPage() {
           <Card.Header>Ouda</Card.Header>
           <Card.Body>
             <Card.Title>{variant} Card Title </Card.Title>
-            <Card.Text>
-              {gameData}
+            <Card.Text onClick={readRecordData}>
+              Click me
             </Card.Text>
           </Card.Body>
         </Card>
