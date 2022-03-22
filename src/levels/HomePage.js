@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import '../assets/css/Background.css';
 import actualTime from '../Helper/Clock.js';
 
-
 export default function LevelMain() {
 
     React.useEffect(() => {
-        // Update the document title using the browser API
+        // Get all the clock elements
         let element = document.getElementsByClassName('clock')[0].children;
         actualTime(element)
     });
@@ -32,6 +31,7 @@ export default function LevelMain() {
                     </Link>
                 </li>
             </div>
+
             <div className="position-absolute top-50 start-50 translate-middle w-auto h-auto">
                 <article class="clock">
                     <div class="hours-container">
