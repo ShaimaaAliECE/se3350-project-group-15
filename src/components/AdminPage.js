@@ -1,7 +1,25 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
+import {doc, getDoc, collection, getCollection} from "firebase/firestore";
+import firebase, { db } from "../Authentication/firebase";
 
 export default function AdminPage() {
+  // this place is used for add, remove and modify actions of player records.
+
+  //Getting the information of each doc in the collection
+
+  const gameRecords= collection(db,'gameRecords').doc('32zL5MbteVo5lY4mFRQI');
+  const [gameData, setGameData] = useState();
+  async function readRecordData(){
+    const mySnapshot = await getDoc(gameRecords);
+    if(mySnapshot.exists()){
+      setGameData(mySnapshot);
+    }
+
+  };
+
+
+
   
   // make sure only admin can view this page!
   useEffect(() => {
@@ -10,6 +28,9 @@ export default function AdminPage() {
       window.location = "/";
     }
   });
+
+
+
 
   return (
     <div>
@@ -37,8 +58,7 @@ export default function AdminPage() {
           <Card.Body>
             <Card.Title>{variant} Card Title </Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              {gameData}
             </Card.Text>
           </Card.Body>
         </Card>
