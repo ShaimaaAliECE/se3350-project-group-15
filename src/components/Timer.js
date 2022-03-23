@@ -36,11 +36,12 @@ export default function Timer(){
 
     return (
         <div className="Timer"> 
-        <div>
+            <div>
             <span> {""+ Math.floor((time / 60000) %60)}:</span>
             <span> {""+ Math.floor((time / 1000) %60)}:</span>
             <span> {""+ ((time / 10) %100)} </span>
             </div>
+        
         <div> 
             
                  <button onClick={()=> setTimeOn(true)}>Start Timing</button>
