@@ -8,7 +8,8 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
 import { useAlert } from "react-alert";
 import ReactStoreIndicator from 'react-score-indicator'
-
+import Timer2 from '../components/Timer2'
+import useState from "react";
 
 const helper = new Helper();
 
@@ -22,6 +23,9 @@ export default function Level3() {
   const [currentStep, setCurrentStep] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
 
+  
+
+  
   const levelStart = () => {
     let generate = helper.generateNumberArray(10, 20);
     setCurrentQuestion(generate);
@@ -82,14 +86,23 @@ export default function Level3() {
     }
   }
 
+
+
   return (
     <div className="Level1">
       <h1>Level 3</h1>
+
       <LevelControl
         start={levelStart}
         restart={levelRestart}
         hasStarted={hasStarted}
       />
+    
+    {`<Timer2/>`}
+
+
+    
+      
       <div className="display-area">
         <div className="display-area-row">
           {currentQuestion.map((item, index) => {
@@ -161,6 +174,9 @@ export default function Level3() {
         value={34}
         maxValue={100}
       />
+
+
+
     </div>
   );
 }
