@@ -5,6 +5,8 @@ import correctSound from "../assets/sounds/correct.wav";
 import wrongSound from "../assets/sounds/wrong.mp3";
 //From Ives Luo
 
+let currentScore = 0;
+
 export default function SquareBtnStyleWithInput(props) {
   const alert = useAlert(); //Henry: fancy alert
   const [playCorrectSound, setCorrectSound] = useSound(correctSound);
@@ -14,6 +16,8 @@ export default function SquareBtnStyleWithInput(props) {
   const checkAns = (event) => {
     if (event.target.value === event.target.id) {
       props.setCurrentPoint(props.currentPoint + 1);
+      currentScore++;
+      props.setScore(currentScore);
       event.target.disabled = true;
       setInputColor('#b9fbc0');
       alert.success("correct");

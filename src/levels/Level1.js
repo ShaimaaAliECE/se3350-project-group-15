@@ -3,6 +3,7 @@ import Helper from '../Helper/Helper';
 import SquareBtnStyle from '../components/SquareBtnStyle';
 import LevelControl from '../components/LevelControl';
 import InstructionPanel from '../components/InstructionPanel';
+import { doc } from 'firebase/firestore';
 
 const helper = new Helper();
 
@@ -15,7 +16,7 @@ export default function Level1() {
     const displayArray = summaryArray.slice(0, (currentStep) - 1);
 
     const levelStart = () => {
-        let generate = helper.generateNumberArray(10, 20)
+        let generate = helper.generateNumberArray(6, 20)
         setCurrentQuestion(generate);
         setSummaryArray(helper.generateMap(generate));
         setCurrentStep(1);
@@ -23,7 +24,7 @@ export default function Level1() {
     }
 
     const levelRestart = () => {
-        let generate = helper.generateNumberArray(10, 20)
+        let generate = helper.generateNumberArray(6, 20)
         setCurrentQuestion(generate);
         setSummaryArray(helper.generateMap(generate));
         setCurrentStep(1);

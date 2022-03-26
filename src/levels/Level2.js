@@ -49,13 +49,12 @@ export default function Level2() {
         }
     }
 
-    
 
     return (
         <div className="Level1">
             <h1>Level 2</h1>
             
-            <Timer/>
+
 
             <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} currentLevel={currentLevel} currentPoint={currentPoint} />
             <div className="display-area">
