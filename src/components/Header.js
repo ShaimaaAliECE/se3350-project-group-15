@@ -30,6 +30,7 @@ export default function Header() {
                             {isSignedIn ? <div>Signed in as: {userEmail}</div> : <div></div>}
                         </Navbar.Text>
 
+
                         <Button
                             variant="light"
                             onClick={isSignedIn ? null : null}
