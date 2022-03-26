@@ -30,6 +30,11 @@ export default function LevelMain() {
                         LVL:  On your Own
                     </Link>
                 </li>
+                <li>
+                    <Link to={"/level3"} className="level3">
+                        LVL:  Custom Level
+                    </Link>
+                </li>
             </div>
 
             <div className="position-absolute top-50 start-50 translate-middle w-auto h-auto">

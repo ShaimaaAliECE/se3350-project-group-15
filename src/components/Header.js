@@ -20,7 +20,7 @@ export default function Header() {
                                 <NavDropdown.Item href="/level2">Level2</NavDropdown.Item>
                                 <NavDropdown.Item href="/level3">Level3</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                <NavDropdown.Item href="/customLevel">Custom Level</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
