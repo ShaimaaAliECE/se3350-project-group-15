@@ -49,14 +49,14 @@ export default function Level2() {
         }
     }
 
+    const getScore = () => {
+        return '';
+      }
 
     return (
         <div className="Level1">
             <h1>Level 2</h1>
-            
-
-
-            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} currentLevel={currentLevel} currentPoint={currentPoint} />
+            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} currentLevel={currentLevel} currentPoint={currentPoint} getScore={getScore}/>
             <div className="display-area">
                 <div className="display-area-row">
                     {currentQuestion.map((item, index) => {

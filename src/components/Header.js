@@ -1,7 +1,8 @@
 import React from "react";
-import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from "@mui/icons-material/Person";
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
 import { logOut } from "../Authentication/firebase";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isSignedIn, setIsSignedIn] = React.useState(false);
@@ -11,7 +12,6 @@ export default function Header() {
     if (localStorage.getItem("userEmail") != null) {
       setUserEmail(localStorage.getItem("userEmail"));
       setIsSignedIn(true);
-      //TODO: check if this email already exists in our DB
     }
   }, []);
 
@@ -28,7 +28,9 @@ export default function Header() {
                 <NavDropdown.Item href="/level1">Level1</NavDropdown.Item>
                 <NavDropdown.Item href="/level2">Level2</NavDropdown.Item>
                 <NavDropdown.Item href="/level3">Level3</NavDropdown.Item>
-                <NavDropdown.Item href="/customLevel">Custom level</NavDropdown.Item>
+                <NavDropdown.Item href="/customLevel">
+                  Custom level
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">
                   Separated link
