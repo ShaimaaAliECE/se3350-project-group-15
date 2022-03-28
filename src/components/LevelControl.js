@@ -40,7 +40,7 @@ export default function LevelControl(props) {
                 Restart
             </Button>
             {pointIndicator(props.currentLevel, props.currentPoint)}
-        <QuarBtnError error={1} />
+        {/* <QuarBtnError error={1} /> */}
         </div>
     )
 }

@@ -29,8 +29,6 @@ export default function SquareBtnStyleWithInput(props) {
     } else {
       event.target.value = "";
       error++;
-
-
       if (error !== 3) {
         alert.error("wrong answer " + error);
         setInputColor('#fe6d73');
