@@ -65,7 +65,7 @@ export default function Footer(props) {
                 }
                 return CustomLevelDictionary[2]
             default:
-                return Level1Dictionary;
+                return Level3Dictionary;
         }
     }
 
