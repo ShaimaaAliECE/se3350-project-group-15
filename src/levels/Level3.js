@@ -158,7 +158,7 @@ export default function Level3() {
       <button onClick={handleSubmit}>Submit Answer</button>
       {/* show player score */}
       <ReactStoreIndicator
-        value={34}
+        value={currentPoint}
         maxValue={100}
       />
     </div>
