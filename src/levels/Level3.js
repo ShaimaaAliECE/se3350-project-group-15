@@ -61,12 +61,7 @@ export default function Level3() {
     let timeSpent = `${60}s`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
-    let datetime = ` ${currentdate.getDate()} /
-                 ${currentdate.getMonth() + 1} /
-                 ${currentdate.getFullYear()} -
-                 ${currentdate.getHours()} :
-                 ${currentdate.getMinutes()} : 
-                 ${currentdate.getSeconds()}`;
+    let datetime = ` ${currentdate.getDate()} /${currentdate.getMonth() + 1} /${currentdate.getFullYear()} -${currentdate.getHours()} :${currentdate.getMinutes()} : ${currentdate.getSeconds()}`;
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
