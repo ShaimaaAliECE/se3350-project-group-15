@@ -21,7 +21,7 @@ export default function Level3() {
   const [currentStep, setCurrentStep] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
   const [time, setTime] = React.useState(0); //time from Timer component
-  const [score, setScore] = React.useState(0);//testing
+  const [score, setScore] = React.useState(0);
 
   const levelStart = () => {
     let generate = helper.generateNumberArray(10, 20);
@@ -118,7 +118,7 @@ export default function Level3() {
                         id={item}
                         currentPoint={currentPoint}
                         setCurrentPoint={setCurrentPoint}
-                        setScore={setScore}//testing
+                        setScore={setScore}
                       ></SquareBtnStyleWithInput>
                     );
                   })}
@@ -137,7 +137,7 @@ export default function Level3() {
                           id={num}
                           currentPoint={currentPoint}
                           setCurrentPoint={setCurrentPoint}
-                          setScore={setScore}//testing
+                          setScore={setScore}
                         ></SquareBtnStyleWithInput>
                       ))}
                       <SquareBtnStyle opacity />

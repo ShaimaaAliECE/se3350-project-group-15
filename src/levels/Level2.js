@@ -14,6 +14,7 @@ export default function Level2() {
   const [summaryArray, setSummaryArray] = React.useState([]);
   const [hasStarted, setHasStarted] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState(0);
+  const [score, setScore] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
   const errorCount = 0;
 
@@ -49,8 +50,8 @@ export default function Level2() {
     }
   };
   const getScore = () => {
-    return '';
-  }
+    return score;
+  };
   return (
     <div className="Level2">
       <h1>Level 2</h1>
@@ -60,7 +61,8 @@ export default function Level2() {
         hasStarted={hasStarted}
         currentLevel={currentLevel}
         currentPoint={currentPoint}
-        getScore={getScore} />
+        getScore={getScore}
+      />
       <div className="display-area">
         <div className="display-area-row">
           {currentQuestion.map((item, index) => {
@@ -73,43 +75,48 @@ export default function Level2() {
         </div>
         <div className="display-area-dynamic">
           {displayArray.map((item, i) => {
-            if (item.length === currentQuestion.length &&
-              item[0].length !== 1) {
-              return <div className="display-area-row" key={i}>
-                {item.map((item, index) => {
-                  return (
-                    <SquareBtnStyleWithInput
-                      key={index}
-                      id={item}
-                      currentPoint={currentPoint}
-                      setCurrentPoint={setCurrentPoint}>
-
-                    </SquareBtnStyleWithInput>
-                  );
-                })}
-              </div>
-            } else {
-              return <div className="display-area-row" key={i}>
-                <SquareBtnStyle opacity />
-                {item.map((subItem, j) => (
-                  <div className="display-area-col" key={j}>
-                    {j === item.length / 2 && <SquareBtnStyle opacity />}
-                    {subItem.map((num, k) => (
+            if (
+              item.length === currentQuestion.length &&
+              item[0].length !== 1
+            ) {
+              return (
+                <div className="display-area-row" key={i}>
+                  {item.map((item, index) => {
+                    return (
                       <SquareBtnStyleWithInput
-                        key={k}
-                        id={num}
+                        key={index}
+                        id={item}
                         currentPoint={currentPoint}
-                        setCurrentPoint={setCurrentPoint}>
-
-                      </SquareBtnStyleWithInput>
-                    ))}
-                    <SquareBtnStyle opacity />
-                  </div>
-                ))}
-              </div>
+                        setCurrentPoint={setCurrentPoint}
+                        setScore={setScore}
+                      ></SquareBtnStyleWithInput>
+                    );
+                  })}
+                </div>
+              );
+            } else {
+              return (
+                <div className="display-area-row" key={i}>
+                  <SquareBtnStyle opacity />
+                  {item.map((subItem, j) => (
+                    <div className="display-area-col" key={j}>
+                      {j === item.length / 2 && <SquareBtnStyle opacity />}
+                      {subItem.map((num, k) => (
+                        <SquareBtnStyleWithInput
+                          key={k}
+                          id={num}
+                          currentPoint={currentPoint}
+                          setCurrentPoint={setCurrentPoint}
+                          setScore={setScore}
+                        ></SquareBtnStyleWithInput>
+                      ))}
+                      <SquareBtnStyle opacity />
+                    </div>
+                  ))}
+                </div>
+              );
             }
-          }
-          )}
+          })}
         </div>
       </div>
 
@@ -120,9 +127,11 @@ export default function Level2() {
         canNext={
           currentStep !== 0 &&
           currentStep < summaryArray.length + 1 &&
-          currentPoint === currentQuestion.length}
+          currentPoint === currentQuestion.length
+        }
         onPrevStep={previousStep}
-        onNextStep={nextStep} />
-    </div >
+        onNextStep={nextStep}
+      />
+    </div>
   );
 }
