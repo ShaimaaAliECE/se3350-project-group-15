@@ -2,10 +2,11 @@ import { propTypes } from "react-score-indicator";
 import React, { useState } from 'react'
 
 
-export default function Timer(){
+export default function Timer(props){
 
     const [time, setTime] =useState(0)
     const [timerOn, setTimeOn]=React.useState(false)
+    props.getTime(time);//pass time to level component
 
   /*var timer = document.querySelector("#timer");
   var number = 10;

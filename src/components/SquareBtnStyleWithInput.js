@@ -5,13 +5,13 @@ import { useState } from "react";
 import useSound from "use-sound";
 import correctSound from "../assets/sounds/correct.wav";
 import wrongSound from "../assets/sounds/wrong.mp3";
-
-import { Link } from "react-router-dom";
 //From Ives Luo
 export let error = 0;
 export function errorAlert() {
   alert("You make error 3 times");
 }
+let currentScore = 0;
+
 export default function SquareBtnStyleWithInput(props) {
   const alert = useAlert(); //Henry: fancy alert
   const [playCorrectSound, setCorrectSound] = useSound(correctSound);
@@ -21,6 +21,8 @@ export default function SquareBtnStyleWithInput(props) {
   const checkAns = (event) => {
     if (event.target.value === event.target.id) {
       props.setCurrentPoint(props.currentPoint + 1);
+      currentScore++;
+      props.setScore(currentScore);
       event.target.disabled = true;
       setInputColor('#b9fbc0');
       alert.success("correct");

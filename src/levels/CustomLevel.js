@@ -2,13 +2,13 @@ import React from 'react';
 import Helper from '../Helper/Helper';
 import { Button, Col } from 'react-bootstrap';
 import { useAlert } from "react-alert";
-import ReactStoreIndicator from 'react-score-indicator'
+import ReactScoreIndicator from 'react-score-indicator'
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
- import SquareBtnStyle from '../components/SquareBtnStyle';
+import SquareBtnStyle from '../components/SquareBtnStyle';
 import InstructionPanel from '../components/InstructionPanel';
 import SquareBtnStyleWithInput from "../components/SquareBtnStyleWithInput";
-
+import { Summarize } from '@mui/icons-material';
 
 const helper = new Helper();
 
@@ -24,8 +24,12 @@ export default function CustomLevel() {
   const [currentArrayValues, setCurrentArrayValues] = React.useState([]);
   const [currentArrayValuesStr, setCurrentArrayValuesStr] = React.useState('');
   const [runDisabled, setRunDisabled] = React.useState(false);
+  const [score,setScore] =  React.useState(0);
+  const [submitEnabled,setSubmitEnabled] =  React.useState(false);
+  const [time, setTime] = React.useState(0); //time from Timer component
   const displayArray = summaryArray.slice(0, (currentStep) - 1);
-  
+
+
   const levelStart = () => {
     let generate = [];
     if (currentArrayValues.length>0 && currentArrayValues.length === curentArraySize) {
@@ -89,18 +93,13 @@ export default function CustomLevel() {
     setCurrentArrayValuesStr(val.target.value)
   }
 
+  //maybe be when user finishes the task, the system will automatically save player's game record (time + mistakes)
   async function handleSubmit(e) {
     // e.preventDefault();
-    let score = 100;
-    let timeSpent = `${60}s`;
+    let timeSpent = `${Math.floor((time / 60000) %60)} minutes ${Math.floor((time / 1000) %60)} seconds`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
-    let datetime = ` ${currentdate.getDate()} /
-                 ${currentdate.getMonth() + 1} /
-                 ${currentdate.getFullYear()} -
-                 ${currentdate.getHours()} :
-                 ${currentdate.getMinutes()} : 
-                 ${currentdate.getSeconds()}`;
+    let datetime = ` ${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
@@ -109,6 +108,7 @@ export default function CustomLevel() {
         score: score,
         timeSpent: timeSpent,
         dateTime: datetime,
+        level: 'Custom Level'
       });
       alert.show("Submitted record successfully", { timeout: 1500 });
     } else {
@@ -174,6 +174,7 @@ export default function CustomLevel() {
                         id={item}
                         currentPoint={currentPoint}
                         setCurrentPoint={setCurrentPoint}
+                        setScore={setScore}//testing
                       ></SquareBtnStyleWithInput>
                     );
                   })}
@@ -192,6 +193,7 @@ export default function CustomLevel() {
                           id={num}
                           currentPoint={currentPoint}
                           setCurrentPoint={setCurrentPoint}
+                          setScore={setScore}//testing
                         ></SquareBtnStyleWithInput>
                       ))}
                       <SquareBtnStyle opacity />
@@ -217,12 +219,12 @@ export default function CustomLevel() {
       />
 
       {/* store user score/time in firebase function testing */}
-      <button onClick={handleSubmit}>Submit Answer</button>
+      <button className='submitBtn' onClick={handleSubmit} hidden={submitEnabled}>Submit Answer</button>
       {/* show player score */}
-      <ReactStoreIndicator
+      {/* <ReactScoreIndicator
         value={34}
         maxValue={100}
-      />
+      /> */}
     </div>
   )
 }
