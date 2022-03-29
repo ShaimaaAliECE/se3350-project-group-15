@@ -1,11 +1,22 @@
 import React from "react";
 import PersonIcon from '@mui/icons-material/Person';
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
+import { logOut } from '../Authentication/firebase';
 
 export default function Header() {
     const [isSignedIn, setIsSignedIn] = React.useState(false);
     const [userEmail, setUserEmail] = React.useState(null);
-    const [currentPage, setCurrentPage] = React.useState("home");
+    const [isAdmin, setIsAdmin] = React.useState(false);
+    React.useEffect(() => {
+        if (localStorage.getItem("userEmail") !== null) {
+            setIsSignedIn(true);
+            setUserEmail(localStorage.getItem("userEmail"));
+        }
+        if (userEmail === 'admin@123.com') {
+            setIsAdmin(true);
+        }
+    }, [isSignedIn]);
+
     return (
         <div className="Header">
             <Navbar className="header-container" variant="light" expand="lg">
@@ -23,19 +34,18 @@ export default function Header() {
                                 <NavDropdown.Item href="/level5">Level5</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="/customLevel">Custom Level</NavDropdown.Item>
+                                {isAdmin ? <NavDropdown.Item href="/admin_page">Admin Page</NavDropdown.Item> : ''}
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
                     <Navbar.Collapse className="justify-content-end">
                         <PersonIcon style={{ color: "white", marginRight: "5px" }} />
-                        <Navbar.Text style={{ color: "white", marginRight: "10px" }}>
+                        <Navbar.Text style={{ color: "black", marginRight: "10px" }}>
                             {isSignedIn ? <div>Signed in as: {userEmail}</div> : <div></div>}
                         </Navbar.Text>
-
-
                         <Button
                             variant="light"
-                            onClick={isSignedIn ? null : null}
+                            onClick={isSignedIn ? logOut : null}
                             href={isSignedIn ? "/" : "sign_in"}
                         >
                             {isSignedIn ? "Logout" : "Login"}
