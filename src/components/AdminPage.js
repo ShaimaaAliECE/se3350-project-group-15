@@ -97,17 +97,18 @@ export default function AdminPage() {
             bg="Primary"
             key="1"
             text={"dark"}
-            style={{ width: "18rem" }}
+            style={ {width: "18rem", margin: "auto", padding: "10px",} }
             className="mb-2"
+                       
           >
-            <Card.Header>{item[0]}</Card.Header>
-            <Card.Body>
-              <Card.Title>{item[1]}</Card.Title>
-              <Card.Text>{item[2]}</Card.Text>
-              <Card.Text>{item[3]}</Card.Text>
-              <Card.Text>{item[4]}</Card.Text>
-              <Card.Text>{item[5]}</Card.Text>
-            </Card.Body>
+              <Card.Header >{item[0]}</Card.Header>
+              <Card.Body>
+                <Card.Title>{item[1]}</Card.Title>
+                <Card.Text>{item[2]}</Card.Text>
+                <Card.Text>{item[3]}</Card.Text>
+                <Card.Text>{item[4]}</Card.Text>
+                <Card.Text>{item[5]}</Card.Text>
+              </Card.Body>
           </Card>
         }
         )
