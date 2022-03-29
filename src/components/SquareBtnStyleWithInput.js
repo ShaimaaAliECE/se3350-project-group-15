@@ -1,6 +1,6 @@
 import { useAlert } from "react-alert";
 import { useEffect } from "react";
-import "./Popup.css";
+import "../assets/css/Popup.css";
 import { useState } from "react";
 import useSound from "use-sound";
 import correctSound from "../assets/sounds/correct.wav";
@@ -9,14 +9,14 @@ import wrongSound from "../assets/sounds/wrong.mp3";
 import { Link } from "react-router-dom";
 //From Ives Luo
 export let error = 0;
-export function errorAlert(){
+export function errorAlert() {
   alert("You make error 3 times");
 }
 export default function SquareBtnStyleWithInput(props) {
   const alert = useAlert(); //Henry: fancy alert
   const [playCorrectSound, setCorrectSound] = useSound(correctSound);
   const [playWrongSound, setWrongSound] = useSound(wrongSound);
-  const [inputColor,setInputColor] = useState('');
+  const [inputColor, setInputColor] = useState('');
 
   const checkAns = (event) => {
     if (event.target.value === event.target.id) {
@@ -57,7 +57,7 @@ export default function SquareBtnStyleWithInput(props) {
       id={props.id}
       name="ansBox"
       onBlur={checkAns}
-      style={{backgroundColor: inputColor}}
+      style={{ backgroundColor: inputColor }}
     />
   );
 }
