@@ -19,6 +19,8 @@ export default function Header() {
                                 <NavDropdown.Item href="/level1">Level1</NavDropdown.Item>
                                 <NavDropdown.Item href="/level2">Level2</NavDropdown.Item>
                                 <NavDropdown.Item href="/level3">Level3</NavDropdown.Item>
+                                <NavDropdown.Item href="/level4">Level4</NavDropdown.Item>
+                                <NavDropdown.Item href="/level5">Level5</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="/customLevel">Custom Level</NavDropdown.Item>
                             </NavDropdown>
@@ -34,7 +36,7 @@ export default function Header() {
                         <Button
                             variant="light"
                             onClick={isSignedIn ? null : null}
-                            href={isSignedIn ? "/" : "/sign_up"}
+                            href={isSignedIn ? "/" : "sign_in"}
                         >
                             {isSignedIn ? "Logout" : "Login"}
                         </Button>
