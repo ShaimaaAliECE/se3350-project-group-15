@@ -16,7 +16,6 @@ export default function Header() {
       setIsAdmin(true);
     }
   }, [isSignedIn]);
-
   return (
     <div className="Header">
       <Navbar className="header-container" variant="light" expand="lg">
