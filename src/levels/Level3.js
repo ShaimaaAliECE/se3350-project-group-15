@@ -70,12 +70,7 @@ export default function Level3() {
     let timeSpent = `${Math.floor((time / 60000) %60)} minutes ${Math.floor((time / 1000) %60)} seconds`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
-    let datetime = ` ${currentdate.getDate()} /
-                 ${currentdate.getMonth() + 1} /
-                 ${currentdate.getFullYear()} -
-                 ${currentdate.getHours()} :
-                 ${currentdate.getMinutes()} : 
-                 ${currentdate.getSeconds()}`;
+    let datetime = ` ${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
@@ -170,7 +165,8 @@ export default function Level3() {
       />
 
       {/* store user's mistakes+time in firebase */}
-      <button onClick={handleSubmit}>Submit Answer</button>
+      <button className='submitBtn' onClick={handleSubmit}>Submit Answer</button>
+
     </div>
   );
 }

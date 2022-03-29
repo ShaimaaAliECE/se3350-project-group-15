@@ -26,7 +26,9 @@ export default function CustomLevel() {
   const [runDisabled, setRunDisabled] = React.useState(false);
   const [score,setScore] =  React.useState(0);
   const [submitEnabled,setSubmitEnabled] =  React.useState(false);
+  const [time, setTime] = React.useState(0); //time from Timer component
   const displayArray = summaryArray.slice(0, (currentStep) - 1);
+
 
   const levelStart = () => {
     let generate = [];
@@ -94,15 +96,10 @@ export default function CustomLevel() {
   //maybe be when user finishes the task, the system will automatically save player's game record (time + mistakes)
   async function handleSubmit(e) {
     // e.preventDefault();
-    let timeSpent = `${60}s`;
+    let timeSpent = `${Math.floor((time / 60000) %60)} minutes ${Math.floor((time / 1000) %60)} seconds`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
-    let datetime = ` ${currentdate.getDate()} /
-                 ${currentdate.getMonth() + 1} /
-                 ${currentdate.getFullYear()} -
-                 ${currentdate.getHours()} :
-                 ${currentdate.getMinutes()} : 
-                 ${currentdate.getSeconds()}`;
+    let datetime = ` ${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
@@ -222,7 +219,7 @@ export default function CustomLevel() {
       />
 
       {/* store user score/time in firebase function testing */}
-      <button onClick={handleSubmit} hidden={submitEnabled}>Submit Answer</button>
+      <button className='submitBtn' onClick={handleSubmit} hidden={submitEnabled}>Submit Answer</button>
       {/* show player score */}
       {/* <ReactScoreIndicator
         value={34}

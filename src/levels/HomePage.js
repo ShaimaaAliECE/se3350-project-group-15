@@ -46,7 +46,7 @@ export default function LevelMain() {
         </li>
       </div>
 
-      <div className="position-absolute top-50 start-50 translate-middle w-auto h-auto">
+      <div className="position-absolute top-50 start-50 translate-middle w-auto h-auto" style={{marginTop:"80px"}}>
         <article class="clock">
           <div class="hours-container">
             <div class="hours"></div>
@@ -59,6 +59,7 @@ export default function LevelMain() {
           </div>
         </article>
       </div>
+      
     </div>
   );
 }

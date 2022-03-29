@@ -7,13 +7,19 @@ import { useNavigate } from "react-router-dom";
 export default function Header() {
   const [isSignedIn, setIsSignedIn] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState(null);
+  const [isAdmin, setIsAdmin] = React.useState(false);//testing
 
   React.useEffect(() => {
     if (localStorage.getItem("userEmail") != null) {
       setUserEmail(localStorage.getItem("userEmail"));
       setIsSignedIn(true);
+
+      setUserEmail(localStorage.getItem("userEmail"));
+      if (userEmail == "admin@123.com") {
+        setIsAdmin(true);
+      }
     }
-  }, []);
+  }, [isSignedIn]);
 
   return (
     <div className="Header">
@@ -28,6 +34,7 @@ export default function Header() {
                 <NavDropdown.Item href="/level1">Level1</NavDropdown.Item>
                 <NavDropdown.Item href="/level2">Level2</NavDropdown.Item>
                 <NavDropdown.Item href="/level3">Level3</NavDropdown.Item>
+                <NavDropdown.Item href="/admin_page" hidden={!isAdmin}>Admin Page</NavDropdown.Item>
                 <NavDropdown.Item href="/customLevel">
                   Custom level
                 </NavDropdown.Item>
