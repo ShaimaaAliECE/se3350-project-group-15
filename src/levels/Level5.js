@@ -84,7 +84,7 @@ export default function Level5() {
 
   return (
     <div className="Level1">
-      <h1>Level 3</h1>
+      <h1>Level 5</h1>
       <LevelControl
         start={levelStart}
         restart={levelRestart}
