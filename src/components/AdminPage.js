@@ -43,9 +43,10 @@ export default function AdminPage() {
     var innerQuery = [];
     querySnapshot.forEach((doc) => {
       var eachQuery = [];
-      eachQuery.push(doc.id);
-      eachQuery.push(doc.data().dateTime);
       eachQuery.push(doc.data().email);
+      eachQuery.push(doc.data().dateTime);
+      eachQuery.push(doc.id);
+      eachQuery.push(doc.data().level);
       eachQuery.push(doc.data().score);
       eachQuery.push(doc.data().timeSpent);
       console.log(eachQuery);
@@ -105,6 +106,7 @@ export default function AdminPage() {
               <Card.Text>{item[2]}</Card.Text>
               <Card.Text>{item[3]}</Card.Text>
               <Card.Text>{item[4]}</Card.Text>
+              <Card.Text>{item[5]}</Card.Text>
             </Card.Body>
           </Card>
         }
