@@ -13,6 +13,7 @@ import Timer2 from '../components/Timer2'
 import useState from "react";
 
 import Timer from "../components/Timer";
+import Layout from "../Layout";
 
 const helper = new Helper();
 
@@ -97,8 +98,10 @@ export default function Level3() {
 
 
   return (
+    
     <div className="Level3">
       <h1>Level 3</h1>
+      
 
       <Timer getTime={getTime} />
       <LevelControl
@@ -181,6 +184,7 @@ export default function Level3() {
 
       {/* store user's mistakes+time in firebase */}
       <button className='submitBtn' onClick={handleSubmit}>Submit Answer</button>
+      <Layout/>
 
     </div>
   );
