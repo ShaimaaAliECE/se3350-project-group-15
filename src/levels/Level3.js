@@ -26,7 +26,7 @@ export default function Level3() {
   const levelStart = () => {
     let generate = helper.generateNumberArray(10, 20);
     setCurrentQuestion(generate);
-    setSummaryArray(helper.generateMap(generate, localStorage.getItem("selectedAlgorithm")));
+    setSummaryArray(helper.generateMap(JSON.parse(JSON.stringify(generate)), localStorage.getItem("selectedAlgorithm")));
     setCurrentStep(1);
     setHasStarted(true);
     setCurrentPoint(10);
@@ -35,7 +35,7 @@ export default function Level3() {
   const levelRestart = () => {
     let generate = helper.generateNumberArray(10, 20);
     setCurrentQuestion(generate);
-    setSummaryArray(helper.generateMap(generate, localStorage.getItem("selectedAlgorithm")));
+    setSummaryArray(helper.generateMap(JSON.parse(JSON.stringify(generate)), localStorage.getItem("selectedAlgorithm")));
     setCurrentStep(1);
     setHasStarted(true);
     setCurrentPoint(10);

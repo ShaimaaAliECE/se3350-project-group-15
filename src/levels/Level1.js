@@ -17,15 +17,15 @@ export default function Level1() {
     const levelStart = () => {
         let generate = helper.generateNumberArray(10, 20)
         setCurrentQuestion(generate);
-        setSummaryArray(helper.generateMap(generate, localStorage.getItem("selectedAlgorithm")));
+        setSummaryArray(helper.generateMap(JSON.parse(JSON.stringify(generate)), localStorage.getItem("selectedAlgorithm")));
         setCurrentStep(1);
         setHasStarted(true);
     }
 
     const levelRestart = () => {
-        let generate = helper.generateNumberArray(6, 20)
+        let generate = helper.generateNumberArray(10, 20)
         setCurrentQuestion(generate);
-        setSummaryArray(helper.generateMap(generate, localStorage.getItem("selectedAlgorithm")));
+        setSummaryArray(helper.generateMap(JSON.parse(JSON.stringify(generate)), localStorage.getItem("selectedAlgorithm")));
         setCurrentStep(1);
         setHasStarted(true);
     }
