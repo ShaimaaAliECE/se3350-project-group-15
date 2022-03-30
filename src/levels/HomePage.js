@@ -4,20 +4,10 @@ import "../assets/css/Background.css";
 import actualTime from "../Helper/Clock.js";
 
 export default function LevelMain() {
-  const [isAdmin, setIsAdmin] = React.useState(false);
-  const [userEmail, setUserEmail] = React.useState(null);
-
   React.useEffect(() => {
     // Get all the clock elements
     let element = document.getElementsByClassName("clock")[0].children;
     actualTime(element);
-
-    if (localStorage.getItem("userEmail") != null) {
-      setUserEmail(localStorage.getItem("userEmail"));
-      if (userEmail == "admin@123.com") {
-        setIsAdmin(true);
-      }
-    }
   });
 
   return (

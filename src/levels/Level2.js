@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import Helper from "../Helper/Helper";
 import SquareBtnStyle from "../components/SquareBtnStyle";
 import SquareBtnStyleWithInput from "../components/SquareBtnStyleWithInput";
@@ -16,7 +16,6 @@ export default function Level2() {
   const [currentStep, setCurrentStep] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
-  const errorCount = 0;
 
   const levelStart = () => {
     let generate = helper.generateNumberArray(10, 20);

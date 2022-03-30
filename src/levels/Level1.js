@@ -3,7 +3,6 @@ import Helper from '../Helper/Helper';
 import SquareBtnStyle from '../components/SquareBtnStyle';
 import LevelControl from '../components/LevelControl';
 import InstructionPanel from '../components/InstructionPanel';
-import { doc } from 'firebase/firestore';
 
 const helper = new Helper();
 
@@ -45,12 +44,12 @@ export default function Level1() {
 
     const getScore = () => {
         return '';
-      }
+    }
 
     return (
         <div className="Level1">
             <h1>Level 1</h1>
-            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} currentLevel={currentLevel} getScore={getScore}/>
+            <LevelControl start={levelStart} restart={levelRestart} hasStarted={hasStarted} currentLevel={currentLevel} getScore={getScore} />
             <div className="display-area">
                 <div className="display-area-row">
                     {currentQuestion.map((item, index) => {
