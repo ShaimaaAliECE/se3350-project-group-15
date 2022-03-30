@@ -7,18 +7,14 @@ import InstructionPanel from "../components/InstructionPanel";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
 import { useAlert } from "react-alert";
-
-import ReactStoreIndicator from 'react-score-indicator'
-import Timer2 from '../components/Timer2'
-import useState from "react";
-
 import Timer from "../components/Timer";
+
 
 const helper = new Helper();
 
-export default function Level3() {
+export default function Level5() {
   const alert = useAlert(); //Henry: fancy alert
-  const currentLevel = 3;
+  const currentLevel = 5;
   const [currentPoint, setCurrentPoint] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState([]);
   const [summaryArray, setSummaryArray] = React.useState([]);
@@ -26,33 +22,30 @@ export default function Level3() {
   const [currentStep, setCurrentStep] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
   const [time, setTime] = React.useState(0); //time from Timer component
-  const [score, setScore] = React.useState(0);
+  const [score, setScore] = React.useState(0);//testing
 
-  
-
-  
   const levelStart = () => {
-    let generate = helper.generateNumberArray(10, 20);
+    let generate = helper.generateNumberArray(50, 100);
     setCurrentQuestion(generate);
     setSummaryArray(helper.generateMap(generate));
     setCurrentStep(1);
     setHasStarted(true);
-    setCurrentPoint(10);
+    setCurrentPoint(50);
   };
 
   const levelRestart = () => {
-    let generate = helper.generateNumberArray(10, 20);
+    let generate = helper.generateNumberArray(50, 100);
     setCurrentQuestion(generate);
     setSummaryArray(helper.generateMap(generate));
     setCurrentStep(1);
     setHasStarted(true);
-    setCurrentPoint(10);
+    setCurrentPoint(50);
   };
 
   const previousStep = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
-      setCurrentPoint(10);
+      setCurrentPoint(50);
     }
   };
 
@@ -77,7 +70,7 @@ export default function Level3() {
     let timeSpent = `${Math.floor((time / 60000) % 60)} minutes ${Math.floor((time / 1000) % 60)} seconds`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
-    let datetime = ` ${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()}-${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
+    let datetime = ` ${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
@@ -94,12 +87,9 @@ export default function Level3() {
     }
   }
 
-
-
   return (
-    <div className="Level3">
-      <h1>Level 3</h1>
-
+    <div className="Level5">
+      <h1>Level 5</h1>
       <Timer getTime={getTime} />
       <LevelControl
         start={levelStart}
@@ -107,12 +97,6 @@ export default function Level3() {
         hasStarted={hasStarted}
         getScore={getScore}
       />
-    
-    {`<Timer2/>`}
-
-
-    
-      
       <div className="display-area">
         <div className="display-area-row">
           {currentQuestion.map((item, index) => {
@@ -134,7 +118,7 @@ export default function Level3() {
                         id={item}
                         currentPoint={currentPoint}
                         setCurrentPoint={setCurrentPoint}
-                        setScore={setScore}
+                        setScore={setScore}//testing
                       ></SquareBtnStyleWithInput>
                     );
                   })}
@@ -153,7 +137,7 @@ export default function Level3() {
                           id={num}
                           currentPoint={currentPoint}
                           setCurrentPoint={setCurrentPoint}
-                          setScore={setScore}
+                          setScore={setScore}//testing
                         ></SquareBtnStyleWithInput>
                       ))}
                       <SquareBtnStyle opacity />

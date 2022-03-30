@@ -32,6 +32,21 @@ export default function Footer(props) {
         "Hope you learned the Merge Sort Algorithm! Press start to begin.",
         "You are on your own now, good lucky!",
     ];
+    const CustomLevelDictionary = [
+        // "Welcome to the Merge Sort Algorithm! Press start to begin.",
+        // "A random unsorted list of ten numbers are generated, the following are the procedure of Merge Sorting",
+        // "1. Slice the entire Array into half and create two subsets of the original set",
+        // "2. Repeat the same process and create more subsets",
+        // "3. Until all numbers are stand alone subsets, the slicing of the number set will then stop.",
+        // "4. Now, it's time to sort out the number set in order from minimum to maximum from left to right",
+        // "5. Select first two subset from the left and compare which number is smaller, and you should merge these two subsets into one set",
+        // // "6. Remember you should always put smaller number on the left side",
+        // // "7. Continue the sorting and merging steps for the rest of the subsets, and finally merge all the subsets back into one sorted number set",
+        // "6. Congratulations, you have learnt Merge Sort Algorithm!"
+        "Welcome to the Merge Sort Algorithm! Press start to begin.",
+        "A random unsorted list of five to eight numbers are generated, the following are the procedure of Merge Sorting.",
+        "You are on your own now, good lucky!",
+    ];
 
     const InstructionHelper = (currentLevel, currentStep) => {
         switch (currentLevel) {
@@ -44,8 +59,13 @@ export default function Footer(props) {
                     return Level3Dictionary[currentStep];
                 }
                 return Level3Dictionary[1];
+            case 4:
+                if (currentStep < 3) {
+                    return CustomLevelDictionary[currentStep];
+                }
+                return CustomLevelDictionary[2]
             default:
-                return Level1Dictionary;
+                return Level3Dictionary;
         }
     }
 

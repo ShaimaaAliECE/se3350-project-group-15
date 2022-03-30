@@ -1,8 +1,15 @@
 import React from 'react';
 import Button from './Button';
 import QuarBtnError from "./SquarBtnError";
+
+
 export default function LevelControl(props) {
     const [hasStarted, setHasStarted] = React.useState(props.hasStarted);
+    const [score, setScore] = React.useState(0);
+
+    React.useEffect(() => {
+        setScore(props.getScore());//get score from level component
+    })
 
     const levelStart = () => {
         let generate = props.helper.generateNumberArray(10, 20)
@@ -27,7 +34,7 @@ export default function LevelControl(props) {
             return (
                 <div className="statistics-area">
                     <span>Points:</span>
-                    <span className="mistakes-counter">{currentPoint}</span>
+                    <span className="mistakes-counter">{score}</span>
                 </div>
             )
         }
@@ -44,7 +51,8 @@ export default function LevelControl(props) {
                 Restart
             </Button>
             {pointIndicator(props.currentLevel, props.currentPoint)}
-        <QuarBtnError error={1} />
+
+            {/* <QuarBtnError error={1} /> */}
         </div>
     )
 }

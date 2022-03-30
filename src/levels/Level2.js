@@ -1,22 +1,29 @@
-import React, { Component } from "react";
+
+import React, { Component, useState } from "react";
+
 import Helper from "../Helper/Helper";
 import SquareBtnStyle from "../components/SquareBtnStyle";
 import SquareBtnStyleWithInput from "../components/SquareBtnStyleWithInput";
 import LevelControl from "../components/LevelControl";
 import InstructionPanel from "../components/InstructionPanel";
+import Layout from "../Layout";
 
 
 const helper = new Helper();
 
-export default function Level2(){
+export default function Level2() {
+
   const currentLevel = 2;
   const [currentPoint, setCurrentPoint] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState([]);
   const [summaryArray, setSummaryArray] = React.useState([]);
   const [hasStarted, setHasStarted] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState(0);
+
+  const [score, setScore] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
-  const errorCount=0;
+  const errorCount = 0;
+
 
   const levelStart = () => {
     let generate = helper.generateNumberArray(10, 20);
@@ -25,7 +32,7 @@ export default function Level2(){
     setCurrentStep(1);
     setHasStarted(true);
     setCurrentPoint(10);
-   
+
   };
 
   const levelRestart = () => {
@@ -50,10 +57,13 @@ export default function Level2(){
       setCurrentPoint(0);
     }
   };
- 
 
+  const getScore = () => {
+    return score;
+  };
   return (
-    <div className="Level1">
+    <div className="Level2">
+      <Layout/>
       <h1>Level 2</h1>
       <LevelControl
         start={levelStart}
@@ -62,11 +72,17 @@ export default function Level2(){
         currentLevel={currentLevel}
         currentPoint={currentPoint}
 
+        getScore={getScore}
       />
       <div className="display-area">
         <div className="display-area-row">
           {currentQuestion.map((item, index) => {
-            return <SquareBtnStyle key={index}>{item}</SquareBtnStyle>;
+
+            return (
+              <div>
+                <SquareBtnStyle key={index}>{item}</SquareBtnStyle>
+              </div>
+            );
           })}
         </div>
         <div className="display-area-dynamic">
@@ -82,9 +98,15 @@ export default function Level2(){
                       <SquareBtnStyleWithInput
                         key={index}
                         id={item}
-                        error={errorCount}
+
+                        /*error={errorCount}
                         currentPoint={currentPoint}
                         setCurrentPoint={setCurrentPoint}
+=======*/
+                        currentPoint={currentPoint}
+                        setCurrentPoint={setCurrentPoint}
+                        setScore={setScore}
+
                       ></SquareBtnStyleWithInput>
                     );
                   })}
@@ -97,13 +119,14 @@ export default function Level2(){
                   {item.map((subItem, j) => (
                     <div className="display-area-col" key={j}>
                       {j === item.length / 2 && <SquareBtnStyle opacity />}
-                      {subItem.map((num, k,errorCount) => (
+
+                      {subItem.map((num, k) => (
                         <SquareBtnStyleWithInput
                           key={k}
                           id={num}
-                          error={errorCount}
                           currentPoint={currentPoint}
                           setCurrentPoint={setCurrentPoint}
+                          setScore={setScore}
                         ></SquareBtnStyleWithInput>
                       ))}
                       <SquareBtnStyle opacity />
