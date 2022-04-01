@@ -1,10 +1,15 @@
 import { React, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-import { getDocs, collection, query, where } from "firebase/firestore";
+import { getDocs, collection, query, where, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
+import CloseButton from "react-bootstrap/CloseButton";
+import { useAlert } from "react-alert";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+
 
 export default function PlayerRecordPage() {
-
+    const alert = useAlert();
     const recordCollection = collection(db, 'gameRecords');
     const [querySnapshotArray, setQuerySnapshotArray] = useState([]);
     const [playerEmail, setPlayerEmail] = useState();
@@ -25,6 +30,32 @@ export default function PlayerRecordPage() {
     }, [playerEmail]);
 
 
+    const handleDelete = (e) => {
+        confirmAlert({
+          title: "Confirm to Delete",
+          message: "Are you sure to do this?",
+          buttons: [
+            {
+              label: "Yes",
+              onClick: () => {
+                handleDeleteAsync(e);
+              },
+            },
+            {
+              label: "No",
+            },
+          ],
+        });
+      };
+    
+      async function handleDeleteAsync(e) {
+        await deleteDoc(doc(db, "gameRecords", e.target.name)).then(() => {
+          alert.show(`deleted ${e.target.name} record successfully`, {
+            timeout: 2000,
+          });
+          readRecordData();//refresh record display after deleting
+        });
+      }
 
 
     async function readRecordData() {
@@ -64,6 +95,7 @@ export default function PlayerRecordPage() {
                         className="mb-2"
 
                     >
+                        <CloseButton onClick={handleDelete} name={item[2]} />
                         <Card.Header >{item[0]}</Card.Header>
                         <Card.Body>
                             <Card.Title>{item[1]}</Card.Title>
