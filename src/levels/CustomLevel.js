@@ -9,6 +9,7 @@ import SquareBtnStyle from "../components/SquareBtnStyle";
 import InstructionPanel from "../components/InstructionPanel";
 import SquareBtnStyleWithInput from "../components/SquareBtnStyleWithInput";
 import { Summarize } from "@mui/icons-material";
+import ReactLoading from 'react-loading';
 
 const helper = new Helper();
 
@@ -27,6 +28,7 @@ export default function CustomLevel() {
   const [score, setScore] = React.useState(0);
   const [submitEnabled, setSubmitEnabled] = React.useState(false);
   const [time, setTime] = React.useState(0); //time from Timer component
+  const [isLoading,setIsLoading] = React.useState(false);
   const displayArray = summaryArray.slice(0, currentStep - 1);
 
   const levelStart = () => {
@@ -104,9 +106,11 @@ export default function CustomLevel() {
     setCurrentArrayValuesStr(val.target.value);
   };
 
-  //maybe be when user finishes the task, the system will automatically save player's game record (time + mistakes)
+  //TODO: maybe be when user finishes the task, the system will automatically save player's game record (time + mistakes)
   async function handleSubmit(e) {
-    // e.preventDefault();
+    if (localStorage.getItem("userEmail") !== null) {
+      setIsLoading(true);
+    }
     let timeSpent = `${Math.floor((time / 60000) % 60)} minutes ${Math.floor(
       (time / 1000) % 60
     )} seconds`;
@@ -124,6 +128,8 @@ export default function CustomLevel() {
         timeSpent: timeSpent,
         dateTime: datetime,
         level: "Custom Level",
+      }).then(()=>{
+        setIsLoading(false);
       });
       alert.show("Submitted record successfully", { timeout: 1500 });
     } else {
@@ -274,7 +280,6 @@ export default function CustomLevel() {
         onNextStep={nextStep}
       />
 
-      {/* store user score/time in firebase function testing */}
       <button
         className="submitBtn"
         onClick={handleSubmit}
@@ -282,11 +287,7 @@ export default function CustomLevel() {
       >
         Submit Answer
       </button>
-      {/* show player score */}
-      {/* <ReactScoreIndicator
-        value={34}
-        maxValue={100}
-      /> */}
+      <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading}/>
     </div>
   );
 }
