@@ -1,38 +1,30 @@
-import React from "react";
-import Helper from "../Helper/Helper";
-import SquareBtnStyle from "../components/SquareBtnStyle";
-import SquareBtnStyleWithInput from "../components/SquareBtnStyleWithInput";
-import LevelControl from "../components/LevelControl";
-import InstructionPanel from "../components/InstructionPanel";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../Authentication/firebase";
-import { useAlert } from "react-alert";
-
-import ReactStoreIndicator from 'react-score-indicator'
-import Timer2 from '../components/Timer2'
-import useState from "react";
-
-import Timer from "../components/Timer";
+import React from 'react';
+import Helper from '../Helper/Helper';
+import SquareBtnStyle from '../components/SquareBtnStyle';
+import SquareBtnStyleWithInput from '../components/SquareBtnStyleWithInput';
+import LevelControl from '../components/LevelControl';
+import InstructionPanel from '../components/InstructionPanel';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../Authentication/firebase';
+import { useAlert } from 'react-alert';
+import Timer from '../components/Timer';
 import ReactLoading from 'react-loading';
-import Layout from "../Layout";
+import KickOutTimer from '../components/KickOutTimer';
 
 const helper = new Helper();
 
 export default function Level3() {
-  const alert = useAlert(); //Henry: fancy alert
   const currentLevel = 3;
+  const alert = useAlert(); //Henry: fancy alert
   const [currentPoint, setCurrentPoint] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState([]);
   const [summaryArray, setSummaryArray] = React.useState([]);
   const [hasStarted, setHasStarted] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState(0);
+  const [score, setScore] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
   const [time, setTime] = React.useState(0); //time from Timer component
-  const [score, setScore] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(false);
-
-
-
 
   const levelStart = () => {
     let generate = helper.generateNumberArray(10, 20);
@@ -66,13 +58,13 @@ export default function Level3() {
     }
   };
 
+  const getScore = () => {
+    return score;
+  };
+
   const getTime = (time) => {
     setTime(time);
   };
-
-  const getScore = () => {
-    return score;
-  }
 
   //handle submit answer
   async function handleSubmit(e) {
@@ -82,7 +74,7 @@ export default function Level3() {
     let timeSpent = `${Math.floor((time / 60000) % 60)} minutes ${Math.floor((time / 1000) % 60)} seconds`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
-    let datetime = ` ${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()}-${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
+    let datetime = `${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
@@ -101,14 +93,10 @@ export default function Level3() {
     }
   }
 
-
-
   return (
-
     <div className="Level3">
+      <KickOutTimer />
       <h1>Level 3</h1>
-
-
       <Timer getTime={getTime} />
       <LevelControl
         start={levelStart}
@@ -116,16 +104,14 @@ export default function Level3() {
         hasStarted={hasStarted}
         getScore={getScore}
       />
-
-      {`<Timer2/>`}
-
-
-
-
       <div className="display-area">
         <div className="display-area-row">
           {currentQuestion.map((item, index) => {
-            return <SquareBtnStyle key={index}>{item}</SquareBtnStyle>;
+            return (
+              <SquareBtnStyle key={index}>
+                {item}
+              </SquareBtnStyle>
+            )
           })}
         </div>
         <div className="display-area-dynamic">
@@ -145,10 +131,10 @@ export default function Level3() {
                         setCurrentPoint={setCurrentPoint}
                         setScore={setScore}
                       ></SquareBtnStyleWithInput>
-                    );
+                    )
                   })}
                 </div>
-              );
+              )
             } else {
               return (
                 <div className="display-area-row" key={i}>
@@ -169,7 +155,7 @@ export default function Level3() {
                     </div>
                   ))}
                 </div>
-              );
+              )
             }
           })}
         </div>
@@ -187,12 +173,9 @@ export default function Level3() {
         onPrevStep={previousStep}
         onNextStep={nextStep}
       />
-
       {/* store user's mistakes+time in firebase */}
       <button className='submitBtn' onClick={handleSubmit}>Submit Answer</button>
       <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading} />
-      <Layout />
-
-    </div >
-  );
+    </div>
+  )
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import Helper from '../Helper/Helper';
 import SquareBtnStyle from '../components/SquareBtnStyle';
-import SquareBtnStyleWithInput from "../components/SquareBtnStyleWithInput";
-import LevelControl from "../components/LevelControl";
-import InstructionPanel from "../components/InstructionPanel";
-import Layout from "../Layout";
+import SquareBtnStyleWithInput from '../components/SquareBtnStyleWithInput';
+import LevelControl from '../components/LevelControl';
+import InstructionPanel from '../components/InstructionPanel';
+import KickOutTimer from '../components/KickOutTimer';
 
 const helper = new Helper();
 
@@ -17,7 +17,6 @@ export default function Level2() {
     const [currentStep, setCurrentStep] = React.useState(0);
     const [score, setScore] = React.useState(0);
     const displayArray = summaryArray.slice(0, currentStep - 1);
-    const errorCount = 0;
     const levelStart = () => {
         let generate = helper.generateNumberArray(10, 20);
         setCurrentQuestion(generate);
@@ -25,7 +24,6 @@ export default function Level2() {
         setCurrentStep(1);
         setHasStarted(true);
         setCurrentPoint(10);
-
     };
 
     const levelRestart = () => {
@@ -54,9 +52,10 @@ export default function Level2() {
     const getScore = () => {
         return score;
     };
+
     return (
         <div className="Level2">
-            <Layout />
+            <KickOutTimer />
             <h1>Level 2</h1>
             <LevelControl
                 start={levelStart}
@@ -69,27 +68,34 @@ export default function Level2() {
             <div className="display-area">
                 <div className="display-area-row">
                     {currentQuestion.map((item, index) => {
-                        return <SquareBtnStyle key={index}>
-                            {item}
-                        </SquareBtnStyle>
+                        return (
+                            <SquareBtnStyle key={index}>
+                                {item}
+                            </SquareBtnStyle>
+                        )
                     })}
                 </div>
                 <div className="display-area-dynamic">
                     {displayArray.map((item, i) => {
-                        if (item.length === currentQuestion.length && item[0].length !== 1) {
-                            return <div className="display-area-row" key={i}>
-                                {item.map((item, index) => {
-                                    return (
-                                        <SquareBtnStyleWithInput
-                                            key={index}
-                                            id={item}
-                                            currentPoint={currentPoint}
-                                            setCurrentPoint={setCurrentPoint}
-                                            setScore={setScore}
-                                        ></SquareBtnStyleWithInput>
-                                    )
-                                })}
-                            </div>
+                        if (
+                            item.length === currentQuestion.length &&
+                            item[0].length !== 1
+                        ) {
+                            return (
+                                <div className="display-area-row" key={i}>
+                                    {item.map((item, index) => {
+                                        return (
+                                            <SquareBtnStyleWithInput
+                                                key={index}
+                                                id={item}
+                                                currentPoint={currentPoint}
+                                                setCurrentPoint={setCurrentPoint}
+                                                setScore={setScore}
+                                            ></SquareBtnStyleWithInput>
+                                        )
+                                    })}
+                                </div>
+                            )
                         } else {
                             return (
                                 <div className="display-area-row" key={i}>
@@ -129,5 +135,5 @@ export default function Level2() {
                 onNextStep={nextStep}
             />
         </div>
-    );
+    )
 }

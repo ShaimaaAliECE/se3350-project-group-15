@@ -3,7 +3,7 @@ import Helper from '../Helper/Helper';
 import SquareBtnStyle from '../components/SquareBtnStyle';
 import LevelControl from '../components/LevelControl';
 import InstructionPanel from '../components/InstructionPanel';
-import Layout from "../Layout";
+import KickOutTimer from '../components/KickOutTimer';
 
 const helper = new Helper();
 
@@ -46,9 +46,10 @@ export default function Level1() {
     const getScore = () => {
         return '';
     };
+
     return (
         <div className="Level1">
-            <Layout />
+            <KickOutTimer />
             <h1>Level 1</h1>
             <LevelControl
                 start={levelStart}
@@ -60,23 +61,30 @@ export default function Level1() {
             <div className="display-area">
                 <div className="display-area-row">
                     {currentQuestion.map((item, index) => {
-                        return <SquareBtnStyle key={index}>
-                            {item}
-                        </SquareBtnStyle>
+                        return (
+                            <SquareBtnStyle key={index}>
+                                {item}
+                            </SquareBtnStyle>
+                        )
                     })}
                 </div>
                 <div className="display-area-dynamic">
                     {displayArray.map((item, i) => {
-                        if (item.length === currentQuestion.length && item[0].length !== 1) {
-                            return <div className="display-area-row" key={i}>
-                                {item.map((item, index) => {
-                                    return (
-                                        <SquareBtnStyle key={index}>
-                                            {item}
-                                        </SquareBtnStyle>
-                                    )
-                                })}
-                            </div>
+                        if (
+                            item.length === currentQuestion.length &&
+                            item[0].length !== 1
+                        ) {
+                            return (
+                                <div className="display-area-row" key={i}>
+                                    {item.map((item, index) => {
+                                        return (
+                                            <SquareBtnStyle key={index}>
+                                                {item}
+                                            </SquareBtnStyle>
+                                        )
+                                    })}
+                                </div>
+                            )
                         } else {
                             return (
                                 <div className="display-area-row" key={i}>

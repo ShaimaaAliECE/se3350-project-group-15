@@ -1,29 +1,30 @@
-import React from "react";
-import Helper from "../Helper/Helper";
-import SquareBtnStyle from "../components/SquareBtnStyle";
-import SquareBtnStyleWithInput from "../components/SquareBtnStyleWithInput";
-import LevelControl from "../components/LevelControl";
-import InstructionPanel from "../components/InstructionPanel";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../Authentication/firebase";
-import { useAlert } from "react-alert";
-import Timer from "../components/Timer";
+import React from 'react';
+import Helper from '../Helper/Helper';
+import SquareBtnStyle from '../components/SquareBtnStyle';
+import SquareBtnStyleWithInput from '../components/SquareBtnStyleWithInput';
+import LevelControl from '../components/LevelControl';
+import InstructionPanel from '../components/InstructionPanel';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../Authentication/firebase';
+import { useAlert } from 'react-alert';
+import Timer from '../components/Timer';
 import ReactLoading from 'react-loading';
+import KickOutTimer from '../components/KickOutTimer';
 
 const helper = new Helper();
 
 export default function Level5() {
-  const alert = useAlert(); //Henry: fancy alert
   const currentLevel = 5;
+  const alert = useAlert(); //Henry: fancy alert
   const [currentPoint, setCurrentPoint] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState([]);
   const [summaryArray, setSummaryArray] = React.useState([]);
   const [hasStarted, setHasStarted] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState(0);
+  const [score, setScore] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
   const [time, setTime] = React.useState(0); //time from Timer component
-  const [score, setScore] = React.useState(0);//testing
-  const [isLoading,setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const levelStart = () => {
     let generate = helper.generateNumberArray(50, 100);
@@ -57,13 +58,13 @@ export default function Level5() {
     }
   };
 
+  const getScore = () => {
+    return score;
+  };
+
   const getTime = (time) => {
     setTime(time);
   };
-
-  const getScore = () => {
-    return score;
-  }
 
   //handle submit answer
   async function handleSubmit(e) {
@@ -73,7 +74,7 @@ export default function Level5() {
     let timeSpent = `${Math.floor((time / 60000) % 60)} minutes ${Math.floor((time / 1000) % 60)} seconds`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
-    let datetime = ` ${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
+    let datetime = `${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
@@ -83,10 +84,10 @@ export default function Level5() {
         timeSpent: timeSpent,
         dateTime: datetime,
         level: 'Level 5'
-      }).then(()=>{
+      }).then(() => {
         setIsLoading(false);
       });
-      alert.show("Submitted record successfully", { timeout: 1500 });
+      alert.show("Submitted record successfully", { timeout: 2500 });
     } else {
       alert.error("please sign in first!", { timeout: 1500 });
     }
@@ -94,6 +95,7 @@ export default function Level5() {
 
   return (
     <div className="Level5">
+      <KickOutTimer />
       <h1>Level 5</h1>
       <Timer getTime={getTime} />
       <LevelControl
@@ -105,7 +107,11 @@ export default function Level5() {
       <div className="display-area">
         <div className="display-area-row">
           {currentQuestion.map((item, index) => {
-            return <SquareBtnStyle key={index}>{item}</SquareBtnStyle>;
+            return (
+              <SquareBtnStyle key={index}>
+                {item}
+              </SquareBtnStyle>
+            )
           })}
         </div>
         <div className="display-area-dynamic">
@@ -123,12 +129,12 @@ export default function Level5() {
                         id={item}
                         currentPoint={currentPoint}
                         setCurrentPoint={setCurrentPoint}
-                        setScore={setScore}//testing
+                        setScore={setScore}
                       ></SquareBtnStyleWithInput>
-                    );
+                    )
                   })}
                 </div>
-              );
+              )
             } else {
               return (
                 <div className="display-area-row" key={i}>
@@ -142,14 +148,14 @@ export default function Level5() {
                           id={num}
                           currentPoint={currentPoint}
                           setCurrentPoint={setCurrentPoint}
-                          setScore={setScore}//testing
+                          setScore={setScore}
                         ></SquareBtnStyleWithInput>
                       ))}
                       <SquareBtnStyle opacity />
                     </div>
                   ))}
                 </div>
-              );
+              )
             }
           })}
         </div>
@@ -167,10 +173,9 @@ export default function Level5() {
         onPrevStep={previousStep}
         onNextStep={nextStep}
       />
-
       {/* store user's mistakes+time in firebase */}
       <button className='submitBtn' onClick={handleSubmit}>Submit Answer</button>
-      <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading}/>
+      <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading} />
     </div>
-  );
+  )
 }
