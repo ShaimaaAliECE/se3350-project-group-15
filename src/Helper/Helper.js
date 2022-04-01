@@ -164,14 +164,18 @@ function bubbleSort(arr, n) {
 function* bubbleSortIterator(arr, n) {
     var i, j, currentArray;
     currentArray = [...arr];
+    bubbleSort(currentArray, currentArray.length);
     for (i = 0; i < n - 1; i++) {
         for (j = 0; j < n - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
                 swap(arr, j, j + 1);
             }
         }
-        if (bubbleSort(currentArray, n) !== arr) {
+        if (currentArray.length === arr.length && !currentArray.every(function (u, i) {
+            return u === arr[i];
+        })) {
             yield arr;
         }
     }
+    yield currentArray;
 }
