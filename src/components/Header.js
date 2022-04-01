@@ -7,6 +7,30 @@ export default function Header() {
   const [isSignedIn, setIsSignedIn] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState(null);
   const [isAdmin, setIsAdmin] = React.useState(false);
+  const [currentAlgorithm, setCurrentAlgorithm] = React.useState(localStorage.getItem("selectedAlgorithm"));
+
+  const prettyPrint = (str) => {
+    switch (str) {
+      case 'ms':
+        return 'Merge Sort';
+      case 'bs':
+        return 'Bubble Sort';
+      default:
+        return 'Not Valid Selection';
+    }
+  }
+
+  React.useEffect(() => {
+    if (localStorage.getItem("selectedAlgorithm") !== currentAlgorithm) {
+      window.location.reload();
+    }
+    if (localStorage.getItem("selectedAlgorithm") === null) {
+      localStorage.setItem("selectedAlgorithm", 'ms');
+    } else {
+      localStorage.setItem("selectedAlgorithm", currentAlgorithm);
+    }
+  }, [currentAlgorithm]);
+
   React.useEffect(() => {
     if (localStorage.getItem("userEmail") !== null) {
       setIsSignedIn(true);
@@ -37,6 +61,13 @@ export default function Header() {
                 <NavDropdown.Item href="/PlayerViewRecordPage">view record</NavDropdown.Item>
                 {isAdmin ? <NavDropdown.Item href="/admin_page">Admin Page</NavDropdown.Item> : ''}
               </NavDropdown>
+              <NavDropdown title="Select a Algorithm" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() => setCurrentAlgorithm('ms')}>Merge Sort</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => setCurrentAlgorithm('bs')}>Bubble Sort</NavDropdown.Item>
+              </NavDropdown>
+              <Navbar.Text>
+                Current selected Algorithm: <a href>{prettyPrint(currentAlgorithm)}</a>
+              </Navbar.Text>
             </Nav>
           </Navbar.Collapse>
           <Navbar.Collapse className="justify-content-end">

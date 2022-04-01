@@ -6,6 +6,7 @@ import useSound from "use-sound";
 import correctSound from "../assets/sounds/correct.wav";
 import wrongSound from "../assets/sounds/wrong.mp3";
 //From Ives Luo
+
 export let error = 0;
 export function errorAlert() {
   alert("You make error 3 times");
@@ -24,6 +25,7 @@ export default function SquareBtnStyleWithInput(props) {
       currentScore++;
       props.setScore(currentScore);
       event.target.disabled = true;
+
       setInputColor('#b9fbc0');
       alert.success("correct");
       playCorrectSound();
@@ -55,11 +57,15 @@ export default function SquareBtnStyleWithInput(props) {
           ? "square-container-opacity text-box"
           : "square-container text-box"
       }
+      
       type="text"
       id={props.id}
       name="ansBox"
       onBlur={checkAns}
+
+
       style={{ backgroundColor: inputColor }}
     />
+    
   );
 }
