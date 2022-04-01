@@ -31,17 +31,47 @@ export default function Footer(props) {
         3: [
             "Hope you learned the Merge Sort Algorithm! Press start to begin.",
             "You are on your own now, good lucky!"
+        ],
+        4: [
+            "Hope you learned the Merge Sort Algorithm! Press start to begin.",
+            "You are on your own now, good lucky!"
+        ],
+        5: [
+            "Hope you learned the Merge Sort Algorithm! Press start to begin.",
+            "You are on your own now, good lucky!"
+        ],
+        6: ["Welcome to the Merge Sort Algorithm! Press start to begin.",
+            "A random unsorted list of five to eight numbers are generated, the following are the procedure of Merge Sorting.",
+            "You are on your own now, good lucky!"
         ]
 
     };
 
     const bubbleSortDict = {
         1: [
-            "Welcome to the Bubble Sort Algorithm! Press start to begin."
+            "Welcome to the Bubble Sort Algorithm! Press start to begin.",
+            "A random unsorted list of ten numbers are generated, the following are the procedure of Merge Sorting",
+            "Repeatedly swapping the adjacent elements if they are in wrong order."
         ],
-        2: [],
+        2: [
+            "Welcome to the Bubble Sort Algorithm! Press start to begin.",
+            "Repeatedly swapping the adjacent elements if they are in wrong order."
+        ],
         3: [
             "Hope you learned the Bubble Sort Algorithm! Press start to begin.",
+            "You are on your own now, good lucky!"
+        ],
+        4: [
+            "Hope you learned the Bubble Sort Algorithm! Press start to begin.",
+            "You are on your own now, good lucky!"
+        ],
+        5: [
+            "Hope you learned the Bubble Sort Algorithm! Press start to begin.",
+            "You are on your own now, good lucky!"
+        ],
+        6: [
+            "Welcome to the Bubble Sort Algorithm! Press start to begin.",
+            "A random unsorted list of five to eight numbers are generated, the following are the procedure of Bubble Sort.",
             "You are on your own now, good lucky!"
         ]
     }
