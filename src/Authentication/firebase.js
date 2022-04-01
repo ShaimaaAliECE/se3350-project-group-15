@@ -70,9 +70,10 @@ const signInWithGithub = () => {
 const logOut = () => {
   signOut(auth)
     .then(() => {
+      let previousSelect = localStorage.getItem("selectedAlgorithm");
       // Sign-out successful.
       localStorage.clear();
-      localStorage.setItem("selectedAlgorithm", 'ms');
+      localStorage.setItem("selectedAlgorithm", previousSelect);
       console.log("called logOut from firebase.js");
     })
     .catch((error) => {
