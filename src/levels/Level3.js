@@ -7,8 +7,14 @@ import InstructionPanel from "../components/InstructionPanel";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
 import { useAlert } from "react-alert";
+
+import ReactStoreIndicator from 'react-score-indicator'
+import Timer2 from '../components/Timer2'
+import useState from "react";
+
 import Timer from "../components/Timer";
 import ReactLoading from 'react-loading';
+import Layout from "../Layout";
 
 const helper = new Helper();
 
@@ -23,7 +29,10 @@ export default function Level3() {
   const displayArray = summaryArray.slice(0, currentStep - 1);
   const [time, setTime] = React.useState(0); //time from Timer component
   const [score, setScore] = React.useState(0);
-  const [isLoading,setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+
+
 
   const levelStart = () => {
     let generate = helper.generateNumberArray(10, 20);
@@ -83,7 +92,7 @@ export default function Level3() {
         timeSpent: timeSpent,
         dateTime: datetime,
         level: 'Level 3'
-      }).then(()=>{
+      }).then(() => {
         setIsLoading(false);
       });
       alert.show("Submitted record successfully", { timeout: 2500 });
@@ -93,9 +102,13 @@ export default function Level3() {
   }
 
 
+
   return (
+
     <div className="Level3">
       <h1>Level 3</h1>
+
+
       <Timer getTime={getTime} />
       <LevelControl
         start={levelStart}
@@ -103,6 +116,12 @@ export default function Level3() {
         hasStarted={hasStarted}
         getScore={getScore}
       />
+
+      {`<Timer2/>`}
+
+
+
+
       <div className="display-area">
         <div className="display-area-row">
           {currentQuestion.map((item, index) => {
@@ -171,7 +190,9 @@ export default function Level3() {
 
       {/* store user's mistakes+time in firebase */}
       <button className='submitBtn' onClick={handleSubmit}>Submit Answer</button>
-      <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading}/>
-    </div>
+      <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading} />
+      <Layout />
+
+    </div >
   );
 }
