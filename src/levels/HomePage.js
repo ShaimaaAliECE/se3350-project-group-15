@@ -5,6 +5,7 @@ import actualTime from "../Helper/Clock.js";
 
 export default function LevelMain() {
   React.useEffect(() => {
+    localStorage.setItem("selectedAlgorithm", 'ms');
     // Get all the clock elements
     let element = document.getElementsByClassName("clock")[0].children;
     actualTime(element);

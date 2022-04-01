@@ -72,6 +72,7 @@ const logOut = () => {
     .then(() => {
       // Sign-out successful.
       localStorage.clear();
+      localStorage.setItem("selectedAlgorithm", 'ms');
       console.log("called logOut from firebase.js");
     })
     .catch((error) => {
