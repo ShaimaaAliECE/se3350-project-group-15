@@ -19,6 +19,9 @@ export default function Header() {
   }
 
   React.useEffect(() => {
+    if (localStorage.getItem("selectedAlgorithm") !== currentAlgorithm) {
+      window.location.reload();
+    }
     if (localStorage.getItem("selectedAlgorithm") === null) {
       localStorage.setItem("selectedAlgorithm", 'ms');
     } else {
