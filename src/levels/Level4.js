@@ -94,7 +94,7 @@ export default function Level4() {
   }
 
   return (
-    <div className="Level3">
+    <div className="Level4">
       <KickOutTimer />
       <h1>Level 4</h1>
       <Timer getTime={getTime} />
@@ -160,7 +160,6 @@ export default function Level4() {
           })}
         </div>
       </div>
-
       <InstructionPanel
         currentLevel={currentLevel}
         currentStep={currentStep}

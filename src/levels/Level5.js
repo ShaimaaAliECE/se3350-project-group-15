@@ -160,7 +160,6 @@ export default function Level5() {
           })}
         </div>
       </div>
-
       <InstructionPanel
         currentLevel={currentLevel}
         currentStep={currentStep}

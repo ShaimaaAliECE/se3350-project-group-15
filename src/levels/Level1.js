@@ -107,7 +107,6 @@ export default function Level1() {
                     })}
                 </div>
             </div>
-
             <InstructionPanel
                 currentLevel={currentLevel}
                 currentStep={currentStep}
