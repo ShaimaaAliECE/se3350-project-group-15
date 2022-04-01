@@ -65,7 +65,7 @@ export default function Header() {
                 <NavDropdown.Item onClick={() => setCurrentAlgorithm('bs')}>Bubble Sort</NavDropdown.Item>
               </NavDropdown>
               <Navbar.Text>
-                Current selected Algorithm: <a>{prettyPrint(currentAlgorithm)}</a>
+                Current selected Algorithm: <a href>{prettyPrint(currentAlgorithm)}</a>
               </Navbar.Text>
             </Nav>
           </Navbar.Collapse>
