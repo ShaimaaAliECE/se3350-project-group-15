@@ -15,6 +15,8 @@ export default function Header() {
         return 'Merge Sort';
       case 'bs':
         return 'Bubble Sort';
+      default:
+        return 'Not Valid Selection';
     }
   }
 
