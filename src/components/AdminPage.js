@@ -87,8 +87,6 @@ export default function AdminPage() {
     });
   }
 
-
-
   return (
     <div>
       <h1>AdminPage</h1>
@@ -106,7 +104,7 @@ export default function AdminPage() {
             bg="Primary"
             key={item[2]}
             text={"dark"}
-            style={{ width: "18rem" }}
+            style={{ width: "18rem", margin: "auto", padding: "10px", }}
             className="mb-2"
           >
             <CloseButton onClick={handleDelete} name={item[2]} />
@@ -119,7 +117,7 @@ export default function AdminPage() {
               <Card.Text>{item[5]}</Card.Text>
             </Card.Body>
           </Card>
-        );
+        )
       })}
     </div>
   );
