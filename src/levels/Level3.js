@@ -11,6 +11,7 @@ import Timer from '../components/Timer';
 import ReactLoading from 'react-loading';
 import KickOutTimer from '../components/KickOutTimer';
 
+
 const helper = new Helper();
 
 export default function Level3() {
@@ -66,6 +67,17 @@ export default function Level3() {
     setTime(time);
   };
 
+  const prettyPrint = (str) => {
+    switch (str) {
+      case 'ms':
+        return 'Merge Sort';
+      case 'bs':
+        return 'Bubble Sort';
+      default:
+        return 'Not Valid Selection';
+    }
+  };
+
   //handle submit answer
   async function handleSubmit(e) {
     if (localStorage.getItem("userEmail") !== null) {
@@ -75,6 +87,9 @@ export default function Level3() {
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
     let datetime = `${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
+    let algorithm = prettyPrint(localStorage.getItem("selectedAlgorithm"));
+
+    
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
@@ -83,7 +98,8 @@ export default function Level3() {
         score: score,
         timeSpent: timeSpent,
         dateTime: datetime,
-        level: 'Level 3'
+        level: 'Level 3',
+        algorithm: algorithm
       }).then(() => {
         setIsLoading(false);
       });
