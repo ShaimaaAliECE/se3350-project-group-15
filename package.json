@@ -20,6 +20,7 @@
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
     "react-bootstrap": "^2.1.2",
+    "react-confirm-alert": "^2.8.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",
     "react-github-login-button": "^1.0.1",
