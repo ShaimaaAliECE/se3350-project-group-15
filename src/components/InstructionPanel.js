@@ -30,7 +30,7 @@ export default function Footer(props) {
 
     const Level3Dictionary = [
         "Hope you learned the Merge Sort Algorithm! Press start to begin.",
-        "You are on your own now, good lucky!",
+        "No instruction now, good luck!",
     ];
     const CustomLevelDictionary = [
         // "Welcome to the Merge Sort Algorithm! Press start to begin.",
@@ -45,7 +45,7 @@ export default function Footer(props) {
         // "6. Congratulations, you have learnt Merge Sort Algorithm!"
         "Welcome to the Merge Sort Algorithm! Press start to begin.",
         "A random unsorted list of five to eight numbers are generated, the following are the procedure of Merge Sorting.",
-        "You are on your own now, good lucky!",
+        "You are on your own now, good luck!",
     ];
 
     const InstructionHelper = (currentLevel, currentStep) => {

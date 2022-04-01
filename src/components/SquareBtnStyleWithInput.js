@@ -5,56 +5,65 @@ import { useState } from "react";
 import useSound from "use-sound";
 import correctSound from "../assets/sounds/correct.wav";
 import wrongSound from "../assets/sounds/wrong.mp3";
+import Popup from "./Popup";
 //From Ives Luo
-<<<<<<< HEAD
-import quarBtnError from "./SquarBtnError";
-export default function SquareBtnStyleWithInput(props) {
-=======
 export let error = 0;
 export function errorAlert() {
-  alert("You make error 3 times");
+  alert("You make error 3 times!!");
 }
-let currentScore = 0;
 
+//testing popup ----currently cannot be used
+export function popWindow() {
+  //run everytime there is an error
+  //<Popup> cannot show because this is for the every input!
+  console.log("popup function");
+  return (
+    <div>
+      {/* <Popup/> */}
+      hiii
+    </div>
+  );
+}
+
+let currentScore = 0;
 export default function SquareBtnStyleWithInput(props) {
   const alert = useAlert(); //Henry: fancy alert
   const [playCorrectSound, setCorrectSound] = useSound(correctSound);
   const [playWrongSound, setWrongSound] = useSound(wrongSound);
-  const [inputColor, setInputColor] = useState('');
+  const [inputColor, setInputColor] = useState("");
+  const [showPopup, setPopup] = useState(false);
 
->>>>>>> version2
   const checkAns = (event) => {
     if (event.target.value === event.target.id) {
       props.setCurrentPoint(props.currentPoint + 1);
       currentScore++;
-      props.setScore(currentScore);
+    
+      
+
       event.target.disabled = true;
-<<<<<<< HEAD
-    } else if (event.target.value === "") {
-    } else {
-      event.target.value = "";
-      alert("Wrong!");
-=======
-      setInputColor('#b9fbc0');
+      setInputColor("#b9fbc0");
       alert.success("correct");
       playCorrectSound();
     } else if (event.target.value === "") {
     } else {
       event.target.value = "";
       error++;
+      props.setCurrentError(props.currentError+1);
+
+      popWindow();//this is currently not working
       if (error !== 3) {
         alert.error("wrong answer " + error);
-        setInputColor('#fe6d73');
+        setInputColor("#fe6d73");
         playWrongSound();
       } else {
         error = 0;
         errorAlert();
-        setInputColor('#fe6d73');
+        popWindow();
+        setInputColor("#fe6d73");
         playWrongSound();
       }
 
       // props.currentError(error);
->>>>>>> version2
     }
   };
 
@@ -65,17 +74,11 @@ export default function SquareBtnStyleWithInput(props) {
           ? "square-container-opacity text-box"
           : "square-container text-box"
       }
-      
       type="text"
       id={props.id}
       name="ansBox"
       onBlur={checkAns}
-<<<<<<< HEAD
-
-=======
       style={{ backgroundColor: inputColor }}
->>>>>>> version2
     />
-    
   );
 }
