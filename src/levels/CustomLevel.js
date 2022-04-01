@@ -137,6 +137,7 @@ export default function CustomLevel() {
 
   return (
     <div className="CustomLevel">
+      <KickOutTimer />
       <h1>Custom Level</h1>
       <div className="d-flex align-items-center justify-content-center">
         <div className="custom-level-inputs-box">
