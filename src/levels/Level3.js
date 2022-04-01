@@ -67,7 +67,9 @@ export default function Level3() {
 
   //handle submit answer
   async function handleSubmit(e) {
-    setIsLoading(true);
+    if (localStorage.getItem("userEmail") !== null) {
+      setIsLoading(true);
+    }
     let timeSpent = `${Math.floor((time / 60000) % 60)} minutes ${Math.floor((time / 1000) % 60)} seconds`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();

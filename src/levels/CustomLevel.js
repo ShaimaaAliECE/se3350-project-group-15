@@ -108,7 +108,9 @@ export default function CustomLevel() {
 
   //TODO: maybe be when user finishes the task, the system will automatically save player's game record (time + mistakes)
   async function handleSubmit(e) {
-    setIsLoading(true);
+    if (localStorage.getItem("userEmail") !== null) {
+      setIsLoading(true);
+    }
     let timeSpent = `${Math.floor((time / 60000) % 60)} minutes ${Math.floor(
       (time / 1000) % 60
     )} seconds`;
