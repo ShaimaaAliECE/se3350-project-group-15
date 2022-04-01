@@ -8,7 +8,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
 import { useAlert } from "react-alert";
 import Timer from "../components/Timer";
-
+import ReactLoading from 'react-loading';
 
 const helper = new Helper();
 
@@ -23,6 +23,7 @@ export default function Level5() {
   const displayArray = summaryArray.slice(0, currentStep - 1);
   const [time, setTime] = React.useState(0); //time from Timer component
   const [score, setScore] = React.useState(0);//testing
+  const [isLoading,setIsLoading] = React.useState(false);
 
   const levelStart = () => {
     let generate = helper.generateNumberArray(50, 100);
@@ -66,7 +67,7 @@ export default function Level5() {
 
   //handle submit answer
   async function handleSubmit(e) {
-    // e.preventDefault();
+    setIsLoading(true);
     let timeSpent = `${Math.floor((time / 60000) % 60)} minutes ${Math.floor((time / 1000) % 60)} seconds`;
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
@@ -79,7 +80,9 @@ export default function Level5() {
         score: score,
         timeSpent: timeSpent,
         dateTime: datetime,
-        level: 'Level 3'
+        level: 'Level 5'
+      }).then(()=>{
+        setIsLoading(false);
       });
       alert.show("Submitted record successfully", { timeout: 1500 });
     } else {
@@ -165,7 +168,7 @@ export default function Level5() {
 
       {/* store user's mistakes+time in firebase */}
       <button className='submitBtn' onClick={handleSubmit}>Submit Answer</button>
-
+      <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading}/>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
-
+import CloseButton from 'react-bootstrap/CloseButton'
 
 
 export default function AdminPage() {
@@ -100,6 +100,7 @@ export default function AdminPage() {
             style={{ width: "18rem" }}
             className="mb-2"
           >
+            <CloseButton ></CloseButton>
             <Card.Header>{item[0]}</Card.Header>
             <Card.Body>
               <Card.Title>{item[1]}</Card.Title>
