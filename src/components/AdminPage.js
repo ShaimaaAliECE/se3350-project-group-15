@@ -17,6 +17,12 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 // this place is used for add, remove and modify actions of player records.
 
 export default function AdminPage() {
+  //Getting the information of each doc in the collection
+  const alert = useAlert(); //Henry: fancy alert
+  const recordCollection = collection(db, "gameRecords");
+  const [querySnapshotArray, setQuerySnapshotArray] = useState([]);
+  const [playerEmail, setPlayerEmail] = useState();
+
   useEffect(() => {
     if (localStorage.userEmail !== "admin@123.com") {
       //nav to home page
@@ -24,15 +30,8 @@ export default function AdminPage() {
     }
   });
 
-  //Getting the information of each doc in the collection
-  const alert = useAlert(); //Henry: fancy alert
-  const recordCollection = collection(db, "gameRecords");
-  const [querySnapshotArray, setQuerySnapshotArray] = useState([]);
-  const [playerEmail, setPlayerEmail] = useState();
-
   async function readRecordData() {
     // worked
-    console.log(playerEmail);
     const targetData = query(
       recordCollection,
       where("email", "==", playerEmail)
@@ -81,9 +80,7 @@ export default function AdminPage() {
       alert.show(`deleted ${e.target.name} record successfully`, {
         timeout: 2000,
       });
-      setTimeout(function () {//optional
-        window.location.reload();
-      }, 2000);
+      readRecordData();//refresh record display after deleting
     });
   }
 
