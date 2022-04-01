@@ -58,7 +58,7 @@ export default function Header() {
                 <NavDropdown.Item href="/level5">Level5</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/customLevel">Custom Level</NavDropdown.Item>
-                <NavDropdown.Item href="/PlayerViewRecordPage">view record</NavDropdown.Item>
+                {isSignedIn ? <NavDropdown.Item href="/PlayerViewRecordPage">View Record</NavDropdown.Item> : ''}
                 {isAdmin ? <NavDropdown.Item href="/admin_page">Admin Page</NavDropdown.Item> : ''}
               </NavDropdown>
               <NavDropdown title="Select a Algorithm" id="basic-nav-dropdown">
