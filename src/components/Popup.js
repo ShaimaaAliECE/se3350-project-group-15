@@ -14,14 +14,15 @@ function Popup(props) {
 //   );
   
 // }
-  return  (
+
+  return  (props.trigger)? (
     <div className="popup">
       <div className="popup-inner">
         hi
         {props.children}
       </div>
     </div>
-  )
+  ):"";
   
 }
 

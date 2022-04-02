@@ -13,17 +13,17 @@ export function errorAlert() {
 }
 
 //testing popup ----currently cannot be used
-export function popWindow() {
-  //run everytime there is an error
-  //<Popup> cannot show because this is for the every input!
-  console.log("popup function");
-  return (
-    <div>
-      {/* <Popup/> */}
-      hiii
-    </div>
-  );
-}
+// export function popWindow() {
+//   //run everytime there is an error
+//   //<Popup> cannot show because this is for the every input!
+//   console.log("popup function");
+//   return (
+//     <div>
+//       {/* <Popup/> */}
+//       hiii
+//     </div>
+//   );
+// }
 
 let currentScore = 0;
 export default function SquareBtnStyleWithInput(props) {
@@ -37,9 +37,6 @@ export default function SquareBtnStyleWithInput(props) {
     if (event.target.value === event.target.id) {
       props.setCurrentPoint(props.currentPoint + 1);
       currentScore++;
-    
-      
-
       event.target.disabled = true;
       setInputColor("#b9fbc0");
       alert.success("correct");
@@ -49,8 +46,8 @@ export default function SquareBtnStyleWithInput(props) {
       event.target.value = "";
       error++;
       props.setCurrentError(props.currentError+1);
-
-      popWindow();//this is currently not working
+      //popWindow this is currently not working
+     // popWindow();
       if (error !== 3) {
         alert.error("wrong answer " + error);
         setInputColor("#fe6d73");
@@ -58,12 +55,13 @@ export default function SquareBtnStyleWithInput(props) {
       } else {
         error = 0;
         errorAlert();
-        popWindow();
+        //popWindow this is currently not working
+        //popWindow();
         setInputColor("#fe6d73");
         playWrongSound();
       }
 
-      // props.currentError(error);
+   
     }
   };
 
