@@ -12,7 +12,6 @@ import Header from "./components/Header"
 import SignInPage from './Authentication/SignInPage';
 import LoginPage from './Authentication/LoginPage';
 import AdminPage from './components/AdminPage';
-import PlayerViewRecordPage from './components/PlayerViewRecordPage';
 
 export default function App() {
   return (
@@ -29,7 +28,6 @@ export default function App() {
         <Route path="/level4" element={<Level4 />} />
         <Route path="/level5" element={<Level5 />} />
         <Route path="/customLevel" element={<CustomLevel />} />
-        <Route path="/PlayerViewRecordPage" element={<PlayerViewRecordPage />} />
         {/*Auth*/}
         <Route path="/sign_in" element={<SignInPage />} />
         <Route path="/login" element={<LoginPage />} />

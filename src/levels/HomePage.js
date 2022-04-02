@@ -4,13 +4,20 @@ import "../assets/css/Background.css";
 import actualTime from "../Helper/Clock.js";
 
 export default function LevelMain() {
+  const [isAdmin, setIsAdmin] = React.useState(false);
+  const [userEmail, setUserEmail] = React.useState(null);
+
   React.useEffect(() => {
-    if (localStorage.getItem("selectedAlgorithm") === null) {
-      localStorage.setItem("selectedAlgorithm", 'ms');
-    }
     // Get all the clock elements
     let element = document.getElementsByClassName("clock")[0].children;
     actualTime(element);
+
+    if (localStorage.getItem("userEmail") != null) {
+      setUserEmail(localStorage.getItem("userEmail"));
+      if (userEmail == "admin@123.com") {
+        setIsAdmin(true);
+      }
+    }
   });
 
   return (
@@ -50,15 +57,15 @@ export default function LevelMain() {
       </div>
 
       <div className="position-absolute top-50 start-50 translate-middle w-auto h-auto" style={{ marginTop: "80px" }}>
-        <article className="clock">
-          <div className="hours-container">
-            <div className="hours"></div>
+        <article class="clock">
+          <div class="hours-container">
+            <div class="hours"></div>
           </div>
-          <div className="minutes-container">
-            <div className="minutes"></div>
+          <div class="minutes-container">
+            <div class="minutes"></div>
           </div>
-          <div className="seconds-container">
-            <div className="seconds"></div>
+          <div class="seconds-container">
+            <div class="seconds"></div>
           </div>
         </article>
       </div>

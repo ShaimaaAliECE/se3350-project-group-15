@@ -58,12 +58,10 @@
   justify-content: flex-start;
   align-items: center;
   font-size: 14px;
-  margin: 0.5rem;
 }
 
 .display-area-dynamic {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -71,7 +69,6 @@
 
 .display-area-row {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
@@ -283,14 +280,6 @@
 .submitBtn:hover{
   background-color: #c4c4c4;
   /* color: white; */
-}
-
-.submit-loading{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%) 
 }
 
 @keyframes opacity {

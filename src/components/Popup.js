@@ -1,19 +1,28 @@
 import React from "react";
 import "../assets/css/Popup.css";
 function Popup(props) {
-  return props.trigger ? (
+
+//   return props.trigger ? (
+//     <div className="popup">
+//       <div className="popup-inner">
+//         hi
+//         {props.children}
+//       </div>
+//     </div>
+//   ) : (
+//     ""
+//   );
+  
+// }
+  return  (
     <div className="popup">
       <div className="popup-inner">
-        <button className="close-btn" onClick={() => props.setTrigger(false)}>
-          close
-        </button>
-
+        hi
         {props.children}
       </div>
     </div>
-  ) : (
-    ""
-  );
+  )
+  
 }
 
 export default Popup;

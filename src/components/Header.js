@@ -7,30 +7,6 @@ export default function Header() {
   const [isSignedIn, setIsSignedIn] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState(null);
   const [isAdmin, setIsAdmin] = React.useState(false);
-  const [currentAlgorithm, setCurrentAlgorithm] = React.useState(localStorage.getItem("selectedAlgorithm"));
-
-  const prettyPrint = (str) => {
-    switch (str) {
-      case 'ms':
-        return 'Merge Sort';
-      case 'bs':
-        return 'Bubble Sort';
-      default:
-        return 'Not Valid Selection';
-    }
-  }
-
-  React.useEffect(() => {
-    if (localStorage.getItem("selectedAlgorithm") !== currentAlgorithm) {
-      window.location.reload();
-    }
-    if (localStorage.getItem("selectedAlgorithm") === null) {
-      localStorage.setItem("selectedAlgorithm", 'ms');
-    } else {
-      localStorage.setItem("selectedAlgorithm", currentAlgorithm);
-    }
-  }, [currentAlgorithm]);
-
   React.useEffect(() => {
     if (localStorage.getItem("userEmail") !== null) {
       setIsSignedIn(true);
@@ -50,7 +26,7 @@ export default function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <NavDropdown title="Select a Level" id="level-dropdown">
+              <NavDropdown title="Select a Level" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/level1">Level1</NavDropdown.Item>
                 <NavDropdown.Item href="/level2">Level2</NavDropdown.Item>
                 <NavDropdown.Item href="/level3">Level3</NavDropdown.Item>
@@ -58,18 +34,8 @@ export default function Header() {
                 <NavDropdown.Item href="/level5">Level5</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/customLevel">Custom Level</NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Select a Algorithm" id="algorithm-dropdown">
-                <NavDropdown.Item onClick={() => setCurrentAlgorithm('ms')}>Merge Sort</NavDropdown.Item>
-                <NavDropdown.Item onClick={() => setCurrentAlgorithm('bs')}>Bubble Sort</NavDropdown.Item>
-              </NavDropdown>
-              {isSignedIn ? <NavDropdown title="More" id="more-dropdown">
-                {isSignedIn ? <NavDropdown.Item href="/PlayerViewRecordPage">View Record</NavDropdown.Item> : ''}
                 {isAdmin ? <NavDropdown.Item href="/admin_page">Admin Page</NavDropdown.Item> : ''}
-              </NavDropdown> : ''}
-              <Navbar.Text>
-                Current selected Algorithm: <strong>{prettyPrint(currentAlgorithm)}</strong>
-              </Navbar.Text>
+              </NavDropdown>
             </Nav>
           </Navbar.Collapse>
           <Navbar.Collapse className="justify-content-end">
