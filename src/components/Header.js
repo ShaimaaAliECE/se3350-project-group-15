@@ -68,7 +68,7 @@ export default function Header() {
                 {isAdmin ? <NavDropdown.Item href="/admin_page">Admin Page</NavDropdown.Item> : ''}
               </NavDropdown> : ''}
               <Navbar.Text>
-                Current selected Algorithm: <a href>{prettyPrint(currentAlgorithm)}</a>
+                Current selected Algorithm: <strong>{prettyPrint(currentAlgorithm)}</strong>
               </Navbar.Text>
             </Nav>
           </Navbar.Collapse>
