@@ -8,7 +8,9 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
 import { useAlert } from "react-alert";
 import Timer from "../components/Timer";
+//import the popup window ---chen wang
 import Popup from "../components/Popup";
+import {useState} from 'react';
 
 const helper = new Helper();
 
@@ -25,6 +27,8 @@ export default function Level3() {
   const [time, setTime] = React.useState(0); //time from Timer component
   const [score, setScore] = React.useState(0); //testing
   const [error, setError] = React.useState(0);
+  //testing for popup button
+  const [buttonPopup,setButtonPopup]=useState(false);
 
 
   const [popupWindow, setPopupWindow] = React.useState(false);
@@ -133,6 +137,10 @@ export default function Level3() {
         getScore={getScore}
         getError={getError}
       />
+      {/* button to trigger the popup window */}
+      <button onClick={()=>setButtonPopup(true)}>click to open popup window</button>
+      
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup} />
 
       <div className="display-area">
         <div className="display-area-row">
@@ -204,7 +212,7 @@ export default function Level3() {
         onNextStep={nextStep}
       />
 
-      <Popup trigger={popupWindow} />
+      {/* <Popup trigger={popupWindow} /> */}
 
       {/* store user's mistakes+time in firebase */}
       <button className="submitBtn" onClick={handleSubmit}>
