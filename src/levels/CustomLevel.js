@@ -4,10 +4,7 @@ import SquareBtnStyle from '../components/SquareBtnStyle';
 import SquareBtnStyleWithInput from '../components/SquareBtnStyleWithInput';
 import InstructionPanel from '../components/InstructionPanel';
 import Timer from '../components/Timer';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../Authentication/firebase';
 import { useAlert } from 'react-alert';
-import ReactLoading from 'react-loading';
 import KickOutTimer from '../components/KickOutTimer';
 import SubmitBtn from '../components/SubmitBtn';
 import { Button, Col } from 'react-bootstrap';
@@ -21,7 +18,6 @@ export default function CustomLevel() {
   const [currentPoint, setCurrentPoint] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState([]);
   const [summaryArray, setSummaryArray] = React.useState([]);
-  const [hasStarted, setHasStarted] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState(0);
   const [currentArraySize, setCurrentArraySize] = React.useState(5);
   const [currentArrayValues, setCurrentArrayValues] = React.useState([]);
@@ -45,7 +41,6 @@ export default function CustomLevel() {
     setCurrentQuestion(generate);
     setSummaryArray(helper.generateMap(JSON.parse(JSON.stringify(generate)), localStorage.getItem("selectedAlgorithm")));
     setCurrentStep(1);
-    setHasStarted(true);
     setCurrentPoint(currentArraySize);
     setTimeOn(true);
   };
@@ -56,7 +51,6 @@ export default function CustomLevel() {
     setCurrentArrayValues([]);
     setCurrentArrayValuesStr("");
     setCurrentStep(0);
-    setHasStarted(true);
     setTimeOn(true);
     setTime(0);
   };

@@ -63,17 +63,15 @@ export default function PlayerRecordPage() {
     const querySnapshot = await getDocs(targetData);
     var innerQuery = [];
     querySnapshot.forEach((doc) => {
-      {
-        var eachQuery = [];
-        eachQuery.push(doc.data().email);
-        eachQuery.push(doc.data().dateTime);
-        eachQuery.push(doc.id);
-        eachQuery.push(doc.data().level);
-        eachQuery.push(doc.data().score);
-        eachQuery.push(doc.data().timeSpent);
-        console.log(eachQuery);
-        innerQuery.push(eachQuery);
-      }
+      var eachQuery = [];
+      eachQuery.push(doc.data().email);
+      eachQuery.push(doc.data().dateTime);
+      eachQuery.push(doc.id);
+      eachQuery.push(doc.data().level);
+      eachQuery.push(doc.data().score);
+      eachQuery.push(doc.data().timeSpent);
+      console.log(eachQuery);
+      innerQuery.push(eachQuery);
     });
     setQuerySnapshotArray(innerQuery);
   };
