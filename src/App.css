@@ -58,10 +58,12 @@
   justify-content: flex-start;
   align-items: center;
   font-size: 14px;
+  margin: 0.5rem;
 }
 
 .display-area-dynamic {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -69,6 +71,7 @@
 
 .display-area-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
