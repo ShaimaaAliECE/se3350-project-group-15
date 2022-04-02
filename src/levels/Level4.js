@@ -4,18 +4,14 @@ import SquareBtnStyle from '../components/SquareBtnStyle';
 import SquareBtnStyleWithInput from '../components/SquareBtnStyleWithInput';
 import LevelControl from '../components/LevelControl';
 import InstructionPanel from '../components/InstructionPanel';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../Authentication/firebase';
-import { useAlert } from 'react-alert';
 import Timer from '../components/Timer';
-import ReactLoading from 'react-loading';
 import KickOutTimer from '../components/KickOutTimer';
+import SubmitBtn from '../components/SubmitBtn';
 
 const helper = new Helper();
 
 export default function Level4() {
   const currentLevel = 4;
-  const alert = useAlert(); //Henry: fancy alert
   const [currentPoint, setCurrentPoint] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState([]);
   const [summaryArray, setSummaryArray] = React.useState([]);
@@ -24,7 +20,7 @@ export default function Level4() {
   const [score, setScore] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
   const [time, setTime] = React.useState(0); //time from Timer component
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [timerOn, setTimeOn] = React.useState(false);
 
   const levelStart = () => {
     let generate = helper.generateNumberArray(20, 50);
@@ -33,6 +29,7 @@ export default function Level4() {
     setCurrentStep(1);
     setHasStarted(true);
     setCurrentPoint(20);
+    setTimeOn(true);
   };
 
   const levelRestart = () => {
@@ -42,6 +39,8 @@ export default function Level4() {
     setCurrentStep(1);
     setHasStarted(true);
     setCurrentPoint(20);
+    setTimeOn(true);
+    setTime(0);
   };
 
   const previousStep = () => {
@@ -62,42 +61,11 @@ export default function Level4() {
     return score;
   };
 
-  const getTime = (time) => {
-    setTime(time);
-  };
-
-  //handle submit answer
-  async function handleSubmit(e) {
-    if (localStorage.getItem("userEmail") !== null) {
-      setIsLoading(true);
-    }
-    let timeSpent = `${Math.floor((time / 60000) % 60)} minutes ${Math.floor((time / 1000) % 60)} seconds`;
-    let userEmail = localStorage.getItem("userEmail");
-    let currentdate = new Date();
-    let datetime = `${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
-    //check if user is signed in
-    if (userEmail != null) {
-      const usersCollectionRef = collection(db, "gameRecords");
-      await addDoc(usersCollectionRef, {
-        email: userEmail,
-        score: score,
-        timeSpent: timeSpent,
-        dateTime: datetime,
-        level: 'Level 4'
-      }).then(() => {
-        setIsLoading(false);
-      });
-      alert.show("Submitted record successfully", { timeout: 2500 });
-    } else {
-      alert.error("please sign in first!", { timeout: 1500 });
-    }
-  }
-
   return (
     <div className="Level4">
       <KickOutTimer />
       <h1>Level 4</h1>
-      <Timer getTime={getTime} />
+      <Timer time={time} setTime={setTime} timerOn={timerOn} />
       <LevelControl
         start={levelStart}
         restart={levelRestart}
@@ -173,8 +141,7 @@ export default function Level4() {
         onNextStep={nextStep}
       />
       {/* store user's mistakes+time in firebase */}
-      <button className='submitBtn' onClick={handleSubmit}>Submit Answer</button>
-      <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading} />
+      <SubmitBtn time={time} setTimeOn={setTimeOn} level={currentLevel} score={score} />
     </div>
   )
 }

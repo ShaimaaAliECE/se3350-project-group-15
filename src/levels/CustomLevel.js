@@ -3,11 +3,13 @@ import Helper from '../Helper/Helper';
 import SquareBtnStyle from '../components/SquareBtnStyle';
 import SquareBtnStyleWithInput from '../components/SquareBtnStyleWithInput';
 import InstructionPanel from '../components/InstructionPanel';
+import Timer from '../components/Timer';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../Authentication/firebase';
 import { useAlert } from 'react-alert';
 import ReactLoading from 'react-loading';
 import KickOutTimer from '../components/KickOutTimer';
+import SubmitBtn from '../components/SubmitBtn';
 import { Button, Col } from 'react-bootstrap';
 import { Summarize } from "@mui/icons-material";
 
@@ -27,9 +29,8 @@ export default function CustomLevel() {
   const [runDisabled, setRunDisabled] = React.useState(false);
   const [score, setScore] = React.useState(0);
   const displayArray = summaryArray.slice(0, currentStep - 1);
-  const [submitEnabled, setSubmitEnabled] = React.useState(false);
   const [time, setTime] = React.useState(0); //time from Timer component
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [timerOn, setTimeOn] = React.useState(false);
 
   const levelStart = () => {
     let generate = [];
@@ -46,6 +47,7 @@ export default function CustomLevel() {
     setCurrentStep(1);
     setHasStarted(true);
     setCurrentPoint(currentArraySize);
+    setTimeOn(true);
   };
 
   const levelReset = () => {
@@ -55,8 +57,8 @@ export default function CustomLevel() {
     setCurrentArrayValuesStr("");
     setCurrentStep(0);
     setHasStarted(true);
-
-
+    setTimeOn(true);
+    setTime(0);
   };
 
   const previousStep = () => {
@@ -108,37 +110,11 @@ export default function CustomLevel() {
     setCurrentArrayValuesStr(val.target.value);
   };
 
-  //TODO: maybe be when user finishes the task, the system will automatically save player's game record (time + mistakes)
-  async function handleSubmit(e) {
-    if (localStorage.getItem("userEmail") !== null) {
-      setIsLoading(true);
-    }
-    let timeSpent = `${Math.floor((time / 60000) % 60)} minutes ${Math.floor((time / 1000) % 60)} seconds`;
-    let userEmail = localStorage.getItem("userEmail");
-    let currentdate = new Date();
-    let datetime = `${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
-    //check if user is signed in
-    if (userEmail != null) {
-      const usersCollectionRef = collection(db, "gameRecords");
-      await addDoc(usersCollectionRef, {
-        email: userEmail,
-        score: score,
-        timeSpent: timeSpent,
-        dateTime: datetime,
-        level: "Custom Level",
-      }).then(() => {
-        setIsLoading(false);
-      });
-      alert.show("Submitted record successfully", { timeout: 2500 });
-    } else {
-      alert.error("please sign in first!", { timeout: 1500 });
-    }
-  }
-
   return (
     <div className="CustomLevel">
       <KickOutTimer />
       <h1>Custom Level</h1>
+      <Timer time={time} setTime={setTime} timerOn={timerOn} />
       <div className="d-flex align-items-center justify-content-center">
         <div className="custom-level-inputs-box">
           <div className="input-title">INPUTS</div>
@@ -283,8 +259,7 @@ export default function CustomLevel() {
         onNextStep={nextStep}
       />
       {/* store user's mistakes+time in firebase */}
-      <button className='submitBtn' onClick={handleSubmit} hidden={submitEnabled}>Submit Answer</button>
-      <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading} />
+      <SubmitBtn time={time} setTimeOn={setTimeOn} level={currentLevel} score={score} />
     </div>
   )
 }
