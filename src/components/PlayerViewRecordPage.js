@@ -80,33 +80,58 @@ export default function PlayerRecordPage() {
   };
 
 
-  return (
-    <div>
-      <button className='btn btn-primary' onClick={readRecordData}>Display records</button>
-      {
-        querySnapshotArray.map((item) => {
-          return <Card
-            bg="Primary"
-            key="1"
-            text={"dark"}
-            style={{ width: "25rem", margin: "auto", padding: "10px", }}
-            className="mb-2"
+    async function readRecordData() {
+        const targetData = query(recordCollection, where('email', '==', playerEmail));
+        const querySnapshot = await getDocs(targetData);
+        var innerQuery = [];
+        querySnapshot.forEach((doc) => {
+            {
+                var eachQuery = [];
+                eachQuery.push(doc.data().email);
+                eachQuery.push(doc.data().dateTime);
+                eachQuery.push(doc.id);
+                eachQuery.push(doc.data().level);
+                eachQuery.push(doc.data().score);
+                eachQuery.push(doc.data().timeSpent);
+                eachQuery.push(doc.data().algorithm);
+                console.log(eachQuery);
+                innerQuery.push(eachQuery);
+            }
+        });
+        setQuerySnapshotArray(innerQuery);
+    };
 
-          >
-            <CloseButton onClick={handleDelete} name={item[2]} />
-            <Card.Header>{item[0]}</Card.Header>
-            <Card.Body>
-              <Card.Title>Date: {item[1]}</Card.Title>
-              <Card.Title>Doc Id: {item[2]}</Card.Title>
-              <Card.Title>Level: {item[3]}</Card.Title>
-              <Card.Title>Score: {item[4]}</Card.Title>
-              <Card.Title>Total Time: {item[5]}</Card.Title>
-              <Card.Title>Selected Algorithm: {item[6]}</Card.Title>
-            </Card.Body>
-          </Card>
-        }
-        )
-      }
-    </div>
-  );
+
+
+
+
+    return (
+        <div>
+            <button className='btn btn-primary' onClick={readRecordData}>Display records</button>
+            {
+                querySnapshotArray.map((item) => {
+                    return <Card
+                        bg="Primary"
+                        key="1"
+                        text={"dark"}
+                        style={{ width: "18rem", margin: "auto", padding: "10px", }}
+                        className="mb-2"
+
+                    >
+                        <CloseButton onClick={handleDelete} name={item[2]} />
+                        <Card.Header >{item[0]}</Card.Header>
+                        <Card.Body>
+                            <Card.Title>{item[1]}</Card.Title>
+                            <Card.Text>{item[2]}</Card.Text>
+                            <Card.Text>{item[3]}</Card.Text>
+                            <Card.Text>{item[4]}</Card.Text>
+                            <Card.Text>{item[5]}</Card.Text>
+                            <Card.Text>{item[6]}</Card.Text>
+                        </Card.Body>
+                    </Card>
+                }
+                )
+            }
+        </div>
+    );
 }

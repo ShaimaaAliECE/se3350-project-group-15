@@ -12,7 +12,6 @@ import ReactLoading from 'react-loading';
 import KickOutTimer from '../components/KickOutTimer';
 
 
-
 const helper = new Helper();
 
 export default function Level3() {
