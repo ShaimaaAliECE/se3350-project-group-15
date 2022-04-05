@@ -32,8 +32,6 @@ export default function SquareBtnStyleWithInput(props) {
     } else {
       event.target.value = "";
       error++;
-
-
       if (error !== 3) {
         alert.error("wrong answer " + error);
         setInputColor('#fe6d73');
@@ -44,8 +42,6 @@ export default function SquareBtnStyleWithInput(props) {
         setInputColor('#fe6d73');
         playWrongSound();
       }
-
-      // props.currentError(error);
     }
   };
 
@@ -56,16 +52,12 @@ export default function SquareBtnStyleWithInput(props) {
           ? "square-container-opacity text-box"
           : "square-container text-box"
       }
-
       type="text"
       id={props.id}
       name="ansBox"
       onBlur={checkAns}
-
-
       style={{ backgroundColor: inputColor }}
     />
-
   );
 }
 

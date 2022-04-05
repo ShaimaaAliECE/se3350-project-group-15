@@ -72,11 +72,11 @@ export default function PlayerRecordPage() {
   return (
     <div>
       <div className="m-4 d-flex flex-wrap justify-content-center">
-        {
-          querySnapshotArray.map((item) => {
-            return <Card
+        {querySnapshotArray.map((item) => {
+          return (
+            <Card
               bg="Primary"
-              key="1"
+              key={item[2]}
               text={"dark"}
               style={{ width: "25rem" }}
               className="m-2 rounded-lg"
@@ -91,9 +91,8 @@ export default function PlayerRecordPage() {
                 <Card.Text>Time Spent: {item[5]}</Card.Text>
               </Card.Body>
             </Card>
-          }
           )
-        }
+        })}
       </div>
       <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading} />
     </div>

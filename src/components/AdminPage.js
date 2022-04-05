@@ -85,37 +85,39 @@ export default function AdminPage() {
   }
 
   return (
-    <div>
+    <div className="mt-4">
       <h1>AdminPage</h1>
       <h2>(:maybe come up with a better design:)</h2>
       <h2>maybe display player data in 3 cols</h2>
       <div>
         <input type="text" id="email" onChange={getPlayerEmail} />
-        <button className="btn btn-primary" onClick={readRecordData}>
+        <button className="ms-2 btn btn-primary" onClick={readRecordData}>
           Search
         </button>
       </div>
-      {querySnapshotArray.map((item) => {
-        return (
-          <Card
-            bg="Primary"
-            key={item[2]}
-            text={"dark"}
-            style={{ width: "18rem", margin: "auto", padding: "10px", }}
-            className="mb-2"
-          >
-            <CloseButton onClick={handleDelete} name={item[2]} />
-            <Card.Header>{item[0]}</Card.Header>
-            <Card.Body>
-              <Card.Title>{item[1]}</Card.Title>
-              <Card.Text>{item[2]}</Card.Text>
-              <Card.Text>{item[3]}</Card.Text>
-              <Card.Text>{item[4]}</Card.Text>
-              <Card.Text>{item[5]}</Card.Text>
-            </Card.Body>
-          </Card>
-        )
-      })}
+      <div className="m-4 d-flex flex-wrap justify-content-center">
+        {querySnapshotArray.map((item) => {
+          return (
+            <Card
+              bg="Primary"
+              key={item[2]}
+              text={"dark"}
+              style={{ width: "25rem" }}
+              className="m-2 rounded-lg"
+            >
+              <CloseButton onClick={handleDelete} name={item[2]} />
+              <Card.Header>{item[0]}</Card.Header>
+              <Card.Body>
+                <Card.Title>{item[1]}</Card.Title>
+                <Card.Text>Session ID: {item[2]}</Card.Text>
+                <Card.Text>Selected Level: {item[3]}</Card.Text>
+                <Card.Text>Score: {item[4]}</Card.Text>
+                <Card.Text>Time Spent: {item[5]}</Card.Text>
+              </Card.Body>
+            </Card>
+          )
+        })}
+      </div>
     </div>
   );
 }
