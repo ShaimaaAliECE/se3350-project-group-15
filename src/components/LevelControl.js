@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from './Button';
 import QuarBtnError from "./SquarBtnError";
+import Timer from './Timer';
 
 
 export default function LevelControl(props) {

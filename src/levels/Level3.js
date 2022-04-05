@@ -12,6 +12,7 @@ import ReactLoading from 'react-loading';
 import KickOutTimer from '../components/KickOutTimer';
 
 
+
 const helper = new Helper();
 
 export default function Level3() {
@@ -88,6 +89,7 @@ export default function Level3() {
     let currentdate = new Date();
     let datetime = `${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
     let algorithm = prettyPrint(localStorage.getItem("selectedAlgorithm"));
+    
 
     
     //check if user is signed in
@@ -107,6 +109,7 @@ export default function Level3() {
     } else {
       alert.error("please sign in first!", { timeout: 1500 });
     }
+    
   }
 
   return (

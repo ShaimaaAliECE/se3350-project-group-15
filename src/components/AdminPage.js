@@ -102,17 +102,18 @@ export default function AdminPage() {
             bg="Primary"
             key={item[2]}
             text={"dark"}
-            style={{ width: "18rem", margin: "auto", padding: "10px", }}
+            style={{ width: "25rem", margin: "auto", padding: "10px", }}
             className="mb-2"
           >
             <CloseButton onClick={handleDelete} name={item[2]} />
-            <Card.Header>{item[0]}</Card.Header>
+            <Card.Header>Player Email: {item[0]}</Card.Header>
             <Card.Body>
-              <Card.Title>{item[1]}</Card.Title>
-              <Card.Text>{item[2]}</Card.Text>
-              <Card.Text>{item[3]}</Card.Text>
-              <Card.Text>{item[4]}</Card.Text>
-              <Card.Text>{item[5]}</Card.Text>
+              <Card.Title>Date: {item[1]}</Card.Title>
+              <Card.Title>Doc Id: {item[2]}</Card.Title>
+              <Card.Title>Level: {item[3]}</Card.Title>
+              <Card.Title>Score: {item[4]}</Card.Title>
+              <Card.Title>Total Time: {item[5]}</Card.Title>
+              <Card.Title>Selected Algorithm: {item[6]}</Card.Title>
             </Card.Body>
           </Card>
         )
