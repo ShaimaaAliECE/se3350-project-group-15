@@ -1,34 +1,26 @@
-import { React, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { getDocs, collection, query, where, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
 import CloseButton from "react-bootstrap/CloseButton";
 import { useAlert } from "react-alert";
 import { confirmAlert } from "react-confirm-alert";
+import ReactLoading from 'react-loading';
 import "react-confirm-alert/src/react-confirm-alert.css";
-
 
 export default function PlayerRecordPage() {
   const alert = useAlert();
   const recordCollection = collection(db, 'gameRecords');
   const [querySnapshotArray, setQuerySnapshotArray] = useState([]);
   const [playerEmail, setPlayerEmail] = useState();
-
-  // function readRecordData() {
-  //     console.log(playerEmail);
-  //     setPlayerEmail(localStorage.getItem("userEmail"));
-  //     console.log(playerEmail);
-  //     //setting the player email as the current player email.
-  // }
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("userEmail") !== null) {
       setPlayerEmail(localStorage.getItem("userEmail"));
-      console.log(playerEmail);
-      console.log(querySnapshotArray);
+      readRecordData();
     }
   }, [playerEmail]);
-
 
   const handleDelete = (e) => {
     confirmAlert({
@@ -57,8 +49,8 @@ export default function PlayerRecordPage() {
     });
   }
 
-
   async function readRecordData() {
+    setIsLoading(true);
     const targetData = query(recordCollection, where('email', '==', playerEmail));
     const querySnapshot = await getDocs(targetData);
     var innerQuery = [];
@@ -74,17 +66,11 @@ export default function PlayerRecordPage() {
       innerQuery.push(eachQuery);
     });
     setQuerySnapshotArray(innerQuery);
+    setIsLoading(false);
   };
-
-
-
-
 
   return (
     <div>
-      <div className="mt-4">
-        <button className='btn btn-primary' onClick={readRecordData}>Display records</button>
-      </div>
       <div className="m-4 d-flex flex-wrap justify-content-between">
         {
           querySnapshotArray.map((item) => {
@@ -109,7 +95,7 @@ export default function PlayerRecordPage() {
           )
         }
       </div>
-
+      <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading} />
     </div>
   );
 }
