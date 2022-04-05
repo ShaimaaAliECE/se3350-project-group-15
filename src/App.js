@@ -18,23 +18,25 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <Routes>
-        {/*LevelMain: home page */}
-        <Route path="/" element={<HomePage />} />
-        {/*Level1: level 1 */}
-        <Route path="/level1" element={<Level1 />} />
-        {/*Level2: level 2 */}
-        <Route path="/level2" element={<Level2 />} />
-        <Route path="/level3" element={<Level3 />} />
-        <Route path="/level4" element={<Level4 />} />
-        <Route path="/level5" element={<Level5 />} />
-        <Route path="/customLevel" element={<CustomLevel />} />
-        <Route path="/PlayerViewRecordPage" element={<PlayerViewRecordPage />} />
-        {/*Auth*/}
-        <Route path="/sign_in" element={<SignInPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin_page" element={<AdminPage />} />
-      </Routes>
+      <div className="mt-2">
+        <Routes>
+          {/*LevelMain: home page */}
+          <Route path="/" element={<HomePage />} />
+          {/*Level1: level 1 */}
+          <Route path="/level1" element={<Level1 />} />
+          {/*Level2: level 2 */}
+          <Route path="/level2" element={<Level2 />} />
+          <Route path="/level3" element={<Level3 />} />
+          <Route path="/level4" element={<Level4 />} />
+          <Route path="/level5" element={<Level5 />} />
+          <Route path="/customLevel" element={<CustomLevel />} />
+          <Route path="/PlayerViewRecordPage" element={<PlayerViewRecordPage />} />
+          {/*Auth*/}
+          <Route path="/sign_in" element={<SignInPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/admin_page" element={<AdminPage />} />
+        </Routes>
+      </div>
     </div>
   );
 }
