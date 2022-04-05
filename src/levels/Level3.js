@@ -13,6 +13,7 @@ import {useModal} from "react-modal-hook";
 import ReactModal from "react-modal";
 import Button from "../components/Button";
 
+import { useNavigate } from 'react-router-dom';
 const helper = new Helper();
 
 export default function Level3() {
@@ -43,7 +44,7 @@ export default function Level3() {
     setCurrentPoint(10);
     setCurrentError(0);
   };
-
+  const navigate = useNavigate();
   const levelRestart = () => {
     let generate = helper.generateNumberArray(10, 20);
     setCurrentQuestion(generate);
@@ -85,6 +86,9 @@ export default function Level3() {
     // console.log(score) // increase when thers is a correct answer
     return score;
   };
+
+
+ 
 
   //it runs successfully everytime there is an error
   //currently setPopupWindow() is not working
@@ -133,11 +137,20 @@ export default function Level3() {
             <Button onClick={()=>{
               levelStart()
               hideModal()
-            }} disabled={hasStarted}>Start</Button>
+            }} >Restart</Button>
+             
             <Button onClick={()=>{
-              levelRestart()
+              // const navigate = useNavigate();
+              navigate('/');
               hideModal()
-            }} disabled={!hasStarted}>Restart</Button>
+            }} >Home</Button> {/* go back to the main room */}
+            <Button onClick={()=>{
+              // const navigate = useNavigate();
+             
+              hideModal()
+            }} >Continue</Button> 
+
+           
           </div>
       </ReactModal>
   ));
