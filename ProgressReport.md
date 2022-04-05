@@ -66,10 +66,10 @@ Create an educational game in a web or mobile application that helps undergradua
 
 * If a user makes 3 mistakes, they’re giving the following options
 
-  * [ ] restart the same level
-  * [ ] go back to any of the previous levels
-  * [ ] switch to the latest level with another algorithm  **(updated on Jan. 11th at 10:45 am)**
-  * [ ] or quit the game
+  * [X] restart the same level
+  * [X] go back to any of the previous levels
+  * [X] switch to the latest level with another algorithm  **(updated on Jan. 11th at 10:45 am)**
+  * [X] or quit the game
 
 ## Timeout (*Should Have*) **(updated on Jan. 24th at 09:40 am)**
 
