@@ -71,9 +71,6 @@ export default function PlayerRecordPage() {
 
   return (
     <div>
-      {/* <div className="mt-4">
-        <button className='btn btn-primary' onClick={readRecordData}>Display records</button>
-      </div> */}
       <div className="m-4 d-flex flex-wrap justify-content-between">
         {
           querySnapshotArray.map((item) => {
