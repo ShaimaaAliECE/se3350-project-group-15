@@ -108,6 +108,17 @@ export default function CustomLevel() {
     setCurrentArrayValuesStr(val.target.value);
   };
 
+  const prettyPrint = (str) => {
+    switch (str) {
+      case 'ms':
+        return 'Merge Sort';
+      case 'bs':
+        return 'Bubble Sort';
+      default:
+        return 'Not Valid Selection';
+    }
+  };
+
   //TODO: maybe be when user finishes the task, the system will automatically save player's game record (time + mistakes)
   async function handleSubmit(e) {
     if (localStorage.getItem("userEmail") !== null) {
@@ -117,6 +128,7 @@ export default function CustomLevel() {
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
     let datetime = `${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
+    let algorithm = prettyPrint(localStorage.getItem("selectedAlgorithm"));
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
@@ -126,6 +138,7 @@ export default function CustomLevel() {
         timeSpent: timeSpent,
         dateTime: datetime,
         level: "Custom Level",
+        algorithm: algorithm
       }).then(() => {
         setIsLoading(false);
       });

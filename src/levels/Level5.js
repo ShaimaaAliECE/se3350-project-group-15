@@ -66,6 +66,17 @@ export default function Level5() {
     setTime(time);
   };
 
+  const prettyPrint = (str) => {
+    switch (str) {
+      case 'ms':
+        return 'Merge Sort';
+      case 'bs':
+        return 'Bubble Sort';
+      default:
+        return 'Not Valid Selection';
+    }
+  };
+
   //handle submit answer
   async function handleSubmit(e) {
     if (localStorage.getItem("userEmail") !== null) {
@@ -75,6 +86,7 @@ export default function Level5() {
     let userEmail = localStorage.getItem("userEmail");
     let currentdate = new Date();
     let datetime = `${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} - ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
+    let algorithm = prettyPrint(localStorage.getItem("selectedAlgorithm"));
     //check if user is signed in
     if (userEmail != null) {
       const usersCollectionRef = collection(db, "gameRecords");
@@ -83,7 +95,8 @@ export default function Level5() {
         score: score,
         timeSpent: timeSpent,
         dateTime: datetime,
-        level: 'Level 5'
+        level: 'Level 5',
+        algorithm: algorithm
       }).then(() => {
         setIsLoading(false);
       });

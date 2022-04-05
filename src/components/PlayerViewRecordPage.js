@@ -71,6 +71,7 @@ export default function PlayerRecordPage() {
                 eachQuery.push(doc.data().level);
                 eachQuery.push(doc.data().score);
                 eachQuery.push(doc.data().timeSpent);
+                eachQuery.push(doc.data().algorithm);
                 console.log(eachQuery);
                 innerQuery.push(eachQuery);
             }
@@ -103,6 +104,7 @@ export default function PlayerRecordPage() {
                             <Card.Text>{item[3]}</Card.Text>
                             <Card.Text>{item[4]}</Card.Text>
                             <Card.Text>{item[5]}</Card.Text>
+                            <Card.Text>{item[6]}</Card.Text>
                         </Card.Body>
                     </Card>
                 }

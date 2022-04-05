@@ -46,6 +46,7 @@ export default function AdminPage() {
       eachQuery.push(doc.data().level);
       eachQuery.push(doc.data().score);
       eachQuery.push(doc.data().timeSpent);
+      eachQuery.push(doc.data().algorithm);
       console.log(eachQuery);
       innerQuery.push(eachQuery);
     });
