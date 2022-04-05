@@ -87,13 +87,14 @@ export default function AdminPage() {
   return (
     <div className="mt-4">
       <h1>AdminPage</h1>
-      <h2>(:maybe come up with a better design:)</h2>
-      <h2>maybe display player data in 3 cols</h2>
+      <h2>Enter a player's email to look up records</h2>
       <div>
+      <div className="search-item">
         <input type="text" id="email" onChange={getPlayerEmail} />
         <button className="ms-2 btn btn-primary" onClick={readRecordData}>
           Search
         </button>
+        </div>
       </div>
       <div className="m-4 d-flex flex-wrap justify-content-center">
         {querySnapshotArray.map((item) => {

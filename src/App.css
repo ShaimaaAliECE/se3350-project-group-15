@@ -293,6 +293,20 @@
   transform: translate(-50%, -50%) 
 }
 
+.search-item{
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+.search-item input{
+  padding: 10px 20px;
+}
+.search-item button{
+  color: white;
+  background-color: royalblue;
+}
+
+
 @keyframes opacity {
   from {
     opacity: 0;
