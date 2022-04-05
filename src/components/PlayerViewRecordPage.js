@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { getDocs, collection, query, where, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../Authentication/firebase";
@@ -71,7 +71,7 @@ export default function PlayerRecordPage() {
 
   return (
     <div>
-      <div className="m-4 d-flex flex-wrap justify-content-between">
+      <div className="m-4 d-flex flex-wrap justify-content-center">
         {
           querySnapshotArray.map((item) => {
             return <Card
