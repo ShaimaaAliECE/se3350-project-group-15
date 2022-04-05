@@ -5,12 +5,11 @@ import { useState } from "react";
 import useSound from "use-sound";
 import correctSound from "../assets/sounds/correct.wav";
 import wrongSound from "../assets/sounds/wrong.mp3";
+import { confirmAlert } from "react-confirm-alert";
+
 //From Ives Luo
 
-export let error = 0;
-export function errorAlert() {
-  alert("You make error 3 times");
-}
+let error = 0;
 let currentScore = 0;
 
 export default function SquareBtnStyleWithInput(props) {
@@ -57,7 +56,7 @@ export default function SquareBtnStyleWithInput(props) {
           ? "square-container-opacity text-box"
           : "square-container text-box"
       }
-      
+
       type="text"
       id={props.id}
       name="ansBox"
@@ -66,6 +65,45 @@ export default function SquareBtnStyleWithInput(props) {
 
       style={{ backgroundColor: inputColor }}
     />
-    
+
   );
+}
+
+function errorAlert() {
+  confirmAlert({
+    title: "Sorry",
+    message: "You have made too many mistakes. Please try again.",
+    buttons: [
+      {
+        label: "Restart",
+        onClick: () => {
+          window.location.reload();
+        }
+      },
+      {
+        label: "Switch Level",
+        onClick: () => {
+          window.location.href = "/";
+        }
+      },
+      {
+        label: "Switch Algorithm",
+        onClick: () => {
+          let currentAlgorithm = localStorage.getItem("selectedAlgorithm");
+          if (currentAlgorithm === "ms") {
+            localStorage.setItem("selectedAlgorithm", "bs");
+          } else {
+            localStorage.setItem("selectedAlgorithm", "ms");
+          }
+          window.location.reload();
+        }
+      },
+      {
+        label: "Quit Game",
+        onClick: () => {
+          window.location.href = "/";
+        }
+      }
+    ],
+  });
 }
