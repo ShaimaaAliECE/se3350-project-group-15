@@ -13,7 +13,7 @@ export default function KickOutTimer() {
         //alert("it is timeout")
         sessionTimeoutRef.current = setTimeout(logOut, 5000)
         if (window.confirm('5 minutes time out')) {
-            window.location.href = 'http://localhost:3000'
+            window.location.reload();
             console.log('window confirm')
         }
     };

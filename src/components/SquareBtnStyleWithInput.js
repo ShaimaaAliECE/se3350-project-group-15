@@ -1,5 +1,4 @@
 import { useAlert } from "react-alert";
-import { useEffect } from "react";
 import "../assets/css/Popup.css";
 import { useState } from "react";
 import useSound from "use-sound";
@@ -38,7 +37,7 @@ export default function SquareBtnStyleWithInput(props) {
         playWrongSound();
       } else {
         error = 0;
-        errorAlert();
+        errorAlert();//show pop-up window
         setInputColor('#fe6d73');
         playWrongSound();
       }
@@ -69,24 +68,6 @@ function errorAlert() {
       {
         label: "Restart",
         onClick: () => {
-          window.location.reload();
-        }
-      },
-      {
-        label: "Switch Level",
-        onClick: () => {
-          window.location.href = "/";
-        }
-      },
-      {
-        label: "Switch Algorithm",
-        onClick: () => {
-          let currentAlgorithm = localStorage.getItem("selectedAlgorithm");
-          if (currentAlgorithm === "ms") {
-            localStorage.setItem("selectedAlgorithm", "bs");
-          } else {
-            localStorage.setItem("selectedAlgorithm", "ms");
-          }
           window.location.reload();
         }
       },

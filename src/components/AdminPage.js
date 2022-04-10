@@ -13,8 +13,9 @@ import CloseButton from "react-bootstrap/CloseButton";
 import { useAlert } from "react-alert";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { Alert } from "react-bootstrap";
 
-// this place is used for add, remove and modify actions of player records.
+// this page is for reading or removing a player's records.
 
 export default function AdminPage() {
   //Getting the information of each doc in the collection
@@ -22,6 +23,8 @@ export default function AdminPage() {
   const recordCollection = collection(db, "gameRecords");
   const [querySnapshotArray, setQuerySnapshotArray] = useState([]);
   const [playerEmail, setPlayerEmail] = useState();
+  const [noRecords, setNoRecords] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   useEffect(() => {
     if (localStorage.userEmail !== "admin@123.com") {
@@ -31,25 +34,33 @@ export default function AdminPage() {
   });
 
   async function readRecordData() {
-    // worked
-    const targetData = query(
-      recordCollection,
-      where("email", "==", playerEmail)
-    );
-    const querySnapshot = await getDocs(targetData);
-    var innerQuery = [];
-    querySnapshot.forEach((doc) => {
-      var eachQuery = [];
-      eachQuery.push(doc.data().email);
-      eachQuery.push(doc.data().dateTime);
-      eachQuery.push(doc.id);
-      eachQuery.push(doc.data().level);
-      eachQuery.push(doc.data().score);
-      eachQuery.push(doc.data().timeSpent);
-      console.log(eachQuery);
-      innerQuery.push(eachQuery);
-    });
-    setQuerySnapshotArray(innerQuery);
+    if (playerEmail !== undefined && playerEmail !== "") {
+      setEmailError("");
+      setNoRecords(true);
+      const targetData = query(
+        recordCollection,
+        where("email", "==", playerEmail)
+      );
+      const querySnapshot = await getDocs(targetData);
+      var innerQuery = [];
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        var eachQuery = [];
+        eachQuery.push(doc.data().email);
+        eachQuery.push(doc.data().dateTime);
+        eachQuery.push(doc.id);
+        eachQuery.push(doc.data().level);
+        eachQuery.push(doc.data().score);
+        eachQuery.push(doc.data().timeSpent);
+        innerQuery.push(eachQuery);
+        if (doc.data().email !== "") {
+          setNoRecords(false);
+        }
+      });
+      setQuerySnapshotArray(innerQuery);
+    } else {
+      setEmailError("please enter a valid email!");
+    }
   }
 
   const getPlayerEmail = () => {
@@ -80,7 +91,7 @@ export default function AdminPage() {
       alert.show(`deleted ${e.target.name} record successfully`, {
         timeout: 2000,
       });
-      readRecordData();//refresh record display after deleting
+      readRecordData(); //refresh record display after deleting
     });
   }
 
@@ -88,37 +99,52 @@ export default function AdminPage() {
     <div className="mt-4">
       <h1>AdminPage</h1>
       <h2>Enter a player's email to look up records</h2>
-      <div>
       <div className="search-item">
         <input type="text" id="email" onChange={getPlayerEmail} />
-        <button className="ms-2 btn btn-primary" onClick={readRecordData}>
+        <button className=" btn btn-primary" onClick={readRecordData}>
           Search
         </button>
+      </div>
+      <div
+        style={{
+          justifyContent: "center",
+          display: "flex",
+        }}
+      >
+        {emailError && (
+          <Alert variant="danger">
+            <div style={{ padding: "1px 87px" }}>{emailError}</div>
+          </Alert>
+        )}
+      </div>
+
+      {noRecords ? (
+        <h1 className="submit-loading">No Records to See</h1>
+      ) : (
+        <div className="m-4 d-flex flex-wrap justify-content-center">
+          {querySnapshotArray.map((item) => {
+            return (
+              <Card
+                bg="Primary"
+                key={item[2]}
+                text={"dark"}
+                style={{ width: "25rem" }}
+                className="m-2 rounded-lg"
+              >
+                <CloseButton onClick={handleDelete} name={item[2]} />
+                <Card.Header>{item[0]}</Card.Header>
+                <Card.Body>
+                  <Card.Title>{item[1]}</Card.Title>
+                  <Card.Text>Session ID: {item[2]}</Card.Text>
+                  <Card.Text>Selected Level: {item[3]}</Card.Text>
+                  <Card.Text>Score: {item[4]}</Card.Text>
+                  <Card.Text>Time Spent: {item[5]}</Card.Text>
+                </Card.Body>
+              </Card>
+            );
+          })}
         </div>
-      </div>
-      <div className="m-4 d-flex flex-wrap justify-content-center">
-        {querySnapshotArray.map((item) => {
-          return (
-            <Card
-              bg="Primary"
-              key={item[2]}
-              text={"dark"}
-              style={{ width: "25rem" }}
-              className="m-2 rounded-lg"
-            >
-              <CloseButton onClick={handleDelete} name={item[2]} />
-              <Card.Header>{item[0]}</Card.Header>
-              <Card.Body>
-                <Card.Title>{item[1]}</Card.Title>
-                <Card.Text>Session ID: {item[2]}</Card.Text>
-                <Card.Text>Selected Level: {item[3]}</Card.Text>
-                <Card.Text>Score: {item[4]}</Card.Text>
-                <Card.Text>Time Spent: {item[5]}</Card.Text>
-              </Card.Body>
-            </Card>
-          )
-        })}
-      </div>
+      )}
     </div>
   );
 }

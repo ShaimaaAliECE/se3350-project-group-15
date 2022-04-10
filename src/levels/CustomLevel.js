@@ -166,7 +166,7 @@ export default function CustomLevel() {
               <label className="col-sm-3"></label>
               <div className="col-sm-8 text-align-left">
                 <Button
-                  style={{ marginRight: "8px" }}
+                  style={{ marginRight: "8px", backgroundColor:"#ffb700", color:"black", border:"#ffb700" }}
                   onClick={levelStart}
                   disabled={runDisabled}
                 >
@@ -175,7 +175,7 @@ export default function CustomLevel() {
                 <Button
                   onClick={levelReset}
                   className="btn btn-default"
-                  style={{ color: "#0d6efd", backgroundColor: "#FFFFFF" }}
+                  style={{ color: "black", backgroundColor: "#FFFFFF", border:"#ffb700 solid" }}
                 >
                   Reset
                 </Button>

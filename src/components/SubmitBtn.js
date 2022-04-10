@@ -11,6 +11,7 @@ export default function SubmitBtn(props) {
 
     //handle submit answer
     async function handleSubmit(e) {
+        e.preventDefault();
         props.setTimeOn(false);
         if (localStorage.getItem("userEmail") !== null) {
             setIsLoading(true);
@@ -40,7 +41,7 @@ export default function SubmitBtn(props) {
     return (
         <div>
             <button className='submitBtn' onClick={handleSubmit}>Submit Answer</button>
-            <ReactLoading type={"spin"} color="#52b788" className="submit-loading" hidden={!isLoading} />
+            <ReactLoading type={"spin"} color="#e85d04" className="submit-loading" hidden={!isLoading} />
         </div>
     )
 }

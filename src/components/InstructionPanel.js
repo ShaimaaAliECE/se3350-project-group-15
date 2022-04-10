@@ -6,7 +6,7 @@ export default function Footer(props) {
     const mergeSortDict = {
         1: [
             "Welcome to the Merge Sort Algorithm! Press start to begin.",
-            "A random unsorted list of ten numbers are generated, the following are the procedure of Merge Sorting",
+            "A random unsorted list of ten numbers are generated. The following is the procedure of Merge Sorting",
             "1. Slice the entire Array into half and create two subsets of the original set",
             "2. Repeat the same process and create more subsets",
             "3. Until all numbers are stand alone subsets, the slicing of the number set will then stop.",
@@ -51,11 +51,11 @@ export default function Footer(props) {
         1: [
             "Welcome to the Bubble Sort Algorithm! Press start to begin.",
             "A random unsorted list of ten numbers are generated, the following are the procedure of Merge Sorting",
-            "Repeatedly swapping the adjacent elements if they are in wrong order."
+            "Repeatedly swapping the adjacent elements until they are in the correct order"
         ],
         2: [
             "Welcome to the Bubble Sort Algorithm! Press start to begin.",
-            "Repeatedly swapping the adjacent elements if they are in wrong order."
+            "Repeatedly swapping the adjacent elements until they are in the correct order"
         ],
         3: [
             "Hope you learned the Bubble Sort Algorithm! Press start to begin.",

@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./levels/HomePage";
+import HomePage from "./components/HomePage";
 import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";
 import Level3 from "./levels/Level3";
@@ -13,6 +13,7 @@ import SignInPage from './Authentication/SignInPage';
 import LoginPage from './Authentication/LoginPage';
 import AdminPage from './components/AdminPage';
 import PlayerViewRecordPage from './components/PlayerViewRecordPage';
+import Footer from "./components/Footer"
 
 export default function App() {
   return (
